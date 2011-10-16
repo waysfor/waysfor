@@ -45,10 +45,8 @@ class Admin extends CI_Controller {
 	}
 	function welcome()
 	{
-		$data['title'] = '上海聚宇企业管理咨询后台管理 - 欢迎页';
-		$this->load->view('admin/welcome',$data);
+		$this->load->view('admin/welcome');
 	}
-	/*
 	function open($act = 'list')
 	{
 		switch($act) {
@@ -64,6 +62,7 @@ class Admin extends CI_Controller {
 				break;
 		}
 	}
+	/*
 	function train($act = 'list')
 	{
 		switch($act) {

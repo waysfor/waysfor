@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>上海聚宇企业管理咨询后台管理 - 欢迎页</title>
+<title>上海聚宇企业管理咨询后台管理</title>
 <link rel="stylesheet" href="/www/admin/css/screen.css" type="text/css" media="screen" title="default" />
 <!--[if IE]>
 <link rel="stylesheet" media="all" type="text/css" href="/www/manage/css/pro_dropline_ie.css" />
