@@ -6,14 +6,47 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$userid = $this->session->userdata('userid');
 		if($userid <= 0) {
-			header("Location: /manage/login");
-			exit;
+			if($this->uri->segment(2) != 'login' 
+				&& $this->uri->segment(2) != 'logout') {
+				header("Location: /admin/login");
+				exit;
+			}
 		}
 	}
 	function index()
 	{
-		header("Location: /manage/welcome");
+		header("Location: /admin/welcome");
 		exit;
+	}
+	function login()
+	{
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		if($username != '' && $password != '') {
+			$this->load->model('adminmodel');
+			$userid = $this->adminmodel->check_login($username, $password);
+			if($userid > 0) { //login success
+				$remain = $this->input->post('remain');
+				$userdata = array('userid' => $userid, 'username' => $username);
+				$this->session->set_userdata($userdata);
+				header("Location: /admin/welcome");
+				exit;
+			}
+		} else {
+			$this->load->view('admin/login');
+		}
+	}
+	function logout()
+	{
+		$userdata = array('username' => '', 'userid' => 0);
+		$this->session->set_userdata($userdata);
+		header("Location: /admin/login");
+		exit;
+	}
+	function welcome()
+	{
+		$data['title'] = '上海聚宇企业管理咨询后台管理 - 欢迎页';
+		$this->load->view('admin/welcome',$data);
 	}
 	/*
 	function open($act = 'list')
@@ -124,7 +157,7 @@ class Admin extends CI_Controller {
 	*/
 	
 	
-	
+	/*
 	function add($sort){
 		if($sort == 'open'){
 			$this->load->view('manage/edit');
@@ -176,4 +209,5 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('manage/lists');
 	}
+	*/
 }

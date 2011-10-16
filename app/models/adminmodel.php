@@ -1,5 +1,5 @@
 <?php
-class Managemodel extends CI_Model{
+class Adminmodel extends CI_Model{
 	function __construct(){
 		$this -> load -> database();
 		parent::__construct();

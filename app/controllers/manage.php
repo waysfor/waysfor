@@ -39,7 +39,7 @@ class Manage extends CI_Controller {
 				exit;
 			}
 		} else {
-			$this->load->view('manage/login');
+			$this->load->view('admin/login');
 		}
 	}
 	function welcome()
@@ -47,12 +47,13 @@ class Manage extends CI_Controller {
 		$userid = $this->session->userdata('userid');
 		if($userid > 0){
 			$data['title'] = '上海聚宇企业管理咨询后台管理 -- 欢迎页';
-			$this->load->view('manage/welcome',$data);
+			$this->load->view('admin/welcome',$data);
 		} else {
 			header("Location: /manage/login");
 			exit;
 		}
 	}
+	/*
 	function edits()
 	{
 		$userid = $this->session->userdata('userid');
@@ -67,4 +68,5 @@ class Manage extends CI_Controller {
 	{
 		$this->load->view('manage/lists');
 	}
+	*/
 }
