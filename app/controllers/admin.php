@@ -51,6 +51,7 @@ class Admin extends CI_Controller {
 	{
 		switch($act) {
 			case 'list':
+				$this->load->view('admin/open');
 				break;
 			case 'add':
 				break;

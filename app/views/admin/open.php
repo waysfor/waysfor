@@ -2,26 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>列表页</title>
+<title>上海聚宇企业管理咨询后台管理</title>
 <link rel="stylesheet" href="/www/admin/css/screen.css" type="text/css" media="screen" title="default" />
 <!--[if IE]>
-<link rel="stylesheet" media="all" type="text/css" href="css/pro_dropline_ie.css" />
+<link rel="stylesheet" media="all" type="text/css" href="/www/admin/css/pro_dropline_ie.css" />
 <![endif]-->
 
 <!--  jquery core -->
 <script src="/www/js/jquery.js" type="text/javascript"></script>
 
 <!--  checkbox styling script -->
-<script src="/www/admin/js/jquery/ui.core.js" type="text/javascript"></script>
-<script src="/www/admin/js/jquery/ui.checkbox.js" type="text/javascript"></script>
-<script src="/www/admin/js/jquery/jquery.bind.js" type="text/javascript"></script>
+<script src="/www/admin/js/ui.core.js" type="text/javascript"></script>
+<script src="/www/admin/js/ui.checkbox.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.bind.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function(){
 	$('input').checkBox();
 	$('#toggle-all').click(function(){
- 	$('#toggle-all').toggleClass('toggle-checked');
-	$('#mainform input[type=checkbox]').checkBox('toggle');
-	return false;
+		$('#toggle-all').toggleClass('toggle-checked');
+		$('#mainform input[type=checkbox]').checkBox('toggle');
+		return false;
 	});
 });
 </script>  
@@ -29,7 +29,7 @@ $(function(){
 <![if !IE 7]>
 
 <!--  styled select box script version 1 -->
-<script src="/www/admin/js/jquery/jquery.selectbox-0.5.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.selectbox-0.5.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect').selectbox({ inputClass: "selectbox_styled" });
@@ -40,7 +40,7 @@ $(document).ready(function() {
 <![endif]>
 
 <!--  styled select box script version 2 --> 
-<script src="/www/admin/js/jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect_form_1').selectbox({ inputClass: "styledselect_form_1" });
@@ -49,7 +49,7 @@ $(document).ready(function() {
 </script>
 
 <!--  styled select box script version 3 --> 
-<script src="/www/admin/js/jquery/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.styledselect_pages').selectbox({ inputClass: "styledselect_pages" });
@@ -57,7 +57,7 @@ $(document).ready(function() {
 </script>
 
 <!--  styled file upload script --> 
-<script src="/www/admin/js/jquery/jquery.filestyle.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.filestyle.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	$("input.file_1").filestyle({ 
@@ -70,11 +70,11 @@ $(function() {
 </script>
 
 <!-- Custom jquery scripts -->
-<script src="/www/admin/js/jquery/custom_jquery.js" type="text/javascript"></script>
+<script src="/www/admin/js/custom_jquery.js" type="text/javascript"></script>
  
 <!-- Tooltips -->
-<script src="/www/admin/js/jquery/jquery.tooltip.js" type="text/javascript"></script>
-<script src="/www/admin/js/jquery/jquery.dimensions.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.tooltip.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.dimensions.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function() {
 	$('a.info-tooltip ').tooltip({
@@ -91,12 +91,11 @@ $(function() {
 
 <!--  date picker script -->
 <link rel="stylesheet" href="/www/admin/css/datePicker.css" type="text/css" />
-<script src="/www/admin/js/jquery/date.js" type="text/javascript"></script>
-<script src="/www/admin/js/jquery/jquery.datePicker.js" type="text/javascript"></script>
+<script src="/www/admin/js/date.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.datePicker.js" type="text/javascript"></script>
 <script type="text/javascript" charset="utf-8">
-        $(function()
+$(function()
 {
-
 // initialise the "Select date" link
 $('#date-pick')
 	.datePicker(
@@ -162,10 +161,10 @@ $('#d').trigger('change');
 </script>
 
 <!-- MUST BE THE LAST SCRIPT IN <HEAD></HEAD></HEAD> png fix -->
-<script src="/www/admin/js/jquery/jquery.pngFix.pack.js" type="text/javascript"></script>
+<script src="/www/admin/js/jquery.pngFix.pack.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-$(document).pngFix( );
+	$(document).pngFix( );
 });
 </script>
 </head>
@@ -284,7 +283,7 @@ $(document).pngFix( );
 					<th class="table-header-options line-left"><a href="">Options</a></th>
 				</tr>
 				<tr>
-					<td><input  type="checkbox"/></td>
+					<td><input type="checkbox" /></td>
 					<td>Sabev</td>
 					<td>George</td>
 					<td><a href="">george@mainevent.co.za</a></td>
@@ -297,7 +296,7 @@ $(document).pngFix( );
 					</td>
 				</tr>
 				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
+					<td><input type="checkbox" /></td>
 					<td>Sabev</td>
 					<td>George</td>
 					<td><a href="">george@mainevent.co.za</a></td>
@@ -310,7 +309,7 @@ $(document).pngFix( );
 					</td>
 				</tr>
 				<tr>
-					<td><input  type="checkbox"/></td>
+					<td><input type="checkbox" /></td>
 					<td>Sabev</td>
 					<td>George</td>
 					<td><a href="">george@mainevent.co.za</a></td>
@@ -323,7 +322,7 @@ $(document).pngFix( );
 					</td>
 				</tr>
 				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
+					<td><input type="checkbox" /></td>
 					<td>Sabev</td>
 					<td>George</td>
 					<td><a href="">george@mainevent.co.za</a></td>
@@ -336,7 +335,7 @@ $(document).pngFix( );
 					</td>
 				</tr>
 				<tr>
-					<td><input  type="checkbox"/></td>
+					<td><input type="checkbox" /></td>
 					<td>Sabev</td>
 					<td>George</td>
 					<td><a href="">george@mainevent.co.za</a></td>
@@ -349,7 +348,7 @@ $(document).pngFix( );
 					</td>
 				</tr>
 				<tr class="alternate-row">
-					<td><input  type="checkbox"/></td>
+					<td><input type="checkbox" /></td>
 					<td>Sabev</td>
 					<td>George</td>
 					<td><a href="">george@mainevent.co.za</a></td>

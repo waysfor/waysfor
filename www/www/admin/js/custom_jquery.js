@@ -1,3 +1,4 @@
+alert('open');
 // 1 - START DROPDOWN SLIDER SCRIPTS ------------------------------------------------------------------------
 
 $(document).ready(function () {
