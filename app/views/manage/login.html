@@ -7,10 +7,11 @@
   </div>
   <!-- end logo -->
   <div class="clear"></div>
-  <!--  start loginbox ................................................................................. -->
+  <!--  start loginbox -->
   <script type="text/javascript">
   $(document).ready(function(){
     $(".submit-login").click(function(){
+      $(this).attr({"disabled":"disabled"});
       var username = $("#username").val();
       var password = $("#password").val();
       $.ajax({
@@ -18,7 +19,22 @@
         url:     "/manage/login",
         data:    "username="+username+"&password="+password,
         success: function(res) {
-          alert(res);
+          $(".submit-login").removeAttr("disabled");
+          res = JSON.parse(res);
+          var info = '';
+          if(res.stat == 0) {
+            info = '登录成功 ... 请稍等';
+            $("#logininfo").html(info).show();
+            window.location.href="/manage";
+          } else {
+            info = '登录失败 请重试';
+            $("#logininfo").html(info).show();
+          }
+        },
+        error:   function() {
+          $(".submit-login").removeAttr("disabled");
+          var info = '网络故障 请稍后重试';
+          $("#logininfo").html(info).show();
         }
       });
     });
@@ -52,12 +68,12 @@
     <div class="clear"></div>
     <a href="" class="forgot-pwd">Forgot Password?</a>
   </div>
-  <!--  end loginbox -->
+  <!-- end loginbox -->
 
-  <!--  start forgotbox ................................................................................... -->
+  <!-- start forgotbox -->
   <div id="forgotbox">
     <div id="forgotbox-text">Please send us your email and we'll reset your password.</div>
-    <!--  start forgot-inner -->
+    <!-- start forgot-inner -->
     <div id="forgot-inner">
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -70,9 +86,9 @@
         </tr>
       </table>
     </div>
-    <!--  end forgot-inner -->
+    <!-- end forgot-inner -->
     <div class="clear"></div>
     <a href="" class="back-login">Back to login</a>
   </div>
-  <!--  end forgotbox -->
+  <!-- end forgotbox -->
 </div>
