@@ -45,11 +45,11 @@
 */
 
 $active_group = 'default';
-$active_record = TRUE;
+$active_record = FALSE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '123456';
+$db['default']['password'] = 'sonata';
 $db['default']['database'] = 'waysfor';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

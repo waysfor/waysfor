@@ -675,6 +675,17 @@ class CI_Input {
 		return (php_sapi_name() == 'cli') or defined('STDIN');
 	}
 
+	// --------------------------------------------------------------------
+
+	/**
+	 * Is has post method?
+	 *
+	 */
+	public function is_post()
+	{
+		global $_SERVER;
+		return $_SERVER ['REQUEST_METHOD'] == 'POST' ? true : false;
+	}
 }
 // END Input class
 

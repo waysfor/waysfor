@@ -49,6 +49,21 @@ class CI_Model {
 		$CI =& get_instance();
 		return $CI->$key;
 	}
+
+	function get()
+	{
+		
+	}
+
+	function set()
+	{
+		
+	}
+
+	function exist()
+	{
+		
+	}
 }
 // END Model Class
 
