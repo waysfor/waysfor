@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Manage extends CI_Controller {
-  public $nav;
+  public $item;
   public $act;
   public $userid;
   public $username;
@@ -13,19 +13,57 @@ class Manage extends CI_Controller {
     $this->userid = isset($user['id']) ? $user['id'] : 0;
     $this->username = isset($user['name']) ? $user['name'] : 0;
     $this->realname = isset($user['real']) ? $user['real'] : 0;
+    $this->item = $this->uri->segment(2);
     if($this->userid <= 0) {
-      $this->act = $this->uri->segment(2);
-      if($this->act != 'login' && $this->act != 'logout') {
+      if($this->item != 'login' && $this->item != 'logout') {
         header("Location: /manage/login");
         exit;
       }
     }
-    //生成导航菜单
-    $this->_nav();
+    $this->act = $this->uri->segment(3);
+    //载入manage config
+    $this->config->load('manage');
+    $navarray = $this->config->item('nav');
+    $navitem = array();
+    foreach($navarray as $k=>$v) {
+      $navitem[$k] = $v['item'];
+    }
+    if(in_array($this->item, $navitem)) {
+      $k = array_keys($navitem, $this->item);
+      $k = $k[0];
+      $subarray = $navarray[$k]['sub'];
+      $subact = array();
+      foreach($subarray as $v) {
+        $subact[] = $v['act'];
+      }
+      if(in_array($this->act, $subact)) {
+        //生成导航菜单
+        $header['nav'] = $this->_nav();
+        //输出头部
+        $this->load->view('manage/header.html', $header);
+      }
+    }
   }
 
   private function _nav() {
-    $this->nav = $this->load->view('manage/nav.html', '', true);
+    $nav = $this->config->item('nav');
+    //开始按照seq排序处理
+    $navlist = array();
+    foreach($nav as $v) {
+      $sub = $v['sub'];
+      $sublist = array();
+      foreach($sub as $vv) {
+        $sublist[$vv['seq']] = $vv;
+      }
+      ksort($sublist);
+      $v['sub'] = $sublist;
+      $navlist[$v['seq']] = $v;
+    }
+    ksort($navlist);
+    $out['nav']  = $navlist;
+    $out['item'] = $this->item;
+    $out['act']  = $this->act;
+    return $this->load->view('manage/nav.html', $out, true);
   }
 
   function index() { //后台管理默认页面
@@ -37,8 +75,6 @@ class Manage extends CI_Controller {
     $usercookie  = json_decode($usercookie, true);
     $out['user'] = array_merge($out['user'], $usercookie);
 
-    $out['nav'] = $this->nav;
-    $this->load->view('manage/header.html');
     $this->load->view('manage/index.html', $out);
     $this->load->view('manage/footer.html');
   }
@@ -64,12 +100,7 @@ class Manage extends CI_Controller {
         $this->session->set_userdata(array('user' => $usersess));
         //role addtm lasttm lastip 写入到cookie
         $usercookie = array();
-        $rolearray = array(
-          0 => '普通用户',
-          1 => '初级管理员',
-          2 => '高级管理员',
-          3 => '超级管理员'
-        );
+        $rolearray = $this->config->item('role');
         $usercookie['role'] = $rolearray[$role];
         $usercookie['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
         $usercookie['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
@@ -105,5 +136,11 @@ class Manage extends CI_Controller {
     //跳转到登录页
     echo '<script>window.location.href="/manage/login";</script>';
     exit;
+  }
+
+  function user() {
+    $out = array();
+    $this->load->view('manage/index.html', $out);
+    $this->load->view('manage/footer.html');
   }
 }

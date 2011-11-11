@@ -1,37 +1,28 @@
     <!--  start nav -->
     <div class="nav">
       <div class="table">
-        <ul class="select">
+        <?php foreach($nav as $navper): ?>
+        <ul <?php if ($navper['item'] == $item): ?>class="current"<?php else: ?>class="select"<?php endif; ?>>
           <li>
-            <a href="#nogo"><b>Dashboard</b>
+            <a href="javascript:void(0);"><b><?php echo $navper['name'];?></b>
             <!--[if IE 7]><!--></a><!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
-            <div class="select_sub">
+            <div class="select_sub<?php if ($navper['item'] == $item): ?> show<?php endif; ?>">
               <ul class="sub">
-                <li><a href="#nogo">Dashboard Details 1</a></li>
-                <li><a href="#nogo">Dashboard Details 2</a></li>
-                <li><a href="#nogo">Dashboard Details 3</a></li>
+                <?php foreach($navper['sub'] as $sub): ?>
+                <li<?php if ($sub['act'] == $act): ?> class="sub_show"<?php endif; ?>>
+                  <a href="/manage/<?php echo $navper['item'];?>/<?php echo $sub['act'];?>">
+                    <?php echo $sub['name'];?>
+                  </a>
+                </li>
+                <?php endforeach; ?>
               </ul>
             </div>
             <!--[if lte IE 6]></td></tr></table></a><![endif]-->
           </li>
         </ul>
         <div class="nav-divider">&nbsp;</div>
-        <ul class="current">
-          <li>
-            <a href="#nogo"><b>Products</b>
-            <!--[if IE 7]><!--></a><!--<![endif]-->
-            <!--[if lte IE 6]><table><tr><td><![endif]-->
-            <div class="select_sub show">
-              <ul class="sub">
-                <li><a href="#nogo">View all products</a></li>
-                <li class="sub_show"><a href="#nogo">Add product</a></li>
-                <li><a href="#nogo">Delete products</a></li>
-              </ul>
-            </div>
-            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
-          </li>
-        </ul>
+        <?php endforeach; ?>
         <div class="clear"></div>
       </div>
       <div class="clear"></div>
