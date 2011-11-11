@@ -175,7 +175,7 @@ $(document).ready(function(){
   <div id="page-top">
     <!-- start logo -->
     <div id="logo">
-      <a href=""><img src="/www/manage/images/shared/logo.png" width="156" height="40" alt="" /></a>
+      <a href="/manage"><img src="/www/manage/images/shared/logo.png" width="156" height="40" alt="" /></a>
     </div>
     <!-- end logo -->
 
@@ -217,7 +217,7 @@ $(document).ready(function(){
     <!-- start nav-right -->
     <div id="nav-right">
       <div class="nav-divider">&nbsp;</div>
-      <a href="/manage/logout" id="logout">
+      <a href="/manage/user/info/<?php echo $user['id'];?>" id="logout">
         <img src="/www/manage/images/shared/nav/nav_myaccount.gif" width="93" height="14" alt="" />
       </a>
       <div class="nav-divider">&nbsp;</div>

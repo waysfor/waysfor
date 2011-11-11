@@ -3,6 +3,7 @@
 class Manage extends CI_Controller {
   public $item;
   public $act;
+  public $headerout = false;
   public $userid;
   public $username;
   public $realname;
@@ -14,6 +15,7 @@ class Manage extends CI_Controller {
     $this->username = isset($user['name']) ? $user['name'] : 0;
     $this->realname = isset($user['real']) ? $user['real'] : 0;
     $this->item = $this->uri->segment(2);
+    //如果用户没有登录
     if($this->userid <= 0) {
       if($this->item != 'login' && $this->item != 'logout') {
         header("Location: /manage/login");
@@ -28,7 +30,10 @@ class Manage extends CI_Controller {
     foreach($navarray as $k=>$v) {
       $navitem[$k] = $v['item'];
     }
-    if(in_array($this->item, $navitem)) {
+
+    if($this->item == '' && $this->act == '') {
+      $this->headerout = true;
+    } elseif(in_array($this->item, $navitem)) {
       $k = array_keys($navitem, $this->item);
       $k = $k[0];
       $subarray = $navarray[$k]['sub'];
@@ -37,14 +42,16 @@ class Manage extends CI_Controller {
         $subact[] = $v['act'];
       }
       if(in_array($this->act, $subact)) {
-        //生成导航菜单
-        $header['nav'] = $this->_nav();
-        //输出头部
-        $this->load->view('manage/header.html', $header);
+        $this->headerout = true;
       }
     }
+
+    $this->_header();
   }
 
+  /**
+   * 根据地址生成菜单
+   */
   private function _nav() {
     $nav = $this->config->item('nav');
     //开始按照seq排序处理
@@ -66,6 +73,19 @@ class Manage extends CI_Controller {
     return $this->load->view('manage/nav.html', $out, true);
   }
 
+  /**
+   * 根据菜单地址 生成头部并输出
+   */
+  private function _header() {
+    if($this->headerout == true) {
+      //生成导航菜单
+      $header['nav'] = $this->_nav();
+      $header['user']['id'] = $this->userid;
+      //输出头部
+      $this->load->view('manage/header.html', $header);
+    }
+  }
+
   function index() { //后台管理默认页面
     $out = array();
     $out['user']['id']   = $this->userid;
@@ -74,12 +94,11 @@ class Manage extends CI_Controller {
     $usercookie  = $this->input->cookie('user');
     $usercookie  = json_decode($usercookie, true);
     $out['user'] = array_merge($out['user'], $usercookie);
-
     $this->load->view('manage/index.html', $out);
     $this->load->view('manage/footer.html');
   }
 
-  function login() {
+  function login() { //后台管理登录
     if($this->input->is_post()) { //post
       $username = $this->input->post('username');
       $password = $this->input->post('password');
@@ -123,7 +142,7 @@ class Manage extends CI_Controller {
     }
   }
 
-  function logout() {
+  function logout() { //后台管理登出
     //清理session
     $this->session->unset_userdata('user');
     //清理cookie
@@ -138,9 +157,25 @@ class Manage extends CI_Controller {
     exit;
   }
 
-  function user() {
-    $out = array();
-    $this->load->view('manage/index.html', $out);
-    $this->load->view('manage/footer.html');
+  function user($act = '') { //后台用户管理
+    $this->load->model('usermodel');
+    switch($act) {
+      case 'list':
+        $out = array();
+        $userlist = $this->usermodel->get();
+        $out['user'] = $userlist;
+        $this->load->view('manage/user/list.html', $out);
+        $this->load->view('manage/footer.html');
+        break;
+      case 'add':
+        break;
+      case 'edit':
+        break;
+      case 'info':
+        break;
+      default:
+        show_404();
+        break;
+    }
   }
 }
