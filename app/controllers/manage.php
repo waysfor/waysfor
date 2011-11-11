@@ -3,7 +3,6 @@
 class Manage extends CI_Controller {
   public $item;
   public $act;
-  public $headerout = false;
   public $userid;
   public $username;
   public $realname;
@@ -29,21 +28,6 @@ class Manage extends CI_Controller {
     $navitem = array();
     foreach($navarray as $k=>$v) {
       $navitem[$k] = $v['item'];
-    }
-
-    if($this->item == '' && $this->act == '') {
-      $this->headerout = true;
-    } elseif(in_array($this->item, $navitem)) {
-      $k = array_keys($navitem, $this->item);
-      $k = $k[0];
-      $subarray = $navarray[$k]['sub'];
-      $subact = array();
-      foreach($subarray as $v) {
-        $subact[] = $v['act'];
-      }
-      if(in_array($this->act, $subact)) {
-        $this->headerout = true;
-      }
     }
 
     $this->_header();
@@ -77,7 +61,7 @@ class Manage extends CI_Controller {
    * 根据菜单地址 生成头部并输出
    */
   private function _header() {
-    if($this->headerout == true) {
+    if($this->item != 'login' && $this->item != 'logout') {
       //生成导航菜单
       $header['nav'] = $this->_nav();
       $header['user']['id'] = $this->userid;
@@ -157,13 +141,21 @@ class Manage extends CI_Controller {
     exit;
   }
 
-  function user($act = '') { //后台用户管理
+  function user($act = '', $val = 0) { //后台用户管理
     $this->load->model('usermodel');
     switch($act) {
       case 'list':
         $out = array();
         $userlist = $this->usermodel->get();
-        $out['user'] = $userlist;
+        $userout = array();
+        $rolearray = $this->config->item('role');
+        foreach($userlist as $user) {
+          $user['rolename'] = $rolearray[$user['role']];
+          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
+          $user['lastip'] = long2ip($user['lastip']);
+          $userout[] = $user;
+        }
+        $out['user'] = $userout;
         $this->load->view('manage/user/list.html', $out);
         $this->load->view('manage/footer.html');
         break;
@@ -172,6 +164,21 @@ class Manage extends CI_Controller {
       case 'edit':
         break;
       case 'info':
+        $user = $this->usermodel->get("`id` = '$val'");
+        if(isset($user[0])) {
+          $user = $user[0];
+          $rolearray = $this->config->item('role');
+          $user['rolename'] = $rolearray[$user['role']];
+          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
+          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
+          $user['lastip'] = long2ip($user['lastip']);
+          $out = array();
+          $out['user'] = $user;
+          $this->load->view('manage/user/info.html', $out);
+          $this->load->view('manage/footer.html');
+        } else {
+          show_404();
+        }
         break;
       default:
         show_404();

@@ -54,3 +54,9 @@ $(document).ready(function() {
 // 6 - DYNAMIC YEAR STAMP FOR FOOTER
 $('#spanYear').html(new Date().getFullYear());
 // END ----------------------------- 6
+
+// 7 - Delete Element
+function del(type, id) {
+  alert(type + id);
+}
+// END ----------------------------- 7
