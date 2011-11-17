@@ -168,6 +168,7 @@ class Manage extends CI_Controller {
         $this->load->view('manage/footer.html');
         break;
       case 'add':
+        
         break;
       case 'edit':
         break;
