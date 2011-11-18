@@ -160,9 +160,20 @@ class Manage extends CI_Controller {
         $this->load->view('manage/footer.html');
         break;
       case 'add':
-        
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/user/add.html');
+          $this->load->view('manage/footer.html');
+        }
         break;
       case 'edit':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/user/edit.html');
+          $this->load->view('manage/footer.html');
+        }
         break;
       case 'info':
         $user = $this->usermodel->get("`id` = '$val'");
