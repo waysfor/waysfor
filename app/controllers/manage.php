@@ -140,6 +140,63 @@ class Manage extends CI_Controller {
     echo '<script>window.location.href="/manage/login";</script>';
     exit;
   }
+  
+  function course($act = '', $val = 0) { //后台课程管理
+    $this->load->model('usermodel');
+    switch($act) {
+      case 'list':
+        $out = array();
+        $userlist = $this->usermodel->get();
+        $userout = array();
+        $rolearray = $this->config->item('role');
+        foreach($userlist as $user) {
+          $user['rolename'] = $rolearray[$user['role']];
+          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
+          $user['lastip'] = long2ip($user['lastip']);
+          $userout[] = $user;
+        }
+        $out['user'] = $userout;
+        $this->load->view('manage/course/list.html', $out);
+        $this->load->view('manage/footer.html');
+        break;
+      case 'add':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/course/add.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'edit':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/course/edit.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'info':
+        $user = $this->usermodel->get("`id` = '$val'");
+        if(isset($user[0])) {
+          $user = $user[0];
+          $rolearray = $this->config->item('role');
+          $user['rolename'] = $rolearray[$user['role']];
+          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
+          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
+          $user['lastip'] = long2ip($user['lastip']);
+          $out = array();
+          $out['user'] = $user;
+          $this->load->view('manage/course/info.html', $out);
+          $this->load->view('manage/footer.html');
+        } else {
+          show_404();
+        }
+        break;
+      default:
+        show_404();
+        break;
+    }
+  }
 
   function user($act = '', $val = 0) { //后台用户管理
     $this->load->model('usermodel');
