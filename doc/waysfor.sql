@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.5.0-dev
 -- http://www.phpmyadmin.net
 --
--- 主机: localhost
--- 生成日期: 2011 年 09 月 30 日 12:09
--- 服务器版本: 5.5.8
--- PHP 版本: 5.3.5
+-- Host: localhost
+-- Generation Time: Nov 22, 2011 at 09:54 AM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,13 +17,26 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- 数据库: `waysfor`
+-- Database: `waysfor`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `class_resource`
+-- Table structure for table `cate`
+--
+
+CREATE TABLE IF NOT EXISTS `cate` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(12) NOT NULL,
+  `oid` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='目录表' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_resource`
 --
 
 CREATE TABLE IF NOT EXISTS `class_resource` (
@@ -38,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `class_resource` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=227 ;
 
 --
--- 转存表中的数据 `class_resource`
+-- Dumping data for table `class_resource`
 --
 
 INSERT INTO `class_resource` (`id`, `status`, `classname`, `classtype`, `object`, `content`, `listtime`, `entertime`) VALUES
@@ -358,7 +372,7 @@ INSERT INTO `class_resource` (`id`, `status`, `classname`, `classtype`, `object`
 -- --------------------------------------------------------
 
 --
--- 表的结构 `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE IF NOT EXISTS `member` (
@@ -366,20 +380,63 @@ CREATE TABLE IF NOT EXISTS `member` (
   `username` varchar(60) NOT NULL COMMENT '账户名',
   `password` char(32) NOT NULL COMMENT '账户密码',
   `realname` varchar(60) NOT NULL COMMENT '真实姓名',
-  `tel` int(11) NOT NULL COMMENT '手机号码',
+  `email` varchar(60) NOT NULL COMMENT '电子邮箱',
+  `mobile` varchar(60) NOT NULL COMMENT '手机号码',
+  `tel` varchar(60) NOT NULL COMMENT '座机号码',
   `address` varchar(60) NOT NULL COMMENT '常住地址',
   `homeaddress` varchar(60) NOT NULL COMMENT '家乡地址',
-  `hometel` int(20) NOT NULL COMMENT '家庭联系电话',
+  `hometel` varchar(60) NOT NULL COMMENT '家庭联系电话',
   `linkman` varchar(20) NOT NULL COMMENT '联系人',
-  `limits` tinyint(4) NOT NULL COMMENT '操作权限',
-  `edittime` datetime NOT NULL COMMENT '修改时间',
-  `entertime` datetime NOT NULL COMMENT '录入时间',
+  `linkinfo` varchar(60) NOT NULL COMMENT '联系人联系方式',
+  `role` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '权限角色 0普通用户 1初级管理用户 2高级管理用户 3超级管理用户',
+  `addtm` int(10) unsigned NOT NULL COMMENT '用户创建时间',
+  `lasttm` int(10) unsigned NOT NULL COMMENT '用户最后登录时间',
+  `lastip` int(11) NOT NULL COMMENT '用户最后登录ip',
+  `lastact` varchar(60) NOT NULL COMMENT '用户最后动作',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- 转存表中的数据 `member`
+-- Dumping data for table `member`
 --
 
-INSERT INTO `member` (`id`, `username`, `password`, `realname`, `tel`, `address`, `homeaddress`, `hometel`, `linkman`, `limits`, `edittime`, `entertime`) VALUES
-(1, '111', '698d51a19d8a121ce581499d7b701668', '', 0, '', '', 0, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `member` (`id`, `username`, `password`, `realname`, `email`, `mobile`, `tel`, `address`, `homeaddress`, `hometel`, `linkman`, `linkinfo`, `role`, `addtm`, `lasttm`, `lastip`, `lastact`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '管理员', 'admin@waysfor.dev', '13888888888', '021-88888888', '上海周浦万达广场', '上海周浦万达广场', '021-88886666', '张强', '13666666666', 3, 1320916773, 1320916773, 2130706433, 'manage,index'),
+(2, 'zing', '21232f297a57a5a743894a0e4a801fc3', '张强', 'zing_zhang@waysfor.com', '15300625112', '15000620212', '上海市浦东新区秀浦路800弄3栋702', '', '', '', '', 2, 0, 0, 0, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id参数',
+  `title` varchar(255) NOT NULL COMMENT '资讯标题',
+  `content` longtext NOT NULL COMMENT '资讯内容',
+  `source` varchar(255) NOT NULL COMMENT '资讯来源',
+  `entertime` datetime NOT NULL COMMENT '录入时间',
+  `url` varchar(255) NOT NULL COMMENT 'url地址',
+  `author` varchar(12) NOT NULL COMMENT '发布者',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trainer_resource`
+--
+
+CREATE TABLE IF NOT EXISTS `trainer_resource` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id参数',
+  `fname` varchar(12) NOT NULL COMMENT '姓氏',
+  `name` int(24) NOT NULL COMMENT '全名',
+  `content` longtext NOT NULL COMMENT '讲师介绍',
+  `price` int(10) NOT NULL COMMENT '讲师价格',
+  `listtime` datetime NOT NULL COMMENT '最后编辑时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
