@@ -80,7 +80,71 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>往期课程</span>
+                                        <span>公开课分类</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    <ul class="traintype">
+                                        <li><a href="#">人力资源</a></li>
+                                        <li><a href="#">综合管理</a></li>
+                                        <li><a href="#">生产管理</a></li>
+                                        <li><a href="#">营销管理</a></li>
+                                        <li><a href="#">财务管理</a></li>
+                                        <li><a href="#">物流采购</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--col3 表示有3列-->
+                <div class="row col3">
+                    <div class="rt">
+                        <h2>
+                            <span>企业内训</span>
+                        </h2>
+                    </div>
+                    <div class="rc clearfix">
+                        <div class="cl">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>讲师介绍</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    模块内容
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cm">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>内训课程</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    <ul class="list">
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cr">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>内训分类</span>
                                     </h3>
                                 </div>
                                 <div class="bc">
