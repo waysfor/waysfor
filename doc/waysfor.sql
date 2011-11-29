@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 22, 2011 at 09:54 AM
+-- Generation Time: Nov 29, 2011 at 05:02 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -372,6 +372,26 @@ INSERT INTO `class_resource` (`id`, `status`, `classname`, `classtype`, `object`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `history`
+--
+
+CREATE TABLE IF NOT EXISTS `history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程id',
+  `status` tinyint(4) NOT NULL COMMENT '公开课/内训（1/2）',
+  `classname` varchar(255) NOT NULL COMMENT '课程名称',
+  `opentime` datetime NOT NULL COMMENT '开课时间',
+  `classtype` varchar(8) NOT NULL COMMENT '课程类型',
+  `object` varchar(255) NOT NULL COMMENT '授课对象',
+  `classcontent` longtext NOT NULL COMMENT '课程大纲',
+  `trainername` varchar(24) NOT NULL COMMENT '讲师名称',
+  `trainercontent` longtext NOT NULL COMMENT '讲师简介',
+  `posttime` datetime NOT NULL COMMENT '发布时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `member`
 --
 
@@ -430,7 +450,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 CREATE TABLE IF NOT EXISTS `trainer_resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id参数',
   `fname` varchar(12) NOT NULL COMMENT '姓氏',
-  `name` int(24) NOT NULL COMMENT '全名',
+  `name` varchar(24) NOT NULL COMMENT '全名',
   `content` longtext NOT NULL COMMENT '讲师介绍',
   `price` int(10) NOT NULL COMMENT '讲师价格',
   `listtime` datetime NOT NULL COMMENT '最后编辑时间',
