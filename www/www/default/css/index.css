@@ -58,6 +58,17 @@ body{
     position:relative;
     zoom:1
 }
+.titlebar{
+	line-height:30px;
+	background:#ededed;
+	color:#666;
+}
+.titlebar .header_wrap{
+	text-align:right;
+}
+.titlebar a{
+	color:#333;
+}
 .logo{
     float:left;
     width:168px;
@@ -134,8 +145,7 @@ body{
     width:86px;
     display:none
 }
-.search .typelist li a{
-    display:block;
+.search .typelist li{
     height:21px;
     line-height:21px;
     padding-left:0.5em;
@@ -183,8 +193,6 @@ body{
     margin:0 3px;
 }
 .emptytips{
-    height:100px;
-    line-height:100px;
     text-align:center;
 }
 .row{
@@ -202,10 +210,10 @@ body{
     float:left
 }
 .col2 .cl{
-    width:620px;
+    width:660px;
 }
 .col2 .cr{
-    width:360px
+    width:320px
 }
 .col3 .cl{
     width:300px

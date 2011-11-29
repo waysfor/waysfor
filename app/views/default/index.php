@@ -1,10 +1,44 @@
         <div class="wrapper">
             <div class="content">
+                <!--col2表示有两列-->
+                <div class="row col2">
+                    <div class="rc clearfix">
+                        <div class="cl">
+                            <div class="box">
+                                <img src="/www/default/img/nav_bg.png" width="652px" height="195" alt="" />
+                            </div>
+                        </div>
+                        <div class="cr">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>培训新闻</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    <ul class="list">
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
                 <!--col3 表示有3列-->
                 <div class="row col3">
                     <div class="rt">
                         <h2>
-                            <span>整行标题</span>
+                            <span>公开课</span>
                         </h2>
                     </div>
                     <div class="rc clearfix">
@@ -12,7 +46,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>模块标题</span>
+                                        <span>近期开课</span>
                                     </h3>
                                 </div>
                                 <div class="bc">
@@ -24,7 +58,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>列表</span>
+                                        <span>热门课程</span>
                                     </h3>
                                 </div>
                                 <div class="bc">
@@ -46,7 +80,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>培训分类</span>
+                                        <span>往期课程</span>
                                     </h3>
                                 </div>
                                 <div class="bc">
@@ -63,29 +97,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!--col2表示有两列-->
-                <div class="row col2">
-                    <div class="rt">
-                        <h2>
-                            <span>整行标题</span>
-                        </h2>
-                    </div>
-                    <div class="rc clearfix">
-                        <div class="cl">
-                            <div class="emptytips">
-                                暂无相关内容，请浏览其他内容
-                            </div>
-                        </div>
-                        <div class="cr">
-                            <div class="emptytips">
-                                暂无相关内容，请浏览其他内容
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
 
 
                 <!--没有内容的时候显示以下提示信息-->
