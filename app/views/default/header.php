@@ -43,3 +43,9 @@
                 </form>
             </div>
         </div>
+        <div class="hotkey">
+        	<div class="bg">
+        	热点词：
+        	<a href="#">关键字</a>
+            </div>
+        </div>

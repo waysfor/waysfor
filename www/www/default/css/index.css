@@ -54,6 +54,23 @@ body{
 .header{
     background:url(../img/nav_bg.png) repeat-x 0 bottom
 }
+.hotkey{
+	position:relative;
+	width:964px;
+	padding-left:16px;
+	margin:-4px auto 0;
+    background:url(../img/nav_hotkey.png) no-repeat 0 0
+}
+.hotkey div.bg{
+	display:block;
+	height:32px;
+	line-height:20px;
+	padding-top:4px;
+	background:url(../img/nav_hotkey.png) no-repeat right -36px
+}
+.hotkey div.bg a{
+	color:#f5f5f5;
+}
 .header_wrap{
     position:relative;
     zoom:1
@@ -202,7 +219,7 @@ body{
 .row .rt{
     border-bottom:3px solid #FB4242
 }
-.row .rt h2 span{
+.row .rt h2 span, .row .rt h2 span a{
     font-size:18px;
     color:#C31A1A
 }

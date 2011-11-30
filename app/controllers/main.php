@@ -19,8 +19,11 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this -> load -> model('OpenModel');
+		$class['now'] = $this -> OpenModel ->new_open('history','1');
+		
 		$this->load->view('default/header');
-		$this->load->view('default/index');
+		$this->load->view('default/index',$class);
 		$this->load->view('default/footer');
 	}
 }
