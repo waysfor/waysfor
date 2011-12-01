@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2011 at 05:02 AM
+-- Generation Time: Dec 01, 2011 at 04:49 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -379,15 +379,23 @@ CREATE TABLE IF NOT EXISTS `history` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '课程id',
   `status` tinyint(4) NOT NULL COMMENT '公开课/内训（1/2）',
   `classname` varchar(255) NOT NULL COMMENT '课程名称',
-  `opentime` datetime NOT NULL COMMENT '开课时间',
+  `opentime` date NOT NULL COMMENT '开课时间',
   `classtype` varchar(8) NOT NULL COMMENT '课程类型',
   `object` varchar(255) NOT NULL COMMENT '授课对象',
   `classcontent` longtext NOT NULL COMMENT '课程大纲',
   `trainername` varchar(24) NOT NULL COMMENT '讲师名称',
   `trainercontent` longtext NOT NULL COMMENT '讲师简介',
   `posttime` datetime NOT NULL COMMENT '发布时间',
+  `recommend` tinyint(4) NOT NULL COMMENT '推荐',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `status`, `classname`, `opentime`, `classtype`, `object`, `classcontent`, `trainername`, `trainercontent`, `posttime`, `recommend`) VALUES
+(1, 1, '公开课1', '2011-12-23', '人力资源', '对象1，对象2', '公开课内容大纲', '讲师1', '讲师简介内容', '2011-11-30 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -435,11 +443,20 @@ CREATE TABLE IF NOT EXISTS `news` (
   `title` varchar(255) NOT NULL COMMENT '资讯标题',
   `content` longtext NOT NULL COMMENT '资讯内容',
   `source` varchar(255) NOT NULL COMMENT '资讯来源',
-  `entertime` datetime NOT NULL COMMENT '录入时间',
+  `entertime` date NOT NULL COMMENT '录入时间',
   `url` varchar(255) NOT NULL COMMENT 'url地址',
   `author` varchar(12) NOT NULL COMMENT '发布者',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `title`, `content`, `source`, `entertime`, `url`, `author`) VALUES
+(1, '新闻1', '新闻1内容', 'http://www.test.com', '2011-11-30', '', '张强'),
+(2, '新闻2', '新闻2内容', 'http://www.test001.com', '2011-12-01', '', '新闻2'),
+(3, '新闻3', '新闻3内容', 'http://www.test003.com', '2011-12-03', '', '来自未来');
 
 -- --------------------------------------------------------
 
