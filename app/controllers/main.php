@@ -20,7 +20,10 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		$this -> load -> model('OpenModel');
-		$class['now'] = $this -> OpenModel ->new_open('history','1');
+		$this -> load -> model('NewsModel');
+		$class['news'] = $this -> NewsModel -> news('news');
+		$class['now'] = $this -> OpenModel -> new_open('history','1');
+		$class['recommend'] = $this -> OpenModel -> recommend_open('history','1');
 		
 		$this->load->view('default/header');
 		$this->load->view('default/index',$class);

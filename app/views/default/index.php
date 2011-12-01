@@ -17,8 +17,8 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($now as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                        				<?php foreach($news as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -42,6 +42,9 @@
                                     <h3>
                                         <span>近期开课</span>
                                     </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
@@ -56,20 +59,14 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>热门课程</span>
+                                        <span>推荐课程</span>
                                     </h3>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                        				<?php foreach($recommend as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>

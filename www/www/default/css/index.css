@@ -18,6 +18,10 @@ a{
 a img{
     border:none;
 }
+.pr{
+	position:absolute;
+	right:0;
+}
 table{
     border-collapse:collapse;
     border-spacing:0;
@@ -263,7 +267,19 @@ body{
 
 
 .box .bt{
-    background:#ddd
+    background:#ddd;
+	position:relative;
+}
+.box .bt span.pr{
+	top:0;
+	padding-right:8px;
+	line-height:22px;
+}
+.box .bt span.pr a{
+	color:#333;
+}
+.box .bt span.pr a:hover{
+	color:#666;
 }
 .box .bt h3{
     border-left:4px solid #888;

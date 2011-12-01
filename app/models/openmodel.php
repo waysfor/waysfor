@@ -25,7 +25,7 @@ class Openmodel extends CI_Model{
 		if(!empty($status_open)){
 			$query = $this -> db -> where('status',$status_open);
 		}
-		$query = $this -> db -> where('opentime >',date("Y-m-d"));
+		$query = $this -> db -> where('recommend','1');
 		$query = $this -> db -> get($tablename,10);
 		$datas = $query -> result_array();
 		$data = array();
