@@ -63,6 +63,7 @@ body{
 	width:964px;
 	padding-left:16px;
 	margin:-4px auto 0;
+	z-index:1;
     background:url(../img/nav_hotkey.png) no-repeat 0 0
 }
 .hotkey div.bg{
@@ -157,14 +158,15 @@ body{
 }
 .search .typelist{
     position:absolute;
-    top:29px;;
+    top:29px;
     left:0;
     background:#fff;
     border-style:none solid solid;
     border-width:1px;
     border-color:#ccc;
     width:86px;
-    display:none
+    display:none;
+	z-index:2;
 }
 .search .typelist li{
     height:21px;

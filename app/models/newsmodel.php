@@ -5,7 +5,7 @@ class Newsmodel extends CI_Model{
 	}
 
 	//按时间排序的新闻列表   函数new_open(表名)
-	function news($tablename){
+	function news_index($tablename){
 		$query = $this -> db -> where('entertime <=',date("Y-m-d"));
 		$query = $this -> db -> order_by('entertime','desc');
 		$query = $this -> db -> get($tablename,10);

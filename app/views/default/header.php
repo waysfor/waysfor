@@ -31,9 +31,10 @@
                 </div>
                 <form action="">
                     <div class="search">
-                        <span class="search_type" id="search_type"><em id="option">公开课</em><i class="arrow">arrow</i></span><input type="text" class="txt" /><input type="submit" class="btn" value="搜索" />
-                        <input type="hidden" value="公开课" id="checked" />
+                        <span class="search_type" id="search_type"><em id="option">全部资源</em><i class="arrow">arrow</i></span><input type="text" class="txt" /><input type="submit" class="btn" value="搜索" />
+                        <input type="hidden" value="全部资源" id="checked" />
                         <ul class="typelist" id="typelist">
+                            <li>全部资源</li>
                             <li>公开课</li>
                             <li>企业内训</li>
                             <li>培训讲师</li>

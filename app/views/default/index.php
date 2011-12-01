@@ -61,6 +61,9 @@
                                     <h3>
                                         <span>推荐课程</span>
                                     </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
@@ -130,18 +133,15 @@
                                     <h3>
                                         <span>内训课程</span>
                                     </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
-                                        <li><a href="#">企业全面预算管理与控制</a><span class="time">2011-11-01</span></li> 
+                        				<?php foreach($train as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -152,6 +152,9 @@
                                     <h3>
                                         <span>讲师介绍</span>
                                     </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     模块内容

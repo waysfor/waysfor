@@ -19,12 +19,14 @@ class Main extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this -> load -> model('OpenModel');
 		$this -> load -> model('NewsModel');
-		$class['news'] = $this -> NewsModel -> news('news');
+		$this -> load -> model('OpenModel');
+		$this -> load -> model('TrainModel');
+		$class['news'] = $this -> NewsModel -> news_index('news');
 		$class['now'] = $this -> OpenModel -> new_open('history','1');
 		$class['recommend'] = $this -> OpenModel -> recommend_open('history','1');
-		
+		$class['train'] = $this -> TrainModel -> train_index('history','2');
+		echo($class['train']);
 		$this->load->view('default/header');
 		$this->load->view('default/index',$class);
 		$this->load->view('default/footer');
