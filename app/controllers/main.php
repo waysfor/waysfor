@@ -26,7 +26,6 @@ class Main extends CI_Controller {
 		$class['now'] = $this -> OpenModel -> new_open('history','1');
 		$class['recommend'] = $this -> OpenModel -> recommend_open('history','1');
 		$class['train'] = $this -> TrainModel -> train_index('history','2');
-		echo($class['train']);
 		$this->load->view('default/header');
 		$this->load->view('default/index',$class);
 		$this->load->view('default/footer');
