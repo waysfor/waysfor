@@ -320,7 +320,7 @@ ul.list span.time{
 }
 ul.traintype li{
     float:left;
-    margin:8px 6px;
+    margin:4px 6px;
     display:inline;
     border-style:solid;
     border-width:1px;
@@ -329,7 +329,7 @@ ul.traintype li{
 ul.traintype li a{
     display:block;
     color:#333;
-    font-size:14px;
+    font-size:12px;
     background:#eee;
     padding:2px 3px;
     border-style:solid;

@@ -82,7 +82,7 @@
                                     </h3>
                                 </div>
                                 <div class="bc">
-                                    <ul class="traintype">
+                                    <ul class="traintype clearfix">
                                         <li><a href="#">人力资源</a></li>
                                         <li><a href="#">综合管理</a></li>
                                         <li><a href="#">生产管理</a></li>
@@ -108,22 +108,18 @@
                         </h2>
                     </div>
                     <div class="rc clearfix">
-                        <div class="cr">
+                        <div class="cl">
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>内训分类</span>
+                                        <span>讲师介绍</span>
                                     </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
-                                    <ul class="traintype">
-                                        <li><a href="#">人力资源</a></li>
-                                        <li><a href="#">综合管理</a></li>
-                                        <li><a href="#">生产管理</a></li>
-                                        <li><a href="#">营销管理</a></li>
-                                        <li><a href="#">财务管理</a></li>
-                                        <li><a href="#">物流采购</a></li>
-                                    </ul>
+                                    模块内容
                                 </div>
                             </div>
                         </div>
@@ -146,11 +142,45 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="cr">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>内训分类</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    <ul class="traintype clearfix">
+                                        <li><a href="#">人力资源</a></li>
+                                        <li><a href="#">综合管理</a></li>
+                                        <li><a href="#">生产管理</a></li>
+                                        <li><a href="#">营销管理</a></li>
+                                        <li><a href="#">财务管理</a></li>
+                                        <li><a href="#">物流采购</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--没有内容的时候显示以下提示信息-->
+            </div>
+
+                <!--col3 表示有3列-->
+                <div class="row col3">
+                    <div class="rt">
+                        <h2>
+                            <span><a href="/train">培训分类资讯</a></span>
+                        </h2>
+                    </div>
+                    <div class="rc clearfix">
                         <div class="cl">
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>讲师介绍</span>
+                                        <span>人力资源</span>
                                     </h3>
                                     <span class="pr">
                                     	<a href="#">更多</a>
@@ -158,6 +188,99 @@
                                 </div>
                                 <div class="bc">
                                     模块内容
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cm">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>综合管理</span>
+                                    </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
+                                </div>
+                                <div class="bc">
+                                    <ul class="list">
+                        				<?php foreach($train as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cr">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>生产管理</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    <ul class="traintype clearfix">
+                                        <li><a href="#">人力资源</a></li>
+                                        <li><a href="#">综合管理</a></li>
+                                        <li><a href="#">生产管理</a></li>
+                                        <li><a href="#">营销管理</a></li>
+                                        <li><a href="#">财务管理</a></li>
+                                        <li><a href="#">物流采购</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rc clearfix">
+                        <div class="cl">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>营销管理</span>
+                                    </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
+                                </div>
+                                <div class="bc">
+                                    模块内容
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cm">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>财务管理</span>
+                                    </h3>
+                                    <span class="pr">
+                                    	<a href="#">更多</a>
+                                    </span>
+                                </div>
+                                <div class="bc">
+                                    <ul class="list">
+                        				<?php foreach($train as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cr">
+                            <div class="box">
+                                <div class="bt">
+                                    <h3>
+                                        <span>物流采购</span>
+                                    </h3>
+                                </div>
+                                <div class="bc">
+                                    <ul class="traintype clearfix">
+                                        <li><a href="#">人力资源</a></li>
+                                        <li><a href="#">综合管理</a></li>
+                                        <li><a href="#">生产管理</a></li>
+                                        <li><a href="#">营销管理</a></li>
+                                        <li><a href="#">财务管理</a></li>
+                                        <li><a href="#">物流采购</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
