@@ -4,7 +4,6 @@ html{
 body,ul,ol,p,dl,dd,form,textarea,h2,h3,h4{
     margin:0;
 }
-
 ul,ol,input,button,td,th{
     padding:0;
 }
@@ -334,7 +333,8 @@ ul.traintype li a{
     padding:2px 3px;
     border-style:solid;
     border-width:1px;
-    border-color:#bbb #fff #eee #bbb
+    border-color:#bbb #fff #eee #bbb;
+	white-space:nowrap;
 }
 ul.traintype li a:hover{
     background:#fb4242;
