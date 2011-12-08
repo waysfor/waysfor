@@ -83,8 +83,20 @@
 			</div>
 			<div class="rc clearfix">
 				<div class="cl">
-					<div class="emptytips">
-						暂无相关内容，请浏览其他内容
+					<div class="box">
+						<div class="bt">
+							<h3>
+								<span>模块标题</span>
+							</h3>
+						</div>
+						<div class="bc">
+							<span id="focus_btn">
+								<i class="current">&nbsp;</i>
+								<i>&nbsp;</i>
+								<i>&nbsp;</i>
+								<i>&nbsp;</i>
+							</span>	
+						</div>
 					</div>
 				</div>
 				<div class="cr">

@@ -351,7 +351,37 @@ ul.traintype li a:hover{
 
 
 /* new modified start*/
+.media{
+	padding-top:8px
+}
 .media h3.mt{
 	font-size:14px;
+	margin-bottom:3px;
+}
+.media .pic{
+	float:left;
+	margin-right:10px;
+	display:inline;
+}
+.media .pic img{
+	border:1px solid #bbb;
+}
+.media a{
+	color:#65769a;
+}
+.media p.summary{
+	line-height:21px;
+	text-indent:2em;
+}
+#focus_btn i{
+	display:inline-block;
+	width:10px;
+	height:10px;
+	overflow:hidden;
+	background:url(../img/focus_btn.png) no-repeat 0 -10px;
+	cursor:pointer;
+}
+#focus_btn i.current{
+	background-position:0 0;
 }
 /* new modified end*/
