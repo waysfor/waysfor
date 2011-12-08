@@ -119,7 +119,11 @@
                                     </span>
                                 </div>
                                 <div class="bc">
-                                    模块内容
+                                    <ul class="list">
+                        				<?php foreach($train as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
