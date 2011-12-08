@@ -1,10 +1,9 @@
 html{
-    overflow-y:scroll
+    overflow-y:scroll;
 }
 body,ul,ol,p,dl,dd,form,textarea,h2,h3,h4{
     margin:0;
 }
-
 ul,ol,input,button,td,th{
     padding:0;
 }
@@ -14,6 +13,9 @@ ul,ol{
 }
 a{
     text-decoration:none;
+}
+img{
+	vertical-align:bottom
 }
 a img{
     border:none;
@@ -33,10 +35,10 @@ em{
 .clear{
     clear:both;
 }
-.clearfix{
+.clearfix,.media{
     zoom:1
 }
-.clearfix:after{
+.clearfix:after, .media:after{
     content:'';
     display:block;
     clear:both;
@@ -78,6 +80,7 @@ body{
 }
 .header_wrap{
     position:relative;
+	z-index:7;
     zoom:1
 }
 .titlebar{
@@ -140,7 +143,8 @@ body{
 .search{
     position:absolute;
     right:0;
-    bottom:8px
+    bottom:8px;
+	z-index:8
 }
 .search .search_type{
     display:inline-block;
@@ -166,7 +170,7 @@ body{
     border-color:#ccc;
     width:86px;
     display:none;
-	z-index:2;
+	z-index:9
 }
 .search .typelist li{
     height:21px;
@@ -334,10 +338,50 @@ ul.traintype li a{
     padding:2px 3px;
     border-style:solid;
     border-width:1px;
-    border-color:#bbb #fff #eee #bbb
+    border-color:#bbb #fff #eee #bbb;
+	white-space:nowrap;
 }
 ul.traintype li a:hover{
     background:#fb4242;
     color:#fff;
     border-right-color:#ccc
 }
+
+
+
+
+/* new modified start*/
+.media{
+	padding-top:8px
+}
+.media h3.mt{
+	font-size:14px;
+	margin-bottom:3px;
+}
+.media .pic{
+	float:left;
+	margin-right:10px;
+	display:inline;
+}
+.media .pic img{
+	border:1px solid #bbb;
+}
+.media a{
+	color:#65769a;
+}
+.media p.summary{
+	line-height:21px;
+	text-indent:2em;
+}
+#focus_btn i{
+	display:inline-block;
+	width:10px;
+	height:10px;
+	overflow:hidden;
+	background:url(../img/focus_btn.png) no-repeat 0 -10px;
+	cursor:pointer;
+}
+#focus_btn i.current{
+	background-position:0 0;
+}
+/* new modified end*/

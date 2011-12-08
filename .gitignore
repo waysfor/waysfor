@@ -1,3 +1,7 @@
+*.swp
+*.bak
+*~
+*.svn
 .buildpath
 .project
 .settings/*
