@@ -90,12 +90,23 @@
 							</h3>
 						</div>
 						<div class="bc">
-							<span id="focus_btn">
-								<i class="current">&nbsp;</i>
-								<i>&nbsp;</i>
-								<i>&nbsp;</i>
-								<i>&nbsp;</i>
-							</span>	
+							<div class="slide">
+								<ul id="slide_img">
+									<li><a href="#"><img src="http://www.waysfor.dev/www/default/img/temp.jpg" alt="" title="焦点图1" /></a></li>
+									<li><a href="#"><img src="http://www.waysfor.dev/www/default/img/temp.jpg" alt="" title="焦点图2" /></a></li>
+									<li><a href="#"><img src="http://www.waysfor.dev/www/default/img/temp.jpg" alt="" title="焦点图3" /></a></li>
+									<li><a href="#"><img src="http://www.waysfor.dev/www/default/img/temp.jpg" alt="" title="焦点图4" /></a></li>
+								</ul>
+								<div class="slide_txt">
+									<p id="slide_txt">焦点图1</p>
+								</div>
+								<span id="slide_btn">
+									<i class="current">&nbsp;</i>
+									<i>&nbsp;</i>
+									<i>&nbsp;</i>
+									<i>&nbsp;</i>
+								</span>	
+							</div>
 						</div>
 					</div>
 				</div>

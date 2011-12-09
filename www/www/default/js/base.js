@@ -1,8 +1,10 @@
 if (window.attachEvent){
-	window.attachEvent("onload",init);
+	window.attachEvent("onload",searchSelect);
+	window.attachEvent("onload",slide);
 }
 else{
-	window.addEventListener("load",init,false);
+	window.addEventListener("load",searchSelect,false);
+	window.addEventListener("load",slide,false);
 }
 
 function $(str){
@@ -24,7 +26,7 @@ function $(str){
 	}
 }
 
-function init(){
+function searchSelect(){
 	var typebtn = $("#search_type");
 	var typelist = $("#typelist");
 	var checked = $("#checked");
@@ -45,4 +47,10 @@ function init(){
 			checked.value = this.innerHTML;
 		}
 	}
+}
+function slide(){
+	var oImgBox = $("#slide_img");
+	var aImg = $("#slide_img").getElementsByTagName("img");
+	var oTxt = $("#slide_txt");
+	var aBtn = $("#slide_btn").getElementsByTagName("i");
 }

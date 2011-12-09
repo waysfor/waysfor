@@ -373,15 +373,46 @@ ul.traintype li a:hover{
 	line-height:21px;
 	text-indent:2em;
 }
-#focus_btn i{
+#slide_btn{
+	position:absolute;
+	bottom:8px;
+	right:5px;
+	height:10px;
+	overflow:hidden;
+}
+#slide_btn i{
 	display:inline-block;
 	width:10px;
 	height:10px;
 	overflow:hidden;
-	background:url(../img/focus_btn.png) no-repeat 0 -10px;
+	background-color:#9c9c9c;
 	cursor:pointer;
+	vertical-align:top;
 }
-#focus_btn i.current{
-	background-position:0 0;
+#slide_btn i.current{
+	background-color:#f60000;
+}
+.slide{
+	width:500px;
+	height:333px;
+	position:relative;
+	overflow:hidden;
+	zoom:1;
+}
+.slide_txt{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:27px;
+	line-height:27px;
+	color:#fff;
+	overflow:hidden;
+	background:rgba(0,0,0,0.7);
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#b3000000', endColorstr='#b3000000');
+}
+.slide_txt p{
+	padding-left:12px;
+	padding-right:12%;
 }
 /* new modified end*/
