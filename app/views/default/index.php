@@ -216,13 +216,10 @@
                                     </h3>
                                 </div>
                                 <div class="bc">
-                                    <ul class="traintype clearfix">
-                                        <li><a href="#">人力资源</a></li>
-                                        <li><a href="#">综合管理</a></li>
-                                        <li><a href="#">生产管理</a></li>
-                                        <li><a href="#">营销管理</a></li>
-                                        <li><a href="#">财务管理</a></li>
-                                        <li><a href="#">物流采购</a></li>
+                                    <ul class="list">
+                        				<?php foreach($train as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -271,13 +268,10 @@
                                     </h3>
                                 </div>
                                 <div class="bc">
-                                    <ul class="traintype clearfix">
-                                        <li><a href="#">人力资源</a></li>
-                                        <li><a href="#">综合管理</a></li>
-                                        <li><a href="#">生产管理</a></li>
-                                        <li><a href="#">营销管理</a></li>
-                                        <li><a href="#">财务管理</a></li>
-                                        <li><a href="#">物流采购</a></li>
+                                    <ul class="list">
+                        				<?php foreach($train as $items):?>
+                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
