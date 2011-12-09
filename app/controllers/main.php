@@ -21,6 +21,12 @@ class Main extends CI_Controller {
 	{
 		$this -> load -> model('NewsModel');
 		$class['news'] = $this -> NewsModel -> news_index('news');
+		$class['news_type1'] = $this -> NewsModel -> news_tpye('news','1');
+		$class['news_type2'] = $this -> NewsModel -> news_tpye('news','2');
+		$class['news_type3'] = $this -> NewsModel -> news_tpye('news','3');
+		$class['news_type4'] = $this -> NewsModel -> news_tpye('news','4');
+		$class['news_type5'] = $this -> NewsModel -> news_tpye('news','5');
+		$class['news_type6'] = $this -> NewsModel -> news_tpye('news','6');
 		
 		$this -> load -> model('OpenModel');
 		$class['now'] = $this -> OpenModel -> new_open('history','1');

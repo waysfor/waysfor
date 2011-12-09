@@ -185,7 +185,11 @@
                                     </span>
                                 </div>
                                 <div class="bc">
-                                    模块内容
+                                    <ul class="list">
+                        				<?php foreach($news_type1 as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                        				<?php endforeach;?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -201,8 +205,8 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($train as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php foreach($news_type2 as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -217,8 +221,8 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($train as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php foreach($news_type3 as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -237,7 +241,11 @@
                                     </span>
                                 </div>
                                 <div class="bc">
-                                    模块内容
+                                    <ul class="list">
+                        				<?php foreach($news_type4 as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                        				<?php endforeach;?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -253,8 +261,8 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($train as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php foreach($news_type5 as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -269,8 +277,8 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($train as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                        				<?php foreach($news_type6 as $items):?>
+                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
