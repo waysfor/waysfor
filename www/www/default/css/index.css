@@ -71,7 +71,7 @@ body{
 .hotkey div.bg{
 	display:block;
 	height:32px;
-	line-height:20px;
+	line-height:28px;
 	padding-top:4px;
 	background:url(../img/nav_hotkey.png) no-repeat right -36px
 }
