@@ -22,10 +22,14 @@ class Main extends CI_Controller {
 		$this -> load -> model('NewsModel');
 		$this -> load -> model('OpenModel');
 		$this -> load -> model('TrainModel');
+		$this -> load -> model('TrainerModel');
+		$this -> load -> model('CateModel');
 		$class['news'] = $this -> NewsModel -> news_index('news');
 		$class['now'] = $this -> OpenModel -> new_open('history','1');
 		$class['recommend'] = $this -> OpenModel -> recommend_open('history','1');
 		$class['train'] = $this -> TrainModel -> train_index('history','2');
+		$class['trainer'] = $this -> TrainerModel -> trainer_index('trainer');
+		$class['cate'] = $this -> CateModel -> cate('cate');
 		$this->load->view('default/header');
 		$this->load->view('default/index',$class);
 		$this->load->view('default/footer');
