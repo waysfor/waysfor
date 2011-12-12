@@ -146,10 +146,12 @@ class Manage extends CI_Controller {
     switch($act) {
       case 'list':
         $out = array();
-        $userlist = $this->usermodel->get();
+        $classlist = $this->usermodel->get();
         $userout = array();
+	    var_dump($userout);
+		exit;
         $rolearray = $this->config->item('role');
-        foreach($userlist as $user) {
+        foreach($classlist as $class) {
           $user['rolename'] = $rolearray[$user['role']];
           $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
           $user['lastip'] = long2ip($user['lastip']);
