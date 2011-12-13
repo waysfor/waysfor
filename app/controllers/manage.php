@@ -141,7 +141,8 @@ class Manage extends CI_Controller {
     exit;
   }
   
-  function course($act = '', $val = 0) { //后台课程管理
+  //后台课程管理
+  function course($act = '', $val = 0) { 
     $this->load->model('usermodel');
     switch($act) {
       case 'list':
@@ -165,6 +166,7 @@ class Manage extends CI_Controller {
         if($this->input->is_post()) { //post
           
         } else {
+		  $this->db->insert('',$data);
           $this->load->view('manage/course/add.html');
           $this->load->view('manage/footer.html');
         }
