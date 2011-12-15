@@ -104,6 +104,8 @@ class Manage extends CI_Controller {
         //role addtm lasttm lastip 写入到cookie
         $usercookie = array();
         $rolearray = $this->config->item('role');
+		$statusarray = $this->config->item('status');
+		$genderarray = $this->config->item('gender');
         $usercookie['role'] = $rolearray[$role];
         $usercookie['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
         $usercookie['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
@@ -143,22 +145,18 @@ class Manage extends CI_Controller {
   
   //后台课程管理
   function course($act = '', $val = 0) { 
-    $this->load->model('usermodel');
+    $this->load->model('coursemodel');
     switch($act) {
       case 'list':
         $out = array();
-        $classlist = $this->usermodel->get();
-        $userout = array();
-	    var_dump($userout);
-		exit;
-        $rolearray = $this->config->item('role');
-        foreach($classlist as $class) {
-          $user['rolename'] = $rolearray[$user['role']];
-          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
-          $user['lastip'] = long2ip($user['lastip']);
-          $userout[] = $user;
+		$classlist = $this->coursemodel->get();
+        $courseout = array();
+        $statusarray = $this->config->item('status');
+        foreach($classlist as $class_course) {
+		  $class_course['status'] = $statusarray[$class_course['status']];
+          $courseout[] = $class_course;
         }
-        $out['user'] = $userout;
+        $out['class_course'] = $courseout;
         $this->load->view('manage/course/list.html', $out);
         $this->load->view('manage/footer.html');
         break;
@@ -166,7 +164,118 @@ class Manage extends CI_Controller {
         if($this->input->is_post()) { //post
           
         } else {
-		  $this->db->insert('',$data);
+          $this->load->view('manage/course/add.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'edit':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/course/edit.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'info':
+        $user = $this->usermodel->get("`id` = '$val'");
+        if(isset($user[0])) {
+          $user = $user[0];
+          $rolearray = $this->config->item('role');
+          $user['rolename'] = $rolearray[$user['role']];
+          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
+          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
+          $user['lastip'] = long2ip($user['lastip']);
+          $out = array();
+          $out['user'] = $user;
+          $this->load->view('manage/course/info.html', $out);
+          $this->load->view('manage/footer.html');
+        } else {
+          show_404();
+        }
+        break;
+      default:
+        show_404();
+        break;
+    }
+  }
+  
+  //后台讲师管理
+  function trainer($act = '', $val = 0) { 
+    $this->load->model('trainermodel');
+    switch($act) {
+      case 'list':
+        $out = array();
+		$trainerlist = $this->trainermodel->get();
+        $trainerout = array();
+        $genderarray = $this->config->item('gender');
+        foreach($trainerlist as $trainer_course) {
+		  $trainer_course['gender'] = $genderarray[$trainer_course['gender']];
+          $trainerout[] = $trainer_course;
+        }
+        $out['trainer_course'] = $trainerout;
+        $this->load->view('manage/trainer/list.html', $out);
+        $this->load->view('manage/footer.html');
+        break;
+      case 'add':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/course/add.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'edit':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/course/edit.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'info':
+        $user = $this->usermodel->get("`id` = '$val'");
+        if(isset($user[0])) {
+          $user = $user[0];
+          $rolearray = $this->config->item('role');
+          $user['rolename'] = $rolearray[$user['role']];
+          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
+          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
+          $user['lastip'] = long2ip($user['lastip']);
+          $out = array();
+          $out['user'] = $user;
+          $this->load->view('manage/course/info.html', $out);
+          $this->load->view('manage/footer.html');
+        } else {
+          show_404();
+        }
+        break;
+      default:
+        show_404();
+        break;
+    }
+  }
+  
+  //后台客户管理
+  function client($act = '', $val = 0) { 
+    $this->load->model('trainermodel');
+    switch($act) {
+      case 'list':
+        $out = array();
+		$trainerlist = $this->trainermodel->get();
+        $trainerout = array();
+        $genderarray = $this->config->item('gender');
+        foreach($trainerlist as $trainer_course) {
+		  $trainer_course['gender'] = $genderarray[$trainer_course['gender']];
+          $trainerout[] = $trainer_course;
+        }
+        $out['trainer_course'] = $trainerout;
+        $this->load->view('manage/trainer/list.html', $out);
+        $this->load->view('manage/footer.html');
+        break;
+      case 'add':
+        if($this->input->is_post()) { //post
+          
+        } else {
           $this->load->view('manage/course/add.html');
           $this->load->view('manage/footer.html');
         }

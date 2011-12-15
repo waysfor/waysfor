@@ -6,6 +6,16 @@ $config['role'] = array(
   3 => '超级管理员'
 );
 
+$config['status'] = array(
+  1 => '公开课',
+  2 => '企业内训'
+);
+
+$config['gender'] = array(
+  0 => '女',
+  1 => '男'
+);
+
 $config['nav'] = array(
   array(
     'name' => '课程管理',
@@ -27,7 +37,7 @@ $config['nav'] = array(
   array(
     'name' => '讲师管理',
     'seq'  => 2,
-    'item' => 'trianer',
+    'item' => 'trainer',
     'sub'  => array(
       array(
         'name' => '查看讲师',

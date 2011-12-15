@@ -37,14 +37,14 @@
 									<th class="table-header-repeat line-left"><a href="">编辑者</a></th>
 									<th class="table-header-options line-left"><a href="">操作</a></th>
 								</thead>
-								<?php foreach($user as $u): ?>
+								<?php foreach($class_course as $u): ?>
 								<tr>
 									<td><input type="checkbox"/></td>
-									<td><?=$u['username']?></td>
-									<td><?=$u['username']?></td>
-									<td><?=$u['rolename']?></td>
-									<td><?=$u['lasttm']?></td>
-									<td><?=$u['lastip']?></td>
+									<td><?=$u['classname']?></td>
+									<td><?=$u['status']?></td>
+									<td><?=$u['classtype']?></td>
+									<td><?=$u['listtime']?></td>
+									<td><?=$u['id']?></td>
 									<td class="options-width">
 										<a href="/manage/user/edit/<?=$u['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
 										<a href="javascript:del('user', <?=$u['id']?>);" title="删除" class="icon-2 info-tooltip"></a>
