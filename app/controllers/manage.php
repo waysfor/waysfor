@@ -168,6 +168,14 @@ class Manage extends CI_Controller {
           $this->load->view('manage/footer.html');
         }
         break;
+	  case 'add_save':
+		$data['name'] = $_POST['name'];
+		$data['status'] = $_POST['status'];
+		$data['classtype'] = $_POST['classtype'];
+		$data['object'] = $_POST['object'];
+		$data['content'] = $_POST['content'];
+		$data['name'] = $_POST['name'];
+		break;
       case 'edit':
         if($this->input->is_post()) { //post
           

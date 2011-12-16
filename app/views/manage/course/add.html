@@ -36,17 +36,17 @@
                                 <!--  end step-holder -->
                                 
                                 <!-- start id-form -->
-                                    <form id="chooseDateForm" action="#">
+                                    <form id="chooseDateForm" action="add_save" method="post">
                                     <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
                                         <tr>
                                             <th valign="top">课程名称：</th>
-                                            <td><input type="text" class="inp-form" /></td>
+                                            <td><input type="text" class="inp-form" name="name" /></td>
                                             <td></td>
                                         </tr>
                                         <tr>
                                             <th valign="top">课程性质：</th>
                                             <td>
-                                                <select name="customers" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                <select name="status" onchange="showCustormers(this.value)" class="styledselect_form_1">
                                                     <option value="">请选择课程性质</option>
                                                     <option value="">公开课</option>
                                                     <option value="">企业内训</option>
@@ -57,7 +57,7 @@
                                         <tr>
                                             <th valign="top">课程类型:</th>
                                             <td>	
-                                                <select name="customers" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                <select name="classtype" onchange="showCustormers(this.value)" class="styledselect_form_1">
                                                     <option value="">未分类</option>
                                                     <option value="">人力资源</option>
                                                     <option value="">综合管理</option>
@@ -71,7 +71,7 @@
                                         </tr>
                                         <tr>
                                             <th valign="top">授课对象:</th>
-                                            <td><textarea name="content" class="form-textarea"></textarea></td>
+                                            <td><textarea name="object" class="form-textarea"></textarea></td>
                                             <td></td>
                                         </tr>
                                         <tr>
