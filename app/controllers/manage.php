@@ -169,12 +169,18 @@ class Manage extends CI_Controller {
         }
         break;
 	  case 'add_save':
-		$data['name'] = $_POST['name'];
 		$data['status'] = $_POST['status'];
+		$data['classname'] = $_POST['name'];
 		$data['classtype'] = $_POST['classtype'];
 		$data['object'] = $_POST['object'];
 		$data['content'] = $_POST['content'];
-		$data['name'] = $_POST['name'];
+		$data['listtime'] = date("Y-m-d h:i:s");
+		$data['entertime'] = date("Y-m-d h:i:s");
+		
+		$result = $this -> coursemodel -> add($data);
+		break;
+	  case 'del':
+		$result = $this -> coursemodel -> del($id);
 		break;
       case 'edit':
         if($this->input->is_post()) { //post
@@ -184,6 +190,34 @@ class Manage extends CI_Controller {
           $this->load->view('manage/footer.html');
         }
         break;
+      case 'edit_save':
+       /*
+        * 这段可以分离到model文件中
+        */ 
+        $data['id'] = $_POST['id'];
+        $con = "id = " . $data['id']; 
+        unset($data['id']);
+        
+		$data['status'] = $_POST['status'];
+		$data['classname'] = $_POST['classname'];
+		$data['classtype'] = $_POST['classtype'];
+		$data['object'] = $_POST['object'];
+		$data['content'] = $_POST['content'];
+		$data['listtime'] = $_POST['listtime'];
+		$data['entertime'] = $_POST['entertime'];
+		
+		if ($this->db->update('class_resource', $data, $con)) {
+		    $this->course($act = 'list');
+		} else {
+		    echo 'error';
+		}
+		/*
+        * 这段可以分离到model文件中
+        */ 
+		
+		
+        break;  
+        
       case 'info':
         $user = $this->usermodel->get("`id` = '$val'");
         if(isset($user[0])) {
