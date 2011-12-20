@@ -179,6 +179,41 @@ class Manage extends CI_Controller {
 		
 		$result = $this -> class_course_model -> add($data);
 		break;
+      case 'edit':
+        if($this->input->is_post()) { //post
+          
+        } else {
+          $this->load->view('manage/course/edit.html');
+          $this->load->view('manage/footer.html');
+        }
+        break;
+      case 'edit_save':
+       /*
+        * 这段可以分离到model文件中
+        */ 
+        $data['id'] = $_POST['id'];
+        $con = "id = " . $data['id']; 
+        unset($data['id']);
+        
+		$data['status'] = $_POST['status'];
+		$data['classname'] = $_POST['classname'];
+		$data['classtype'] = $_POST['classtype'];
+		$data['object'] = $_POST['object'];
+		$data['content'] = $_POST['content'];
+		$data['listtime'] = $_POST['listtime'];
+		$data['entertime'] = $_POST['entertime'];
+
+		if ($this->db->update('class_resource', $data, $con)) {
+		    $this->course($act = 'list');
+		} else {
+		    echo 'error';
+		}
+		/*
+        * 这段可以分离到model文件中
+        */ 
+
+
+        break;  
 	  case 'del':
 		$result = $this -> class_course_model -> del($id);
 		break;
