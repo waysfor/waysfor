@@ -145,11 +145,11 @@ class Manage extends CI_Controller {
   
   //后台课程管理
   function course($act = '', $val = 0) { 
-    $this->load->model('coursemodel');
+    $this->load->model('class_course_model');
     switch($act) {
       case 'list':
         $out = array();
-		$classlist = $this->coursemodel->get();
+		$classlist = $this->class_course_model->get();
         $courseout = array();
         $statusarray = $this->config->item('status');
         foreach($classlist as $class_course) {
@@ -177,10 +177,10 @@ class Manage extends CI_Controller {
 		$data['listtime'] = date("Y-m-d h:i:s");
 		$data['entertime'] = date("Y-m-d h:i:s");
 		
-		$result = $this -> coursemodel -> add($data);
+		$result = $this -> class_course_model -> add($data);
 		break;
 	  case 'del':
-		$result = $this -> coursemodel -> del($id);
+		$result = $this -> class_course_model -> del($id);
 		break;
       case 'edit':
         if($this->input->is_post()) { //post
@@ -216,24 +216,6 @@ class Manage extends CI_Controller {
         */ 
 		
 		
-        break;  
-        
-      case 'info':
-        $user = $this->usermodel->get("`id` = '$val'");
-        if(isset($user[0])) {
-          $user = $user[0];
-          $rolearray = $this->config->item('role');
-          $user['rolename'] = $rolearray[$user['role']];
-          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
-          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
-          $user['lastip'] = long2ip($user['lastip']);
-          $out = array();
-          $out['user'] = $user;
-          $this->load->view('manage/course/info.html', $out);
-          $this->load->view('manage/footer.html');
-        } else {
-          show_404();
-        }
         break;
       default:
         show_404();
@@ -243,11 +225,11 @@ class Manage extends CI_Controller {
   
   //后台讲师管理
   function trainer($act = '', $val = 0) { 
-    $this->load->model('trainermodel');
+    $this->load->model('trainer_course_model');
     switch($act) {
       case 'list':
         $out = array();
-		$trainerlist = $this->trainermodel->get();
+		$trainerlist = $this->trainer_course_model->get();
         $trainerout = array();
         $genderarray = $this->config->item('gender');
         foreach($trainerlist as $trainer_course) {
@@ -262,33 +244,34 @@ class Manage extends CI_Controller {
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/course/add.html');
+          $this->load->view('manage/trainer/add.html');
           $this->load->view('manage/footer.html');
         }
         break;
+	  case 'add_save':
+		//$data['fname'] = substr($_POST['trainername'],1);
+		$data['name'] = $_POST['trainername'];
+		$data['gender'] = $_POST['gender'];
+		$data['age'] = $_POST['age'];
+		$data['exp'] = $_POST['exp'];
+		$data['city'] = $_POST['city'];
+		$data['tel'] = $_POST['tel'];
+		$data['trainertype'] = $_POST['trainertype'];
+		$data['object'] = $_POST['object'];
+		$data['content'] = $_POST['content'];
+		$data['price'] = $_POST['price'];
+		$data['back'] = $_POST['back'];
+		$data['listtime'] = date("Y-m-d h:i:s");
+		$data['entertime'] = date("Y-m-d h:i:s");
+		
+		$result = $this -> trainer_course_model -> add($data);
+		break;
       case 'edit':
         if($this->input->is_post()) { //post
           
         } else {
           $this->load->view('manage/course/edit.html');
           $this->load->view('manage/footer.html');
-        }
-        break;
-      case 'info':
-        $user = $this->usermodel->get("`id` = '$val'");
-        if(isset($user[0])) {
-          $user = $user[0];
-          $rolearray = $this->config->item('role');
-          $user['rolename'] = $rolearray[$user['role']];
-          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
-          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
-          $user['lastip'] = long2ip($user['lastip']);
-          $out = array();
-          $out['user'] = $user;
-          $this->load->view('manage/course/info.html', $out);
-          $this->load->view('manage/footer.html');
-        } else {
-          show_404();
         }
         break;
       default:
@@ -299,11 +282,11 @@ class Manage extends CI_Controller {
   
   //后台客户管理
   function client($act = '', $val = 0) { 
-    $this->load->model('trainermodel');
+    $this->load->model('client_course_model');
     switch($act) {
       case 'list':
         $out = array();
-		$trainerlist = $this->trainermodel->get();
+		$trainerlist = $this->client_course_model->get();
         $trainerout = array();
         $genderarray = $this->config->item('gender');
         foreach($trainerlist as $trainer_course) {
@@ -311,40 +294,39 @@ class Manage extends CI_Controller {
           $trainerout[] = $trainer_course;
         }
         $out['trainer_course'] = $trainerout;
-        $this->load->view('manage/trainer/list.html', $out);
+        $this->load->view('manage/client/list.html', $out);
         $this->load->view('manage/footer.html');
         break;
       case 'add':
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/course/add.html');
+          $this->load->view('manage/client/add.html');
           $this->load->view('manage/footer.html');
         }
         break;
+	  case 'add_save':
+		$data['clientname'] = $_POST['clientname'];
+		$data['province'] = $_POST['province'];
+		$data['linkname'] = $_POST['linkname'];
+		$data['gender'] = $_POST['gender'];
+		$data['title'] = $_POST['title'];
+		$data['tel'] = $_POST['tel'];
+		$data['email'] = $_POST['email'];
+		$data['relationship'] = $_POST['relationship'];
+		$data['demand'] = $_POST['demand'];
+		$data['back'] = $_POST['back'];
+		$data['listtime'] = date("Y-m-d h:i:s");
+		$data['entertime'] = date("Y-m-d h:i:s");
+		
+		$result = $this -> client_course_model -> add($data);
+		break;
       case 'edit':
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/course/edit.html');
+          $this->load->view('manage/client/edit.html');
           $this->load->view('manage/footer.html');
-        }
-        break;
-      case 'info':
-        $user = $this->usermodel->get("`id` = '$val'");
-        if(isset($user[0])) {
-          $user = $user[0];
-          $rolearray = $this->config->item('role');
-          $user['rolename'] = $rolearray[$user['role']];
-          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
-          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
-          $user['lastip'] = long2ip($user['lastip']);
-          $out = array();
-          $out['user'] = $user;
-          $this->load->view('manage/course/info.html', $out);
-          $this->load->view('manage/footer.html');
-        } else {
-          show_404();
         }
         break;
       default:
