@@ -33,7 +33,7 @@
 									<th class="table-header-repeat line-left minwidth-1" style="min-width:80px"><a href="">讲师名</a></th>
 									<th class="table-header-repeat line-left minwidth-1" style="min-width:480px"><a href="">主讲课程</a></th>
 									<th class="table-header-repeat line-left" style="min-width:52px"><a href="">性别</a></th>
-									<th class="table-header-repeat line-left" style="min-width:52px"><a href="">年龄</a></th>
+									<th class="table-header-repeat line-left" style="min-width:82px"><a href="">讲师分类</a></th>
 									<th class="table-header-repeat line-left" style="min-width:82px"><a href="">常驻地址</a></th>
 									<th class="table-header-repeat line-left" style="min-width:72px"><a href="">编辑者</a></th>
 									<th class="table-header-options line-left" style="min-width:120px"><a href="">操作</a></th>
@@ -44,12 +44,28 @@
 									<td><?=$t['name']?></td>
 									<td><?=$t['exp']?></td>
 									<td><?=$t['gender']?></td>
-									<td><?=$t['age']?></td>
+									<td>
+										<?php if($t['trainertype']=='1'){?>
+											人力资源
+                                        <?php }elseif($t['trainertype']=='2'){?>
+											综合管理
+                                        <?php }elseif($t['trainertype']=='3'){?>
+											生产管理
+                                        <?php }elseif($t['trainertype']=='4'){?>
+											营销管理
+                                        <?php }elseif($t['trainertype']=='5'){?>
+											财务管理
+                                        <?php }elseif($t['trainertype']=='6'){?>
+											物流采购
+                                        <?php }else{ ?>
+											暂未分类
+                                        <?php }?>
+									</td>
 									<td><?=$t['city']?></td>
 									<td><?=$t['id']?></td>
 									<td class="options-width">
-										<a href="/manage/user/edit/<?=$t['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
-										<a href="javascript:del('user', <?=$t['id']?>);" title="删除" class="icon-2 info-tooltip"></a>
+										<a href="/manage/trainer/edit/<?=$t['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
+										<a href="javascript:if(confirm('确实要删除吗?'))location='/manage/trainer/del/<?=$t['id']?>';" title="删除" class="icon-2 info-tooltip"></a>
 										<a href="/manage/user/info/<?=$t['id']?>" title="查看" class="icon-5 info-tooltip"></a>
 									</td>
 								</tr>

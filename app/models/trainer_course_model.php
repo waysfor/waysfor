@@ -28,7 +28,7 @@ class Trainer_course_model extends CI_Model{
 		}
 	}
 	function del($id){
-	    $con = 'id = ' . $val;
+	    $con = 'id = ' . $id;
 	    $sql = "DELETE FROM " .$this->table_name. " WHERE " . $con;
         if ($this->db->query($sql)) {
         	header("Location: /manage/trainer/list");
@@ -36,7 +36,17 @@ class Trainer_course_model extends CI_Model{
 		    echo 'error';//temp
 		}
 	}
-	function change(){
-		
+	function edit($id){
+	    $con = 'id = ' . $id;
+	    $sql = "SELECT * FROM " . $this->table_name. " WHERE ".$con;
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	function edit_save($data,$con){
+		if ($this->db->update($this->table_name, $data, $con)) {
+        	header("Location: /manage/trainer/list");
+		} else {
+		    echo 'error';
+		}
 	}
 }

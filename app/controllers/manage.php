@@ -179,78 +179,34 @@ class Manage extends CI_Controller {
 		
 		$result = $this -> class_course_model -> add($data);
 		break;
-      case 'edit':
-        if($this->input->is_post()) { //post
-          
-        } else {
-          $this->load->view('manage/course/edit.html');
-          $this->load->view('manage/footer.html');
-        }
-        break;
-      case 'edit_save':
-       /*
-        * 这段可以分离到model文件中
-        */ 
-        $data['id'] = $_POST['id'];
-        $con = "id = " . $data['id']; 
-        unset($data['id']);
-        
-		$data['status'] = $_POST['status'];
-		$data['classname'] = $_POST['classname'];
-		$data['classtype'] = $_POST['classtype'];
-		$data['object'] = $_POST['object'];
-		$data['content'] = $_POST['content'];
-		$data['listtime'] = $_POST['listtime'];
-		$data['entertime'] = $_POST['entertime'];
-
-		if ($this->db->update('class_resource', $data, $con)) {
-		    $this->course($act = 'list');
-		} else {
-		    echo 'error';
-		}
-		/*
-        * 这段可以分离到model文件中
-        */ 
-
-
-        break;  
 	  case 'del':
+	    $id = $val;
 		$result = $this -> class_course_model -> del($id);
 		break;
       case 'edit':
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/course/edit.html');
+		  $id = $val;
+		  $result = $this -> class_course_model -> edit($id);
+          $statusarray = $this->config->item('status');
+		  $out['class_course'] = $result;
+          $this->load->view('manage/course/edit.html', $out);
           $this->load->view('manage/footer.html');
         }
         break;
       case 'edit_save':
-       /*
-        * 这段可以分离到model文件中
-        */ 
         $data['id'] = $_POST['id'];
-        $con = "id = " . $data['id']; 
-        unset($data['id']);
-        
 		$data['status'] = $_POST['status'];
-		$data['classname'] = $_POST['classname'];
+		$data['classname'] = $_POST['name'];
 		$data['classtype'] = $_POST['classtype'];
 		$data['object'] = $_POST['object'];
 		$data['content'] = $_POST['content'];
-		$data['listtime'] = $_POST['listtime'];
-		$data['entertime'] = $_POST['entertime'];
+		$data['listtime'] = date("Y-m-d h:i:s");
 		
-		if ($this->db->update('class_resource', $data, $con)) {
-		    $this->course($act = 'list');
-		} else {
-		    echo 'error';
-		}
-		/*
-        * 这段可以分离到model文件中
-        */ 
-		
-		
+        $con = "id = " . $data['id']; 
+        unset($data['id']);
+		$result = $this -> class_course_model -> edit_save($data,$con);
         break;
       default:
         show_404();
@@ -301,13 +257,40 @@ class Manage extends CI_Controller {
 		
 		$result = $this -> trainer_course_model -> add($data);
 		break;
+	  case 'del':
+	    $id = $val;
+		$result = $this -> trainer_course_model -> del($id);
+		break;
       case 'edit':
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/course/edit.html');
+		  $id = $val;
+		  $result = $this -> trainer_course_model -> edit($id);
+          $statusarray = $this->config->item('status');
+		  $out['trainer_course'] = $result;
+          $this->load->view('manage/trainer/edit.html', $out);
           $this->load->view('manage/footer.html');
         }
+        break;
+      case 'edit_save':
+        $data['id'] = $_POST['id'];
+		$data['name'] = $_POST['trainername'];
+		$data['gender'] = $_POST['gender'];
+		$data['age'] = $_POST['age'];
+		$data['exp'] = $_POST['exp'];
+		$data['city'] = $_POST['city'];
+		$data['tel'] = $_POST['tel'];
+		$data['trainertype'] = $_POST['trainertype'];
+		$data['object'] = $_POST['object'];
+		$data['content'] = $_POST['content'];
+		$data['price'] = $_POST['price'];
+		$data['back'] = $_POST['back'];
+		$data['listtime'] = date("Y-m-d h:i:s");
+		
+        $con = "id = " . $data['id']; 
+        unset($data['id']);
+		$result = $this -> trainer_course_model -> edit_save($data,$con);
         break;
       default:
         show_404();
@@ -356,13 +339,39 @@ class Manage extends CI_Controller {
 		
 		$result = $this -> client_course_model -> add($data);
 		break;
+	  case 'del':
+	    $id = $val;
+		$result = $this -> client_course_model -> del($id);
+		break;
       case 'edit':
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/client/edit.html');
+		  $id = $val;
+		  $result = $this -> client_course_model -> edit($id);
+          $statusarray = $this->config->item('status');
+		  $out['client_course'] = $result;
+          $this->load->view('manage/client/edit.html', $out);
           $this->load->view('manage/footer.html');
         }
+        break;
+      case 'edit_save':
+        $data['id'] = $_POST['id'];
+		$data['clientname'] = $_POST['clientname'];
+		$data['province'] = $_POST['province'];
+		$data['linkname'] = $_POST['linkname'];
+		$data['gender'] = $_POST['gender'];
+		$data['title'] = $_POST['title'];
+		$data['tel'] = $_POST['tel'];
+		$data['email'] = $_POST['email'];
+		$data['relationship'] = $_POST['relationship'];
+		$data['demand'] = $_POST['demand'];
+		$data['back'] = $_POST['back'];
+		$data['listtime'] = date("Y-m-d h:i:s");
+		
+        $con = "id = " . $data['id']; 
+        unset($data['id']);
+		$result = $this -> client_course_model -> edit_save($data,$con);
         break;
       default:
         show_404();
