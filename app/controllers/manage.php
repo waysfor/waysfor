@@ -9,6 +9,7 @@ class Manage extends CI_Controller {
 
   function __construct() {
     parent::__construct();
+	$this->load->library('pagination');
     $user = $this->session->userdata('user');
     $this->userid = isset($user['id']) ? $user['id'] : 0;
     $this->username = isset($user['name']) ? $user['name'] : 0;
@@ -148,8 +149,17 @@ class Manage extends CI_Controller {
     $this->load->model('class_course_model');
     switch($act) {
       case 'list':
+		$this -> load -> helper('url');
+		$offset = $this -> uri -> segment(4,0);
+		$this -> load -> library('pagination');
+		$config['base_url'] = base_url().'manage/course/list';
+		$limit = $config['per_page'] = '20';
+		$config['total_rows'] = $this -> class_course_model -> getAllrows();
+		$this -> pagination -> initialize($config);
+		var_dump($this);
+		exit;
         $out = array();
-		$classlist = $this->class_course_model->get();
+		$classlist = $this->class_course_model->get('','',$offset,$limit = $config['per_page']);
         $courseout = array();
         $statusarray = $this->config->item('status');
         foreach($classlist as $class_course) {
