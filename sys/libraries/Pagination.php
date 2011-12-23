@@ -30,14 +30,14 @@ class CI_Pagination {
 	var $prefix				= ''; // A custom prefix added to the path.
 	var $suffix				= ''; // A custom suffix added to the path.
 
-	var $total_rows			=  0; // Total number of items (database results)
+	var $total_rows			= ''; // Total number of items (database results)
 	var $per_page			= 10; // Max number of items you want shown per page
-	var $num_links			=  3; // Number of "digit" links to show before/after the currently viewed page
+	var $num_links			=  2; // Number of "digit" links to show before/after the currently viewed page
 	var $cur_page			=  0; // The current page being viewed
-	var $first_link			= '&lsaquo; First';
-	var $next_link			= '&gt;';
-	var $prev_link			= '&lt;';
-	var $last_link			= 'Last &rsaquo;';
+	var $first_link			= '首页';
+	var $next_link			= '下一页';
+	var $prev_link			= '上一页';
+	var $last_link			= '尾页';
 	var $uri_segment		= 3;
 	var $full_tag_open		= '';
 	var $full_tag_close		= '';
@@ -191,14 +191,25 @@ class CI_Pagination {
 		}
 
 		// And here we go...
-		$output = '';
+		$output = '<div class="pages">';
 
 		// Render the "First" link
+		/* 原先first备份
 		if  ($this->first_link !== FALSE AND $this->cur_page > ($this->num_links + 1))
 		{
 			$first_url = ($this->first_url == '') ? $this->base_url : $this->first_url;
 			$output .= $this->first_tag_open.'<a '.$this->anchor_class.'href="'.$first_url.'">'.$this->first_link.'</a>'.$this->first_tag_close;
 		}
+		*/
+		if  ($this->cur_page > 1)   
+		{   
+			$output .= $this->first_tag_open.'<a href="'.$this->base_url.'">'.$this->first_link.'</a>'.$this->first_tag_close;   
+		}   
+		// Render the "First" link 如果是首页，同样显示，但是没有超链接功能   
+		if  ($this->cur_page == 1)   
+		{   
+			$output .= $this->first_tag_open.$this->first_link.$this->first_tag_close;   
+		}  
 
 		// Render the "previous" link
 		if  ($this->prev_link !== FALSE AND $this->cur_page != 1)
@@ -216,6 +227,13 @@ class CI_Pagination {
 			}
 
 		}
+		//新增if
+		if  ($this->cur_page == 1)   
+		{   
+			$i = $uri_page_number - $this->per_page;   
+			if ($i == 0) $i = '';   
+			$output .= $this->prev_tag_open.$this->prev_link.$this->prev_tag_close;   
+		}   
 
 		// Render the pages
 		if ($this->display_pages !== FALSE)
@@ -256,19 +274,38 @@ class CI_Pagination {
 			$output .= $this->next_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$this->prefix.($this->cur_page * $this->per_page).$this->suffix.'">'.$this->next_link.'</a>'.$this->next_tag_close;
 		}
 
+		// 新增Render the "next" link 注意：这里是新增不是替换原来的啊。如果是最后一页，同样显示，只是没有超链接   
+		if ($this->cur_page == $num_pages)   
+		{   
+			$output .= $this->next_tag_open.$this->next_link.$this->next_tag_close;   
+		}   
+
 		// Render the "Last" link
+		/*原先last备份
 		if ($this->last_link !== FALSE AND ($this->cur_page + $this->num_links) < $num_pages)
 		{
 			$i = (($num_pages * $this->per_page) - $this->per_page);
 			$output .= $this->last_tag_open.'<a '.$this->anchor_class.'href="'.$this->base_url.$this->prefix.$i.$this->suffix.'">'.$this->last_link.'</a>'.$this->last_tag_close;
 		}
+		*/
+		if ($this->cur_page < $num_pages)   
+		{   
+			$i = (($num_pages * $this->per_page) - $this->per_page);   
+			$output .= $this->last_tag_open.'<a href="'.$this->base_url.$i.'">'.$this->last_link.'</a>'.$this->last_tag_close;   
+		}   
+		// Render the "Last" link 如果是最后一页，同样显示，但是没有超链接   
+		if ($this->cur_page == $num_pages)   
+		{   
+			$i = (($num_pages * $this->per_page) - $this->per_page);   
+			$output .= $this->last_tag_open.$this->last_link.$this->last_tag_close;   
+		}  
 
 		// Kill double slashes.  Note: Sometimes we can end up with a double slash
 		// in the penultimate link so we'll kill all double slashes.
 		$output = preg_replace("#([^:])//+#", "\\1/", $output);
 
 		// Add the wrapper HTML if exists
-		$output = $this->full_tag_open.$output.$this->full_tag_close;
+		$output = $this->full_tag_open.$output.$this->full_tag_close.'</div>';
 
 		return $output;
 	}
