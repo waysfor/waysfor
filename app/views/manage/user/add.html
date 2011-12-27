@@ -1,0 +1,139 @@
+<script charset="utf-8" src="/www/editor/kindeditor.js"></script>
+<script charset="utf-8" src="/www/editor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#editor_id');
+        });
+</script>
+
+<!-- start content-outer -->
+<div id="content-outer">
+<!-- start content -->
+    <div id="content">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+            <tr>
+                <th rowspan="3" class="sized"><img src="/www/admin/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                <th class="topleft"></th>
+                <td id="tbl-border-top">&nbsp;</td>
+                <th class="topright"></th>
+                <th rowspan="3" class="sized"><img src="/www/admin/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+            </tr>
+            <tr>
+                <td id="tbl-border-left"></td>
+                <td>
+                    <!--  start content-table-inner -->
+                    <div id="content-table-inner">
+                        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                            <tr valign="top">
+                                <td>
+                                <!--  start step-holder -->
+                                    <div id="step-holder">
+                                        <div class="step-no">1</div>
+                                        <div class="step-dark-left"><a href="">添加管理用户</a></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                <!--  end step-holder -->
+                                <!-- start id-form -->
+                                    <form id="chooseDateForm" action="add_save" method="post">
+                                    <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
+                                        <tr>
+                                            <th valign="top">账户名：</th>
+                                            <td><input type="text" class="inp-form" name="username" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">账户密码：</th>
+                                            <td><input type="text" class="inp-form" name="password" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">真实姓名：</th>
+                                            <td><input type="text" class="inp-form" name="realname" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">电子邮箱：</th>
+                                            <td><input type="text" class="inp-form" name="email" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">手机号码：</th>
+                                            <td><input type="text" class="inp-form" name="mobile" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">座机号码：</th>
+                                            <td><input type="text" class="inp-form" name="tel" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">常驻地址：</th>
+                                            <td><input type="text" class="inp-form" name="address" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">家乡地址：</th>
+                                            <td><input type="text" class="inp-form" name="homeaddress" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">家庭联系电话：</th>
+                                            <td><input type="text" class="inp-form" name="hometel" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">联系人：</th>
+                                            <td><input type="text" class="inp-form" name="linkman" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">联系人联系方式：</th>
+                                            <td><input type="text" class="inp-form" name="linkinfo" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">权限角色：</th>
+                                            <td>
+                                                <select name="role" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                    <option value="">权限角色设置</option>
+                                                    <option value="0">普通用户</option>
+                                                    <option value="1">初级管理用户</option>
+                                                    <option value="2">高级管理用户</option>
+                                                    <option value="3">超级管理用户</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <td valign="top">
+                                                <input type="submit" value="" class="form-submit" />
+                                                <input type="reset" value="" class="form-reset"  />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                    </form>
+                                <!-- end id-form  -->
+                                </td>
+                            </tr>
+                        </table>
+                    	<div class="clear"></div>
+                    </div>
+                    <!--  end content-table-inner  -->
+                </td>
+                <td id="tbl-border-right"></td>
+            </tr>
+            <tr>
+                <th class="sized bottomleft"></th>
+                <td id="tbl-border-bottom">&nbsp;</td>
+                <th class="sized bottomright"></th>
+            </tr>
+        </table>
+        <div class="clear">&nbsp;</div>
+    </div>
+    <!--  end content -->
+    <div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer -->

@@ -388,11 +388,11 @@ class Manage extends CI_Controller {
   }
 
   function user($act = '', $val = 0) { //后台用户管理
-    $this->load->model('usermodel');
+    $this->load->model('user_course_model');
     switch($act) {
       case 'list':
         $out = array();
-        $userlist = $this->usermodel->get();
+        $userlist = $this->user_course_model->get();
         $userout = array();
         $rolearray = $this->config->item('role');
         foreach($userlist as $user) {
@@ -413,6 +413,25 @@ class Manage extends CI_Controller {
           $this->load->view('manage/footer.html');
         }
         break;
+	  case 'add_save':
+		$data['username'] = $_POST['username'];
+		$data['password'] = md5($_POST['password']);
+		$data['realname'] = $_POST['realname'];
+		$data['email'] = $_POST['email'];
+		$data['mobile'] = $_POST['mobile'];
+		$data['tel'] = $_POST['tel'];
+		$data['address'] = $_POST['address'];
+		$data['homeaddress'] = $_POST['homeaddress'];
+		$data['hometel'] = $_POST['hometel'];
+		$data['linkman'] = $_POST['linkman'];
+		$data['linkinfo'] = $_POST['linkinfo'];
+		$data['role'] = $_POST['role'];
+		$data['addtm'] = date("Y-m-d h:i:s");
+		$data['lasttm'] = date("Y-m-d h:i:s");
+		$data['lastip'] = ip2long($_SERVER["REMOTE_ADDR"]);
+		
+		$result = $this -> user_course_model -> add($data);
+		break;
       case 'edit':
         if($this->input->is_post()) { //post
           
