@@ -441,7 +441,7 @@ class Manage extends CI_Controller {
         }
         break;
       case 'info':
-        $user = $this->usermodel->get("`id` = '$val'");
+        $user = $this->user_course_model->get("`id` = '$val'");
         if(isset($user[0])) {
           $user = $user[0];
           $rolearray = $this->config->item('role');

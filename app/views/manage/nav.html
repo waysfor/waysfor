@@ -4,7 +4,7 @@
         <?php foreach($nav as $navper): ?>
         <ul <?php if ($navper['item'] == $item): ?>class="current"<?php else: ?>class="select"<?php endif; ?>>
           <li>
-            <a href="javascript:void(0);"><b><?php echo $navper['name'];?></b>
+            <a href="/manage/<?php echo $navper['item'];?>/list"><b><?php echo $navper['name'];?></b>
             <!--[if IE 7]><!--></a><!--<![endif]-->
             <!--[if lte IE 6]><table><tr><td><![endif]-->
             <div class="select_sub<?php if ($navper['item'] == $item): ?> show<?php endif; ?>">
