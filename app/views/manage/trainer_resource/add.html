@@ -1,0 +1,152 @@
+<script charset="utf-8" src="/www/editor/kindeditor.js"></script>
+<script charset="utf-8" src="/www/editor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#editor_id');
+        });
+</script>
+
+<!-- start content-outer -->
+<div id="content-outer">
+<!-- start content -->
+    <div id="content">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+            <tr>
+                <th rowspan="3" class="sized"><img src="/www/admin/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+                <th class="topleft"></th>
+                <td id="tbl-border-top">&nbsp;</td>
+                <th class="topright"></th>
+                <th rowspan="3" class="sized"><img src="/www/admin/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+            </tr>
+            <tr>
+                <td id="tbl-border-left"></td>
+                <td>
+                    <!--  start content-table-inner -->
+                    <div id="content-table-inner">
+                        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                            <tr valign="top">
+                                <td>
+                                <!--  start step-holder -->
+                                    <div id="step-holder">
+                                        <div class="step-no">1</div>
+                                        <div class="step-dark-left"><a href="">添加讲师信息</a></div>
+                                        <div class="clear"></div>
+                                    </div>
+                                <!--  end step-holder -->
+                                
+                                <!-- start id-form -->
+                                    <form id="chooseDateForm" action="add_save" method="post">
+                                    <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
+                                        <tr>
+                                            <th valign="top">讲师名称：</th>
+                                            <td><input type="text" class="inp-form" name="trainername" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">性别：</th>
+                                            <td>
+                                                <select name="gender" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                    <option value="">请选择性别</option>
+                                                    <option value="0">女</option>
+                                                    <option value="1">男</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">年龄段：</th>
+                                            <td>
+                                                <select name="age" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                    <option value="">请选择年龄段</option>
+                                                    <option value="20以下">20以下</option>
+                                                    <option value="21-30">21-30</option>
+                                                    <option value="31-40">31-40</option>
+                                                    <option value="41-50">41-50</option>
+                                                    <option value="50以上">50以上</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">主讲课程:</th>
+                                            <td><textarea name="exp" class="form-textarea"></textarea></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">常住地址：</th>
+                                            <td><input type="text" class="inp-form" name="city" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">手机号码：</th>
+                                            <td><input type="text" class="inp-form" name="tel" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">讲师分类:</th>
+                                            <td>	
+                                                <select name="trainertype" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                    <option value="">未分类</option>
+                                                    <option value="1">人力资源</option>
+                                                    <option value="2">综合管理</option>
+                                                    <option value="3">生产管理</option>
+                                                    <option value="4">营销管理</option>
+                                                    <option value="5">财务管理</option>
+                                                    <option value="6">物流采购</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">擅长授课对象:</th>
+                                            <td><textarea class="form-textarea" name="object"></textarea>(*基层/中层/高层)</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">讲师介绍:</th>
+                                            <td><textarea id="editor_id" name="content" class="form-textarea"></textarea></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">讲师价格：</th>
+                                            <td><input type="text" class="inp-form" name="price" /></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th valign="top">备注:</th>
+                                            <td><textarea class="form-textarea" name="back"></textarea>(*备注信息，换行无效)</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <td valign="top">
+                                                <input type="submit" value="" class="form-submit" />
+                                                <input type="reset" value="" class="form-reset"  />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                    </form>
+                                <!-- end id-form  -->
+                                </td>
+                            </tr>
+                        </table>
+                    	<div class="clear"></div>
+                    </div>
+                    <!--  end content-table-inner  -->
+                </td>
+                <td id="tbl-border-right"></td>
+            </tr>
+            <tr>
+                <th class="sized bottomleft"></th>
+                <td id="tbl-border-bottom">&nbsp;</td>
+                <th class="sized bottomright"></th>
+            </tr>
+        </table>
+        <div class="clear">&nbsp;</div>
+    </div>
+    <!--  end content -->
+    <div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer -->

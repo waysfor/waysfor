@@ -20,7 +20,24 @@ $config['nav'] = array(
   array(
     'name' => '课程管理',
     'seq'  => 1,
-    'item' => 'course',
+    'item' => 'history',
+    'sub'  => array(
+      array(
+        'name' => '查看客户',
+        'seq'  => 1,
+        'act'  => 'list'
+      ),
+      array(
+        'name' => '添加客户',
+        'seq'  => 2,
+        'act'  => 'add'
+      )
+    )
+  ),
+  array(
+    'name' => '课程资源',
+    'seq'  => 2,
+    'item' => 'course_resource',
     'sub'  => array(
       array(
         'name' => '查看课程',
@@ -35,9 +52,9 @@ $config['nav'] = array(
     )
   ),
   array(
-    'name' => '讲师管理',
-    'seq'  => 2,
-    'item' => 'trainer',
+    'name' => '讲师资源',
+    'seq'  => 3,
+    'item' => 'trainer_resource',
     'sub'  => array(
       array(
         'name' => '查看讲师',
@@ -52,9 +69,9 @@ $config['nav'] = array(
     )
   ),
   array(
-    'name' => '客户管理',
-    'seq'  => 3,
-    'item' => 'client',
+    'name' => '客户资源',
+    'seq'  => 4,
+    'item' => 'client_resource',
     'sub'  => array(
       array(
         'name' => '查看客户',
@@ -70,7 +87,7 @@ $config['nav'] = array(
   ),
   array(
     'name' => '用户管理',
-    'seq'  => 4,
+    'seq'  => 5,
     'item' => 'user',
     'sub'  => array(
       array(
