@@ -217,16 +217,13 @@ class Manage extends CI_Controller {
 		$result = $this -> history_model -> edit_save($data,$con);
         break;
       case 'info':
-        $user = $this->history_model->get("`id` = '$val'");
-        if(isset($user[0])) {
-          $user = $user[0];
-          $rolearray = $this->config->item('role');
-          $user['rolename'] = $rolearray[$user['role']];
-          $user['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
-          $user['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
-          $user['lastip'] = long2ip($user['lastip']);
+        $history = $this->history_model->get("`id` = '$val'");
+        if(isset($history[0])) {
+          $history = $history[0];
+          $statusarray = $this->config->item('status');
+          $history['status'] = $statusarray[$history['status']];
           $out = array();
-          $out['user'] = $user;
+          $out['history'] = $history;
           $this->load->view('manage/history/info.html', $out);
           $this->load->view('manage/footer.html');
         } else {

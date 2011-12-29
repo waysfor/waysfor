@@ -4,7 +4,7 @@
   <div id="content">
     <!--  start page-heading -->
     <div id="page-heading">
-      <h1>用户 <?php echo $user['username'];?> 信息</h1>
+      <h1><?=$history['status'];?></h1>
     </div>
     <!-- end page-heading -->
     <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
@@ -22,22 +22,16 @@
           <div id="content-table-inner">
             <!--  start table-content  -->
             <div id="table-content">
-              <h3>用户名：　　　　<span class="spanh3"><?php echo $user['username'];?></span></h3>
-              <h3>真实姓名：　　　<span class="spanh3"><?php echo $user['realname'];?></span></h3>
-              <h3>权限身份：　　　<span class="spanh3"><?php echo $user['rolename'];?></span></h3>
-              <h3>创建时间：　　　<span class="spanh3"><?php echo $user['addtm'];?></span></h3>
-              <h3>上次登录时间：　<span class="spanh3"><?php echo $user['lasttm'];?></span></h3>
-              <h3>上次登录ＩＰ：　<span class="spanh3"><?php echo $user['lastip'];?></span></h3>
-              <h3>电子邮箱：　　　<span class="spanh3"><?php echo $user['email'];?></span></h3>
-              <h3>手机号码：　　　<span class="spanh3"><?php echo $user['mobile'];?></span></h3>
-              <h3>座机号码：　　　<span class="spanh3"><?php echo $user['tel'];?></span></h3>
-              <h3>常住地址：　　　<span class="spanh3"><?php echo $user['address'];?></span></h3>
-              <h3>家乡地址：　　　<span class="spanh3"><?php echo $user['homeaddress'];?></span></h3>
-              <h3>家庭电话：　　　<span class="spanh3"><?php echo $user['hometel'];?></span></h3>
-              <h3>联系人：　　　　<span class="spanh3"><?php echo $user['linkman'];?></span></h3>
-              <h3>联系人联系方式：<span class="spanh3"><?php echo $user['linkinfo'];?></span></h3>
+              <h3>课程名称：　<span class="spanh3"><?=$history['classname'];?></span></h3>
+              <h3>开课时间：　<span class="spanh3"><?=$history['opentime'];?></span></h3>
+              <h3>课程类型：　<span class="spanh3"><?=$history['classtype'];?></span></h3>
+              <h3>授课对象：　<span class="spanh3"><?=$history['object'];?></span></h3>
+              <h3>课程大纲：　<span class="spanh3"><?=$history['classcontent'];?></span></h3>
+              <h3>讲师名称：　<span class="spanh3"><?=$history['trainername'];?></span></h3>
+              <h3>讲师简介：　<span class="spanh3"><?=$history['trainercontent'];?></span></h3>
+              <h3>是否推荐：　<span class="spanh3"><?=$history['recommend'];?></span></h3>
               <span class="spanh3"><a href="javascript:history.go(-1);">返回上一页</a></span> 
-              <span class="spanh3" style="margin-left: 35px;"><a href="">去编辑用户页面</a></span>
+              <span class="spanh3" style="margin-left: 35px;"><a href="/manage/history/edit/<?=$u['id']?>">编辑该页面</a></span>
             </div>
             <!--  end table-content  -->
             <div class="clear"></div>

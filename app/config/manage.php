@@ -5,6 +5,14 @@ $config['role'] = array(
   2 => '高级管理员',
   3 => '超级管理员'
 );
+$config['type'] = array(
+  0 => '人力资源',
+  1 => '综合管理',
+  2 => '生产管理',
+  3 => '营销管理',
+  4 => '财务管理',
+  5 => '物流采购'
+);
 
 $config['status'] = array(
   1 => '公开课',
@@ -23,23 +31,6 @@ $config['nav'] = array(
     'item' => 'history',
     'sub'  => array(
       array(
-        'name' => '查看客户',
-        'seq'  => 1,
-        'act'  => 'list'
-      ),
-      array(
-        'name' => '添加客户',
-        'seq'  => 2,
-        'act'  => 'add'
-      )
-    )
-  ),
-  array(
-    'name' => '课程资源',
-    'seq'  => 2,
-    'item' => 'course_resource',
-    'sub'  => array(
-      array(
         'name' => '查看课程',
         'seq'  => 1,
         'act'  => 'list'
@@ -52,17 +43,34 @@ $config['nav'] = array(
     )
   ),
   array(
+    'name' => '课程资源',
+    'seq'  => 2,
+    'item' => 'course_resource',
+    'sub'  => array(
+      array(
+        'name' => '查看课程资源',
+        'seq'  => 1,
+        'act'  => 'list'
+      ),
+      array(
+        'name' => '添加课程资源',
+        'seq'  => 2,
+        'act'  => 'add'
+      )
+    )
+  ),
+  array(
     'name' => '讲师资源',
     'seq'  => 3,
     'item' => 'trainer_resource',
     'sub'  => array(
       array(
-        'name' => '查看讲师',
+        'name' => '查看讲师资源',
         'seq'  => 1,
         'act'  => 'list'
       ),
       array(
-        'name' => '添加讲师',
+        'name' => '添加讲师资源',
         'seq'  => 2,
         'act'  => 'add'
       )
@@ -74,12 +82,12 @@ $config['nav'] = array(
     'item' => 'client_resource',
     'sub'  => array(
       array(
-        'name' => '查看客户',
+        'name' => '查看客户资源',
         'seq'  => 1,
         'act'  => 'list'
       ),
       array(
-        'name' => '添加客户',
+        'name' => '添加客户资源',
         'seq'  => 2,
         'act'  => 'add'
       )
