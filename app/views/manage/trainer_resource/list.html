@@ -44,23 +44,7 @@
 									<td><?=$t['name']?></td>
 									<td><?=$t['exp']?></td>
 									<td><?=$t['gender']?></td>
-									<td><?=$t['trainertype']?>
-										<?php if($t['trainertype']=='1'){?>
-											人力资源
-                                        <?php }elseif($t['trainertype']=='2'){?>
-											综合管理
-                                        <?php }elseif($t['trainertype']=='3'){?>
-											生产管理
-                                        <?php }elseif($t['trainertype']=='4'){?>
-											营销管理
-                                        <?php }elseif($t['trainertype']=='5'){?>
-											财务管理
-                                        <?php }elseif($t['trainertype']=='6'){?>
-											物流采购
-                                        <?php }else{ ?>
-											暂未分类
-                                        <?php }?>
-									</td>
+									<td><?=$t['type']?></td>
 									<td><?=$t['city']?></td>
 									<td><?=$t['id']?></td>
 									<td class="options-width">

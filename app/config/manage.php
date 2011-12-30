@@ -15,6 +15,11 @@ $config['type'] = array(
   6 => '物流采购'
 );
 
+$config['recommend'] = array(
+  0 => '否',
+  1 => '是'
+);
+
 $config['status'] = array(
   0 => '未分类',
   1 => '公开课',

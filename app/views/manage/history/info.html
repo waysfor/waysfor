@@ -24,14 +24,14 @@
             <div id="table-content">
               <h3>课程名称：　<span class="spanh3"><?=$history['classname'];?></span></h3>
               <h3>开课时间：　<span class="spanh3"><?=$history['opentime'];?></span></h3>
-              <h3>课程类型：　<span class="spanh3"><?=$history['classtype'];?></span></h3>
+              <h3>课程类型：　<span class="spanh3"><?=$history['type'];?></span></h3>
               <h3>授课对象：　<span class="spanh3"><?=$history['object'];?></span></h3>
-              <h3>课程大纲：　<span class="spanh3"><?=$history['classcontent'];?></span></h3>
+              <h3>课程大纲：　<div class="spanh3"><?=$history['classcontent'];?></div></h3>
               <h3>讲师名称：　<span class="spanh3"><?=$history['trainername'];?></span></h3>
               <h3>讲师简介：　<span class="spanh3"><?=$history['trainercontent'];?></span></h3>
               <h3>是否推荐：　<span class="spanh3"><?=$history['recommend'];?></span></h3>
               <span class="spanh3"><a href="javascript:history.go(-1);">返回上一页</a></span> 
-              <span class="spanh3" style="margin-left: 35px;"><a href="/manage/history/edit/<?=$u['id']?>">编辑该页面</a></span>
+              <span class="spanh3" style="margin-left: 35px;"><a href="/manage/history/edit/<?=$history['id']?>">编辑该页面</a></span>
             </div>
             <!--  end table-content  -->
             <div class="clear"></div>

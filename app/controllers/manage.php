@@ -160,8 +160,10 @@ class Manage extends CI_Controller {
 		$classlist = $this->history_model->get('','',$offset,$limit = $config['per_page']);
         $courseout = array();
         $statusarray = $this->config->item('status');
+        $typearray = $this->config->item('type');
         foreach($classlist as $class_course) {
 		  $class_course['status'] = $statusarray[$class_course['status']];
+		  $class_course['type'] = $typearray[$class_course['classtype']];
           $courseout[] = $class_course;
         }
         $out['class_course'] = $courseout;
@@ -221,7 +223,11 @@ class Manage extends CI_Controller {
         if(isset($history[0])) {
           $history = $history[0];
           $statusarray = $this->config->item('status');
+          $typearray = $this->config->item('type');
+          $recommendarray = $this->config->item('recommend');
           $history['status'] = $statusarray[$history['status']];
+          $history['type'] = $typearray[$history['classtype']];
+          $history['recommend'] = $recommendarray[$history['recommend']];
           $out = array();
           $out['history'] = $history;
           $this->load->view('manage/history/info.html', $out);
@@ -252,8 +258,10 @@ class Manage extends CI_Controller {
 		$classlist = $this->class_course_model->get('','',$offset,$limit = $config['per_page']);
         $courseout = array();
         $statusarray = $this->config->item('status');
+        $typearray = $this->config->item('type');
         foreach($classlist as $class_course) {
 		  $class_course['status'] = $statusarray[$class_course['status']];
+		  $class_course['type'] = $typearray[$class_course['classtype']];
           $courseout[] = $class_course;
         }
         $out['class_course'] = $courseout;
@@ -323,8 +331,10 @@ class Manage extends CI_Controller {
 		$trainerlist = $this->trainer_course_model->get();
         $trainerout = array();
         $genderarray = $this->config->item('gender');
+        $typearray = $this->config->item('type');
         foreach($trainerlist as $trainer_course) {
 		  $trainer_course['gender'] = $genderarray[$trainer_course['gender']];
+		  $trainer_course['type'] = $typearray[$trainer_course['trainertype']];
           $trainerout[] = $trainer_course;
         }
         $out['trainer_course'] = $trainerout;
