@@ -30,18 +30,22 @@
 							<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 								<thead>
 									<th class="table-header-check"><a id="toggle-all" ></a></th>
+									<th class="table-header-check">id</th>
 									<th class="table-header-repeat line-left minwidth-1"><a href="">课程名称</a></th>
 									<th class="table-header-repeat line-left minwidth-1"><a href="">课程性质</a></th>
 									<th class="table-header-repeat line-left"><a href="">课程类型</a></th>
+									<th class="table-header-repeat line-left minwidth-1"><a href="">讲师简介</a></th>
 									<th class="table-header-repeat line-left"><a href="">开课时间</a></th>
 									<th class="table-header-options line-left"><a href="">操作</a></th>
 								</thead>
 								<?php foreach($class_course as $u): ?>
 								<tr>
 									<td><input type="checkbox"/></td>
+									<td><?=$u['id']?></td>
 									<td><?=$u['classname']?></td>
 									<td><?=$u['status']?></td>
 									<td><?=$u['type']?></td>
+									<td><?php if (!empty($u['trainercontent'])){echo '有内容';}else{echo '没有内容';}?></td>
 									<td><?=$u['opentime']?></td>
 									<td class="options-width">
 										<a href="/manage/history/edit/<?=$u['id']?>" title="编辑" class="icon-1 info-tooltip"></a>

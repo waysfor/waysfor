@@ -46,9 +46,9 @@
 									<td><?=$u['listtime']?></td>
 									<td><?=$u['id']?></td>
 									<td class="options-width">
-										<a href="/manage/course/edit/<?=$u['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
-										<a href="javascript:if(confirm('确实要删除吗?'))location='/manage/course/del/<?=$u['id']?>';" title="删除" class="icon-2 info-tooltip"></a>
-										<a href="/manage/user/info/<?=$u['id']?>" title="查看" class="icon-5 info-tooltip"></a>
+										<a href="/manage/course_resource/edit/<?=$u['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
+										<a href="javascript:if(confirm('确实要删除吗?'))location='/manage/course_resource/del/<?=$u['id']?>';" title="删除" class="icon-2 info-tooltip"></a>
+										<a href="/manage/course_resource/info/<?=$u['id']?>" title="查看" class="icon-5 info-tooltip"></a>
 									</td>
 								</tr>
 								<?php endforeach; ?>
@@ -73,7 +73,7 @@
 						<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
 							<tr>
 								<td>
-									<a href="" class="page-far-left"></a>
+									<a href="/manage/course_resource/list/0" class="page-far-left"></a>
 									<a href="" class="page-left"></a>
 									<div id="page-info">Page <strong>1</strong> / 15</div>
 									<a href="" class="page-right"></a>

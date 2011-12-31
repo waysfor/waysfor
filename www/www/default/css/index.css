@@ -65,7 +65,7 @@ body{
 	width:964px;
 	padding-left:16px;
 	margin:-4px auto 0;
-	z-index:1;
+	z-index:7;
     background:url(../img/nav_hotkey.png) no-repeat 0 0
 }
 .hotkey div.bg{

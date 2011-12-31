@@ -4,6 +4,10 @@
         var editor;
         KindEditor.ready(function(K) {
                 editor = K.create('#editor_id');
+                editor = K.create('#editor_id_trainer',{
+					width : "99%",
+					height : "300px"
+				});
         });
 </script>
 
@@ -30,70 +34,124 @@
                                 <!--  start step-holder -->
                                     <div id="step-holder">
                                         <div class="step-no">1</div>
-                                        <div class="step-dark-left"><a href="">添加课程信息</a></div>
+                                        <div class="step-dark-left"><a href="javascript:show_step(0)">添加课程信息</a></div>
                                         <div class="step-dark-right">&nbsp;</div>
                                         <div class="step-no-off">2</div>
-                                        <div class="step-light-left">添加讲师信息</div>
+                                        <div class="step-light-left"><a href="javascript:show_step(1)">添加讲师信息</a></div>
                                         <div class="step-light-right">&nbsp;</div>
                                         <div class="step-no-off">3</div>
-                                        <div class="step-light-left">开课信息</div>
-                                        <div class="step-light-round">&nbsp;</div>
+                                        <div class="step-light-left"><a href="javascript:show_step(2)">开课信息</a></div>
                                         <div class="clear"></div>
                                     </div>
                                 <!--  end step-holder -->
                                 <!-- start id-form -->
                                     <form id="chooseDateForm" action="add_save" method="post">
-                                    <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
-                                        <tr>
-                                            <th valign="top">课程名称：</th>
-                                            <td><input type="text" class="inp-form" name="name" /></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th valign="top">课程性质：</th>
-                                            <td>
-                                                <select name="status" onchange="showCustormers(this.value)" class="styledselect_form_1">
-                                                    <option value="">请选择课程性质</option>
-                                                    <option value="1">公开课</option>
-                                                    <option value="2">企业内训</option>
-                                                </select>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th valign="top">课程类型:</th>
-                                            <td>	
-                                                <select name="classtype" onchange="showCustormers(this.value)" class="styledselect_form_1">
-                                                    <option value="">未分类</option>
-                                                    <option value="人力资源">人力资源</option>
-                                                    <option value="综合管理">综合管理</option>
-                                                    <option value="生产管理">生产管理</option>
-                                                    <option value="营销管理">营销管理</option>
-                                                    <option value="财务管理">财务管理</option>
-                                                    <option value="物流采购">物流采购</option>
-                                                </select>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th valign="top">授课对象:</th>
-                                            <td><textarea name="object" class="form-textarea"></textarea></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th valign="top">课程内容:</th>
-                                            <td><textarea id="editor_id" name="content" class="form-textarea"></textarea></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <th>&nbsp;</th>
-                                            <td valign="top">
-                                                <input type="submit" value="" class="form-submit" />
-                                                <input type="reset" value="" class="form-reset"  />
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
+									<div class="step_content" id="step_content_1" style="display:block">
+                                        <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
+                                            <tr>
+                                                <th valign="top">课程名称：</th>
+                                                <td><input type="text" class="inp-form" name="classname" /></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">课程性质：</th>
+                                                <td>
+                                                    <select name="status" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                        <option value="">请选择课程性质</option>
+                                                        <option value="1">公开课</option>
+                                                        <option value="2">企业内训</option>
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">课程类型:</th>
+                                                <td>	
+                                                    <select name="classtype" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                        <option value="0">未分类</option>
+                                                        <option value="1">人力资源</option>
+                                                        <option value="2">综合管理</option>
+                                                        <option value="3">生产管理</option>
+                                                        <option value="4">营销管理</option>
+                                                        <option value="5">财务管理</option>
+                                                        <option value="6">物流采购</option>
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">授课对象:</th>
+                                                <td><textarea name="object" class="form-textarea"></textarea></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">课程内容:</th>
+                                                <td><textarea id="editor_id" name="classcontent" class="form-textarea"></textarea></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <td valign="top">
+                                                    <input type="button" onclick="javascript:show_step(1)" value="下一页" class="next" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+									<div class="step_content" id="step_content_2">
+                                        <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
+                                            <tr>
+                                                <th valign="top">讲师名称：</th>
+                                                <td><input type="text" class="inp-form" name="trainername" /> (直接填写讲师名，如果不知道全名，填写讲师姓氏)</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">讲师介绍:</th>
+                                                <td><textarea id="editor_id_trainer" name="trainercontent" class="form-textarea"></textarea></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <td valign="top">
+                                                    <input type="button" onclick="javascript:show_step(0)" value="上一页" class="previous" />
+                                                    <input type="button" onclick="javascript:show_step(2)" value="下一页" class="next" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+									<div class="step_content" id="step_content_3">
+                                        <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
+                                            <tr>
+                                                <th valign="top">开课时间：</th>
+                                                <td><input type="text" class="inp-form" name="opentime" /> (例如：2012-01-01)</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">课程价格：</th>
+                                                <td><input type="text" class="inp-form" name="price" /></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">是否推荐：</th>
+                                                <td>
+                                                    <select name="recommend" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                        <option value="0">否</option>
+                                                        <option value="1">是</option>
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <td valign="top">
+                                                    <input type="button" onclick="javascript:show_step(1)" value="上一页" class="previous" />
+                                                	<input type="submit" value="" class="form-submit" />
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                     </form>
                                 <!-- end id-form  -->
                                 </td>
@@ -117,3 +175,39 @@
     <div class="clear">&nbsp;</div>
 </div>
 <!--  end content-outer -->
+<script type="text/javascript">
+function show_step(step){
+	$("div.step-no",document.getElementById("step-holder"))
+		.attr("class","step-no-off");
+
+	$("div.step-no-off",document.getElementById("step-holder"))
+		.eq(step)
+		.attr("class","step-no");
+		
+	$("div.step-dark-left",document.getElementById("step-holder"))
+		.attr("class","step-light-left");
+
+	$("div.step-light-left",document.getElementById("step-holder"))
+		.eq(step)
+		.attr("class","step-dark-left");
+		
+	$("div.step-dark-right",document.getElementById("step-holder"))
+		.attr("class","step-light-right");
+
+	$("div.step-light-right",document.getElementById("step-holder"))
+		.eq(step)
+		.attr("class","step-dark-right");
+	
+	$(".step_content",document.getElementById("demo"))
+		.hide()
+		.eq(step)
+		.show();
+}
+
+function submit_form(){
+	var data=$("#demo_form").serialize();
+	$.post("demo_data.php?action=add_class",data,function(d){
+		alert(d)
+	})
+}
+</script>

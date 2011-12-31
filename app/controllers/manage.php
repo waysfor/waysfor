@@ -153,7 +153,7 @@ class Manage extends CI_Controller {
 		$offset = $this -> uri -> segment(4,0);
 		$this -> load -> library('pagination');
 		$config['base_url'] = base_url().'manage/history/list/';
-		$limit = $config['per_page'] = '10';
+		$limit = $config['per_page'] = '300';
 		$config['total_rows'] = $this -> history_model -> getAllrows();;
 		$this -> pagination -> initialize($config);
         $out = array();
@@ -180,12 +180,16 @@ class Manage extends CI_Controller {
         break;
 	  case 'add_save':
 		$data['status'] = $_POST['status'];
-		$data['classname'] = $_POST['name'];
+		$data['classname'] = $_POST['classname'];
+		$data['price'] = $_POST['price'];
+		$data['opentime'] = $_POST['opentime'];
 		$data['classtype'] = $_POST['classtype'];
 		$data['object'] = $_POST['object'];
-		$data['content'] = $_POST['content'];
-		$data['listtime'] = date("Y-m-d h:i:s");
-		$data['entertime'] = date("Y-m-d h:i:s");
+		$data['classcontent'] = $_POST['classcontent'];
+		$data['trainername'] = $_POST['trainername'];
+		$data['trainercontent'] = $_POST['trainercontent'];
+		$data['recommend'] = $_POST['recommend'];
+		$data['posttime'] = date("Y-m-d h:i:s");
 		
 		$result = $this -> history_model -> add($data);
 		break;
@@ -208,11 +212,16 @@ class Manage extends CI_Controller {
       case 'edit_save':
         $data['id'] = $_POST['id'];
 		$data['status'] = $_POST['status'];
-		$data['classname'] = $_POST['name'];
+		$data['classname'] = $_POST['classname'];
+		$data['price'] = $_POST['price'];
+		$data['opentime'] = $_POST['opentime'];
 		$data['classtype'] = $_POST['classtype'];
 		$data['object'] = $_POST['object'];
-		$data['content'] = $_POST['content'];
-		$data['listtime'] = date("Y-m-d h:i:s");
+		$data['classcontent'] = $_POST['classcontent'];
+		$data['trainername'] = $_POST['trainername'];
+		$data['trainercontent'] = $_POST['trainercontent'];
+		$data['recommend'] = $_POST['recommend'];
+		$data['posttime'] = date("Y-m-d h:i:s");
 		
         $con = "id = " . $data['id']; 
         unset($data['id']);
@@ -236,6 +245,9 @@ class Manage extends CI_Controller {
           show_404();
         }
         break;
+	  case 'test':
+	  	$this->load->view('admin/edit.php');
+	    break;
       default:
         show_404();
         break;
@@ -249,7 +261,6 @@ class Manage extends CI_Controller {
       case 'list':
 		$this -> load -> helper('url');
 		$offset = $this -> uri -> segment(4,0);
-		$this -> load -> library('pagination');
 		$config['base_url'] = base_url().'manage/course_resource/list/';
 		$limit = $config['per_page'] = '10';
 		$config['total_rows'] = $this -> class_course_model -> getAllrows();;
@@ -350,7 +361,7 @@ class Manage extends CI_Controller {
         }
         break;
 	  case 'add_save':
-		//$data['fname'] = substr($_POST['trainername'],1);
+		//姓氏处理 $data['fname'] = substr($_POST['trainername'],1);
 		$data['name'] = $_POST['trainername'];
 		$data['gender'] = $_POST['gender'];
 		$data['age'] = $_POST['age'];

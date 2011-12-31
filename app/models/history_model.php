@@ -26,7 +26,7 @@ class History_model extends CI_Model{
 	
 	function add($data){
 		if ($this->db->insert($this->table_name, $data)) {
-        	header("Location: /manage/course/list");
+        	header("Location: /manage/history/list");
 		} else {
 		    echo 'error';//temp
 		}
@@ -35,7 +35,7 @@ class History_model extends CI_Model{
 	    $con = 'id = ' . $id;
 	    $sql = "DELETE FROM " .$this->table_name. " WHERE " . $con;
         if ($this->db->query($sql)) {
-        	header("Location: /manage/course/list");
+        	header("Location: /manage/history/list");
 		} else {
 		    echo 'error';//temp
 		}
@@ -48,7 +48,7 @@ class History_model extends CI_Model{
 	}
 	function edit_save($data,$con){
 		if ($this->db->update($this->table_name, $data, $con)) {
-        	header("Location: /manage/course/list");
+        	header("Location: /manage/history/list");
 		} else {
 		    echo 'error';
 		}
