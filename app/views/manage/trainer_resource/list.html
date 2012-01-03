@@ -85,7 +85,7 @@
 									<a href="<?=$my_page['url'].$my_page['max_pages']?>" class="page-far-right" title="尾页"></a>
 								</td>
 								<td>
-									跳转到 <select id="my_pages" class="" onchange="javascript:window.location.href='<?=$my_page['url']?>'+(document.getElementById('my_pages').value-1)*<?=$my_page['sub_num']?>">
+									跳转到 <select onchange="javascript:window.location.href='<?=$my_page['url']?>'+(document.getElementById('my_pages').value-1)*<?=$my_page['sub_num']?>">
 										<?php
 											for($i = 1; $i <= $my_page['pages']; $i++){
 												if($i == $my_page['current_pages']){
