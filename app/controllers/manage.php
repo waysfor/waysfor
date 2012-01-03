@@ -86,8 +86,8 @@ class Manage extends CI_Controller {
 		if($this->input->is_post()) { //post
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-			$this->load->model('usermodel');
-			$user = $this->usermodel->login($username, $password);
+			$this->load->model('user_course_model');
+			$user = $this->user_course_model->login($username, $password);
 			$role = isset($user['role']) ? $user['role'] : 0;
 			$res = array();
 			$res['stat'] = 0;
@@ -110,6 +110,7 @@ class Manage extends CI_Controller {
 			$usercookie['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
 			$usercookie['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
 			$usercookie['lastip'] = long2ip($user['lastip']);
+			//$result = $this -> user_course_model -> edit_save($data,$con);
 			$usercookie = json_encode($usercookie);
 			$cookie = array(
 				'name'   => 'user',
