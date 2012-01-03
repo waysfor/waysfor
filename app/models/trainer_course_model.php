@@ -19,6 +19,10 @@ class Trainer_course_model extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
+	function getAllrows(){
+		$this -> db ->count_all_results($this->table_name);
+		return $this -> db -> count_all_results($this->table_name);
+	}
 	
 	function add($data){
 		if ($this->db->insert($this->table_name, $data)) {
