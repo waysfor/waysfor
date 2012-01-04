@@ -76,6 +76,12 @@ class Manage extends CI_Controller {
 		$out['user']['name'] = $this->username;
 		$out['user']['real'] = $this->realname;
 		$usercookie  = $this->input->cookie('user');
+		echo '<pre>';
+		
+		
+		
+		
+		var_dump($out['user']['id']);
 		$usercookie  = json_decode($usercookie, true);
 		$out['user'] = array_merge($out['user'], $usercookie);
 		$this->load->view('manage/index.html', $out);
