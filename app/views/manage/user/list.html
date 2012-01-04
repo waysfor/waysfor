@@ -72,18 +72,27 @@
 						<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
 							<tr>
 								<td>
-									<a href="" class="page-far-left"></a>
-									<a href="" class="page-left"></a>
-									<div id="page-info">Page <strong>1</strong> / 15</div>
-									<a href="" class="page-right"></a>
-									<a href="" class="page-far-right"></a>
+									<a href="<?=$my_page['url'].$my_page['min_pages']?>" class="page-far-left" title="第一页"></a>
+									<?php if($my_page['current_pages']>'1'){?>
+									<a href="<?=$my_page['url'].$my_page['previous_pages']?>" class="page-left" title="上一页"></a>
+									<?php }?>
+									<div id="page-info">Page <strong><?=$my_page['current_pages']?></strong> / <?=$my_page['pages']?></div>
+									<?php if($my_page['current_pages']<$my_page['pages']){?>
+									<a href="<?=$my_page['url'].$my_page['next_pages']?>" class="page-right" title="下一页"></a>
+									<?php }?>
+									<a href="<?=$my_page['url'].$my_page['max_pages']?>" class="page-far-right" title="尾页"></a>
 								</td>
 								<td>
-									<select  class="styledselect_pages">
-										<option value="">Number of rows</option>
-										<option value="">1</option>
-										<option value="">2</option>
-										<option value="">3</option>
+									跳转到 <select id="my_pages" class="" onchange="javascript:window.location.href='<?=$my_page['url']?>'+(document.getElementById('my_pages').value-1)*<?=$my_page['sub_num']?>">
+										<?php
+											for($i = 1; $i <= $my_page['pages']; $i++){
+												if($i == $my_page['current_pages']){
+													echo "<option selected>$i</option>";
+												}else{
+													echo "<option>$i</option>";
+												}
+											?>
+										<?php }?>
 									</select>
 								</td>
 							</tr>

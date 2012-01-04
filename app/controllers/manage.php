@@ -86,8 +86,8 @@ class Manage extends CI_Controller {
 		if($this->input->is_post()) { //post
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-			$this->load->model('usermodel');
-			$user = $this->usermodel->login($username, $password);
+			$this->load->model('user_course_model');
+			$user = $this->user_course_model->login($username, $password);
 			$role = isset($user['role']) ? $user['role'] : 0;
 			$res = array();
 			$res['stat'] = 0;
@@ -110,6 +110,7 @@ class Manage extends CI_Controller {
 			$usercookie['addtm'] = date('Y-m-d H:i:s', $user['addtm']);
 			$usercookie['lasttm'] = date('Y-m-d H:i:s', $user['lasttm']);
 			$usercookie['lastip'] = long2ip($user['lastip']);
+			//$result = $this -> user_course_model -> edit_save($data,$con);
 			$usercookie = json_encode($usercookie);
 			$cookie = array(
 				'name'   => 'user',
@@ -151,13 +152,19 @@ class Manage extends CI_Controller {
       case 'list':
 		$this -> load -> helper('url');
 		$offset = $this -> uri -> segment(4,0);
-		$this -> load -> library('pagination');
-		$config['base_url'] = base_url().'manage/history/list/';
-		$limit = $config['per_page'] = '300';
-		$config['total_rows'] = $this -> history_model -> getAllrows();;
-		$this -> pagination -> initialize($config);
+		$my_page= array();
+		$my_page['sub_num'] = '10';
+		$my_page['all_num'] = $this -> history_model -> getAllrows();
+		$my_page['url'] = '/manage/history/list/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+
         $out = array();
-		$classlist = $this->history_model->get('','',$offset,$limit = $config['per_page']);
+		$classlist = $this->history_model->get('','',$offset,$limit = $my_page['sub_num']);
         $courseout = array();
         $statusarray = $this->config->item('status');
         $typearray = $this->config->item('type');
@@ -166,6 +173,7 @@ class Manage extends CI_Controller {
 		  $class_course['type'] = $typearray[$class_course['classtype']];
           $courseout[] = $class_course;
         }
+		$out['my_page'] = $my_page;
         $out['class_course'] = $courseout;
         $this->load->view('manage/history/list.html', $out);
         $this->load->view('manage/footer.html');
@@ -261,12 +269,19 @@ class Manage extends CI_Controller {
       case 'list':
 		$this -> load -> helper('url');
 		$offset = $this -> uri -> segment(4,0);
-		$config['base_url'] = base_url().'manage/course_resource/list/';
-		$limit = $config['per_page'] = '10';
-		$config['total_rows'] = $this -> class_course_model -> getAllrows();;
-		$this -> pagination -> initialize($config);
+		$my_page= array();
+		$my_page['sub_num'] = '10';
+		$my_page['all_num'] = $this -> class_course_model -> getAllrows();
+		$my_page['url'] = '/manage/course_resource/list/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+
         $out = array();
-		$classlist = $this->class_course_model->get('','',$offset,$limit = $config['per_page']);
+		$classlist = $this->class_course_model->get('','',$offset,$limit = $my_page['sub_num']);
         $courseout = array();
         $statusarray = $this->config->item('status');
         $typearray = $this->config->item('type');
@@ -275,6 +290,7 @@ class Manage extends CI_Controller {
 		  $class_course['type'] = $typearray[$class_course['classtype']];
           $courseout[] = $class_course;
         }
+		$out['my_page']=$my_page;
         $out['class_course'] = $courseout;
         $this->load->view('manage/course_resource/list.html', $out);
         $this->load->view('manage/footer.html');
@@ -338,8 +354,21 @@ class Manage extends CI_Controller {
     $this->load->model('trainer_course_model');
     switch($act) {
       case 'list':
+		$this -> load -> helper('url');
+		$offset = $this -> uri -> segment(4,0);
+		$my_page= array();
+		$my_page['sub_num'] = '10';
+		$my_page['all_num'] = $this -> trainer_course_model -> getAllrows();
+		$my_page['url'] = '/manage/trainer_resource/list/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+
         $out = array();
-		$trainerlist = $this->trainer_course_model->get();
+		$trainerlist = $this->trainer_course_model->get('','',$offset,$limit = $my_page['sub_num']);
         $trainerout = array();
         $genderarray = $this->config->item('gender');
         $typearray = $this->config->item('type');
@@ -348,6 +377,8 @@ class Manage extends CI_Controller {
 		  $trainer_course['type'] = $typearray[$trainer_course['trainertype']];
           $trainerout[] = $trainer_course;
         }
+
+		$out['my_page']=$my_page;
         $out['trainer_course'] = $trainerout;
         $this->load->view('manage/trainer_resource/list.html', $out);
         $this->load->view('manage/footer.html');
@@ -424,14 +455,29 @@ class Manage extends CI_Controller {
     $this->load->model('client_course_model');
     switch($act) {
       case 'list':
+		$this -> load -> helper('url');
+		$offset = $this -> uri -> segment(4,0);
+		$my_page= array();
+		$my_page['sub_num'] = '10';
+		$my_page['all_num'] = $this -> client_course_model -> getAllrows();
+		$my_page['url'] = '/manage/client_resource/list/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+
         $out = array();
-		$trainerlist = $this->client_course_model->get();
+		$trainerlist = $this->client_course_model->get('','',$offset,$limit = $my_page['sub_num']);
         $trainerout = array();
         $genderarray = $this->config->item('gender');
         foreach($trainerlist as $trainer_course) {
 		  $trainer_course['gender'] = $genderarray[$trainer_course['gender']];
           $trainerout[] = $trainer_course;
         }
+
+		$out['my_page'] = $my_page;
         $out['trainer_course'] = $trainerout;
         $this->load->view('manage/client_resource/list.html', $out);
         $this->load->view('manage/footer.html');
@@ -505,8 +551,21 @@ class Manage extends CI_Controller {
     $this->load->model('user_course_model');
     switch($act) {
       case 'list':
+		$this -> load -> helper('url');
+		$offset = $this -> uri -> segment(4,0);
+		$my_page= array();
+		$my_page['sub_num'] = '10';
+		$my_page['all_num'] = $this -> user_course_model -> getAllrows();
+		$my_page['url'] = '/manage/user/list/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+
         $out = array();
-        $userlist = $this->user_course_model->get();
+        $userlist = $this->user_course_model->get('','',$offset,$limit = $my_page['sub_num']);
         $userout = array();
         $rolearray = $this->config->item('role');
         foreach($userlist as $user) {
@@ -515,6 +574,8 @@ class Manage extends CI_Controller {
           $user['lastip'] = long2ip($user['lastip']);
           $userout[] = $user;
         }
+
+		$out['my_page'] = $my_page;
         $out['user'] = $userout;
         $this->load->view('manage/user/list.html', $out);
         $this->load->view('manage/footer.html');
