@@ -76,12 +76,6 @@ class Manage extends CI_Controller {
 		$out['user']['name'] = $this->username;
 		$out['user']['real'] = $this->realname;
 		$usercookie  = $this->input->cookie('user');
-		echo '<pre>';
-		
-		
-		
-		
-		var_dump($out['user']['id']);
 		$usercookie  = json_decode($usercookie, true);
 		$out['user'] = array_merge($out['user'], $usercookie);
 		$this->load->view('manage/index.html', $out);
@@ -106,8 +100,7 @@ class Manage extends CI_Controller {
 			$usersess['id'] = $user['id'];
 			$usersess['name'] = $user['username'];
 			$usersess['real'] = $user['realname'];
-			$this->session->set_userdata(array('user' => $usersess));
-			//role addtm lasttm lastip 写入到cookie
+			$this->session->set_userdata(array('user' => $usersess));	//role addtm lasttm lastip 写入到cookie
 			$usercookie = array();
 			$rolearray = $this->config->item('role');
 			$statusarray = $this->config->item('status');
@@ -458,9 +451,14 @@ class Manage extends CI_Controller {
   
   //后台客户资源管理
   function client_resource($act = '', $val = 0) { 
+	$owner = $this->session->userdata['user']['id'];
     $this->load->model('client_course_model');
+    $this->load->model('user_course_model');
     switch($act) {
       case 'list':
+	  	$user = $this->user_course_model->get($where = 'id ='.$owner);
+	  	$uer['role'] = $user[0]['role'];
+		
 		$this -> load -> helper('url');
 		$offset = $this -> uri -> segment(4,0);
 		$my_page= array();
@@ -473,9 +471,12 @@ class Manage extends CI_Controller {
 		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
 		$my_page['min_pages'] = '0';
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
-
         $out = array();
-		$trainerlist = $this->client_course_model->get('','',$offset,$limit = $my_page['sub_num']);
+		if($uer['role'] != '3'){
+			$trainerlist = $this->client_course_model->get($where = 'owner = '.$owner,'',$offset,$limit = $my_page['sub_num']);
+		}else{
+			$trainerlist = $this->client_course_model->get('','',$offset,$limit = $my_page['sub_num']);
+		}
         $trainerout = array();
         $genderarray = $this->config->item('gender');
         foreach($trainerlist as $trainer_course) {
@@ -509,6 +510,7 @@ class Manage extends CI_Controller {
 		$data['back'] = $_POST['back'];
 		$data['listtime'] = date("Y-m-d h:i:s");
 		$data['entertime'] = date("Y-m-d h:i:s");
+		$data['owner'] = $owner;
 		
 		$result = $this -> client_course_model -> add($data);
 		break;
