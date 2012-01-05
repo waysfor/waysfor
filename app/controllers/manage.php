@@ -163,7 +163,7 @@ class Manage extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
 
         $out = array();
-		$classlist = $this->history_model->get('','',$offset,$limit = $my_page['sub_num']);
+		$classlist = $this->history_model->get('','',$offset,$my_page['sub_num']);
         $courseout = array();
         $statusarray = $this->config->item('status');
         $typearray = $this->config->item('type');
@@ -257,11 +257,15 @@ class Manage extends CI_Controller {
 			$data=array();
 			$temp=array();
 			$this->load->model('class_course_model');
-			$data['status']=1; 
 			$data['list']=array();
-			$temp = $this->class_course_model->get($where = "classname like '%".$keyWord."%'");
-			foreach($temp as $val){
-				array_push($data['list'],$val['classname']);
+			$temp = $this->class_course_model->get("classname like '%".$keyWord."%'","","","");
+			if (count($temp) != '0'){
+				$data['status']=1;
+			}else{
+				$data['status']=0;
+			}
+			foreach($temp as $key=>$val){
+				array_push($data['list'],/*$val['id'],*/$val['classname']);
 			}
 			echo json_encode($data);
 			exit;
@@ -291,7 +295,7 @@ class Manage extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
 
         $out = array();
-		$classlist = $this->class_course_model->get('','',$offset,$limit = $my_page['sub_num']);
+		$classlist = $this->class_course_model->get('','',$offset,$my_page['sub_num']);
         $courseout = array();
         $statusarray = $this->config->item('status');
         $typearray = $this->config->item('type');
@@ -378,7 +382,7 @@ class Manage extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
 
         $out = array();
-		$trainerlist = $this->trainer_course_model->get('','',$offset,$limit = $my_page['sub_num']);
+		$trainerlist = $this->trainer_course_model->get('','',$offset,$my_page['sub_num']);
         $trainerout = array();
         $genderarray = $this->config->item('gender');
         $typearray = $this->config->item('type');
@@ -484,9 +488,9 @@ class Manage extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
         $out = array();
 		if($uer['role'] != '3'){
-			$trainerlist = $this->client_course_model->get($where = 'owner = '.$owner,'',$offset,$limit = $my_page['sub_num']);
+			$trainerlist = $this->client_course_model->get('owner = '.$owner,'',$offset,$my_page['sub_num']);
 		}else{
-			$trainerlist = $this->client_course_model->get('','',$offset,$limit = $my_page['sub_num']);
+			$trainerlist = $this->client_course_model->get('','',$offset,$my_page['sub_num']);
 		}
         $trainerout = array();
         $genderarray = $this->config->item('gender');
@@ -584,7 +588,7 @@ class Manage extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
 
         $out = array();
-        $userlist = $this->user_course_model->get('','',$offset,$limit = $my_page['sub_num']);
+        $userlist = $this->user_course_model->get('','',$offset,$my_page['sub_num']);
         $userout = array();
         $rolearray = $this->config->item('role');
         foreach($userlist as $user) {
