@@ -5,7 +5,7 @@
 	$.fn.autoTip=function(opt){
 		var _setting={    //默认的设置
 			url:"http://localhost/myjqPlug/autoTip/autoTip.php",
-			tipWid:300
+			tipWid:186
 		},
 		o=$.extend(_setting,opt);
 		$(this).each(function(){

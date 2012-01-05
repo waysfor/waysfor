@@ -252,9 +252,20 @@ class Manage extends CI_Controller {
           show_404();
         }
         break;
-	  case 'test':
-	  	$this->load->view('admin/edit.php');
-	    break;
+		case 'autoTip':
+			$keyWord = $_GET['keyWord'];
+			$data=array();
+			$temp=array();
+			$this->load->model('class_course_model');
+			$data['status']=1; 
+			$data['list']=array();
+			$temp = $this->class_course_model->get($where = "classname like '%".$keyWord."%'");
+			foreach($temp as $val){
+				array_push($data['list'],$val['classname']);
+			}
+			echo json_encode($data);
+			exit;
+		break;
       default:
         show_404();
         break;
