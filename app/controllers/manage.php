@@ -257,7 +257,7 @@ class Manage extends CI_Controller {
 			$data=array();
 			$temp=array();
 			$this->load->model('class_course_model');
-			$data['list']=array();
+			$datas=array();
 			$temp = $this->class_course_model->get("classname like '%".$keyWord."%'","","","");
 			if (count($temp) != '0'){
 				$data['status']=1;
@@ -265,7 +265,10 @@ class Manage extends CI_Controller {
 				$data['status']=0;
 			}
 			foreach($temp as $key=>$val){
-				array_push($data['list'],/*$val['id'],*/$val['classname']);
+				$data['list']=array();
+				$datas['id']=$val['id'];
+				$datas['classname']=$val['classname'];
+				array_push($data['list'],$datas);
 			}
 			echo json_encode($data);
 			exit;

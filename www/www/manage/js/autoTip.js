@@ -42,7 +42,7 @@
 						if(data.status){
 							$.each(data.list,function(i,val){
 								var _odd=i%2==0?"odd":"none";
-								$('<li class='+_odd+'>'+val+'</li>').appendTo(_sel_ul).hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover")})
+								$('<li class='+_odd+' rel="'+val.id+'">'+val.classname+'</li>').appendTo(_sel_ul).hover(function(){$(this).addClass("hover")},function(){$(this).removeClass("hover")});
 							})
 						}else{
 							$('<li>无相关记录！</li>').appendTo(_sel_ul)
