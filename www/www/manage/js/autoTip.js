@@ -50,6 +50,7 @@
 						
 						_sel_ul.find("li").click(function(){
 							_this.val($(this).text());
+							//$('[name=object]').val('111');
 							clearInterval(_delay);
 							_sel_ul.hide(0);
 						})

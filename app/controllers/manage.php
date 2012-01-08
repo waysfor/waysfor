@@ -258,17 +258,21 @@ class Manage extends CI_Controller {
 			$temp=array();
 			$this->load->model('class_course_model');
 			$datas=array();
-			$temp = $this->class_course_model->get("classname like '%".$keyWord."%'","","","");
+			$temp = $this->class_course_model->get("`classname` like '%".$keyWord."%'","","","");
 			if (count($temp) != '0'){
 				$data['status']=1;
+				$data['list']=array();
+				foreach($temp as $key=>$val){
+					$datas['id']=$val['id'];
+					$datas['classname']=$val['classname'];
+					$datas['status']=$val['status'];
+					$datas['classtype']=$val['classtype'];
+					$datas['object']=$val['object'];
+					$datas['content']=$val['content'];
+					array_push($data['list'],$datas);
+				}
 			}else{
 				$data['status']=0;
-			}
-			foreach($temp as $key=>$val){
-				$data['list']=array();
-				$datas['id']=$val['id'];
-				$datas['classname']=$val['classname'];
-				array_push($data['list'],$datas);
 			}
 			echo json_encode($data);
 			exit;
