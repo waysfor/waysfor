@@ -30,6 +30,7 @@
 							<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
 								<thead>
 									<th class="table-header-check"><a id="toggle-all" ></a></th>
+									<th class="table-header-check">id</th>
 									<th class="table-header-repeat line-left minwidth-1"><a href="">客户企业名</a></th>
 									<th class="table-header-repeat line-left"><a href="">省份</a></th>
 									<th class="table-header-repeat line-left"><a href="">联系人</a></th>
@@ -41,6 +42,7 @@
 								<?php foreach($trainer_course as $c): ?>
 								<tr>
 									<td><input type="checkbox"/></td>
+									<td><?=$c['id']?></td>
 									<td><?=$c['clientname']?></td>
 									<td><?=$c['province']?></td>
 									<td><?=$c['linkname']?></td>

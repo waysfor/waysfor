@@ -42,7 +42,7 @@
 						if(data.status){
 							$.each(data.list,function(i,val){
 								var _odd=i%2==0?"odd":"none";
-								$('<li class='+_odd+'><a href="javascript:show_load('+val.id+')">'+val.classname+'</a></li>').appendTo(_sel_ul).hover(function(){
+								$('<li class='+_odd+' rel="'+val.id+'">'+val.classname+'</li>').appendTo(_sel_ul).hover(function(){
 									$(this).addClass("hover").click(function(){
 										_this.val($(this).text());
 										$('[name=status]').val(val.status);
