@@ -45,7 +45,8 @@
 								$('<li class='+_odd+'><a href="javascript:show_load('+val.id+')">'+val.classname+'</a></li>').appendTo(_sel_ul).hover(function(){
 									$(this).addClass("hover").click(function(){
 										_this.val($(this).text());
-										$('[name=status]').val(val.status);
+										//alert($('[name=status] option[value='+val.status+']'));
+										$('[name=status] option[value='+val.status+']').attr("selected","selected");;
 										$('[name=object]').val(val.object);
 										$('[name=classcontent]').val(val.content);
 										clearInterval(_delay);
