@@ -197,7 +197,8 @@ class Manage extends CI_Controller {
 		$data['trainercontent'] = $_POST['trainercontent'];
 		$data['recommend'] = $_POST['recommend'];
 		$data['posttime'] = date("Y-m-d h:i:s");
-		
+		var_dump($data);
+	  	exit;
 		$result = $this -> history_model -> add($data);
 		break;
 	  case 'del':
