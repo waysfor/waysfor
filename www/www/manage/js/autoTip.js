@@ -72,16 +72,17 @@
 										}
 										$('.styledselect_form_1').eq(2).val(h_classtype);
 										
-										K('input[name=appendHtml]').click(function(e) {
-											editor.appendHtml(val.content);
-										});
-										editor = K.create('textarea[name="classcontent"]', {allowFileManager : true});
-										editor.insertHtml(val.content);
-										
+										/*
+										KindEditor.create('textarea[name="classcontent"]',{
+											width:'99%'
+										}).appendHtml(val.content);
+										*/
+										KE.html('textarea[name="classcontent"]',val.content);
+
 										$('[name=status]').val(val.status);
 										$('[name=classtype]').val(val.classtype);
 										$('[name=object]').val(val.object);
-										$('[name=classcontent]').val(val.content);
+										//$('[name=classcontent]').val(val.content);
 										clearInterval(_delay);
 										_sel_ul.hide(0);
 									})
@@ -92,17 +93,6 @@
 						}else{
 							$('<li>无相关记录！</li>').appendTo(_sel_ul)
 						}
-						/*
-						_sel_ul.find("li").click(function(){
-							_this.val($(this).text());
-							alert(data.list[0][object]);
-							//$('[name=object]').val(val.object);
-							//$('[name=classcontent]').val(val.content);
-							//alert($(this).attr("rel"));
-							clearInterval(_delay);
-							_sel_ul.hide(0);
-						})
-						*/
 					})
 				}
 			};
