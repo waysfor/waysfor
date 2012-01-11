@@ -385,6 +385,24 @@ class Manage extends CI_Controller {
         unset($data['id']);
 		$result = $this -> class_course_model -> edit_save($data,$con);
         break;
+		case 'autoTip_class':
+			$keyWord = $_GET['keyWord'];
+			$data=array();
+			$temp=array();
+			$this->load->model('class_course_model');
+			$temp = $this->class_course_model->get("`classname` like '%".$keyWord."%'","","","");
+			if (count($temp) != '0'){
+				$data['status']=1;
+				$data['list']=array();
+				foreach($temp as $key=>$val){
+					array_push($data['list'],$val['classname']);
+				}
+			}else{
+				$data['status']=0;
+			}
+			echo json_encode($data);
+			exit;
+		break;
       default:
         show_404();
         break;
