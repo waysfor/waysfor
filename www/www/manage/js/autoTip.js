@@ -9,7 +9,7 @@
 		},
 		o=$.extend(_setting,opt);
 		$(this).each(function(){
-			var _this=$(this).find("#autoTip"),
+			var _this=$(this).find(".inp-form"),
 				_wrap=$("<div/>",{
 					"id":"autoTip_box",
 					"style":"display:inline;position:relative;height:"+_this.outerHeight()+"px"
@@ -42,47 +42,45 @@
 						if(data.status){
 							$.each(data.list,function(i,val){
 								var _odd=i%2==0?"odd":"none";
-								$('<li class='+_odd+'><a href="javascript:show_load('+val.id+')">'+val.classname+'</a></li>').appendTo(_sel_ul).hover(function(){
+								$('<li class='+_odd+'>'+val.name+'</li>').appendTo(_sel_ul).hover(function(){
 									$(this).addClass("hover").click(function(){
 										_this.val($(this).text());
-										
-										$('[name=classname]').val(val.classname);
-										if(val.status=='0'){
-											h_status='请选择课程性质';
-										}else if(val.status=='1'){
-											h_status='公开课';
-										}else if(val.status=='2'){
-											h_status='企业内训';
+										if(o.url == "autoTip_class"){										
+											$('[name=name]').val(val.name);
+											if(val.status=='0'){
+												h_status='请选择课程性质';
+											}else if(val.status=='1'){
+												h_status='公开课';
+											}else if(val.status=='2'){
+												h_status='企业内训';
+											}
+											$('.styledselect_form_1').eq(0).val(h_status);
+											if(val.classtype=='0'){
+												h_classtype='未分类';
+											}else if(val.classtype=='1'){
+												h_classtype='人力资源';
+											}else if(val.classtype=='2'){
+												h_classtype='综合管理';
+											}else if(val.classtype=='3'){
+												h_classtype='生产管理';
+											}else if(val.classtype=='4'){
+												h_classtype='营销管理';
+											}else if(val.classtype=='5'){
+												h_classtype='财务管理';
+											}else if(val.classtype=='6'){
+												h_classtype='物流采购';
+											}
+											$('.styledselect_form_1').eq(2).val(h_classtype);
+											
+											editor_1.html(val.content);
+	
+											$('[name=status]').val(val.status);
+											$('[name=classtype]').val(val.classtype);
+											$('[name=object]').val(val.object);
+										}else if(o.url == "autoTip_trainer"){								
+											$('[name=name]').val(val.name);
+											editor_2.html(val.content);
 										}
-										$('.styledselect_form_1').eq(0).val(h_status);
-										if(val.classtype=='0'){
-											h_classtype='未分类';
-										}else if(val.classtype=='1'){
-											h_classtype='人力资源';
-										}else if(val.classtype=='2'){
-											h_classtype='综合管理';
-										}else if(val.classtype=='3'){
-											h_classtype='生产管理';
-										}else if(val.classtype=='4'){
-											h_classtype='营销管理';
-										}else if(val.classtype=='5'){
-											h_classtype='财务管理';
-										}else if(val.classtype=='6'){
-											h_classtype='物流采购';
-										}
-										$('.styledselect_form_1').eq(2).val(h_classtype);
-										
-										/*
-										KindEditor.create('textarea[name="classcontent"]',{
-											width:'99%'
-										}).appendHtml(val.content);
-										*/
-										editor_1.html(val.content);
-
-										$('[name=status]').val(val.status);
-										$('[name=classtype]').val(val.classtype);
-										$('[name=object]').val(val.object);
-										//$('[name=classcontent]').val(val.content);
 										clearInterval(_delay);
 										_sel_ul.hide(0);
 									})
