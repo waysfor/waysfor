@@ -258,6 +258,7 @@ class Manage extends CI_Controller {
 			$data=array();
 			$temp=array();
 			$this->load->model('class_course_model');
+			$this->load->model('trainer_course_model');
 			$datas=array();
 			$temp = $this->class_course_model->get("`classname` like '%".$keyWord."%'","","","");
 			if (count($temp) != '0'){

@@ -3,8 +3,8 @@
 <script>
         var editor;
         KindEditor.ready(function(K) {
-                editor = K.create('#editor_id');
-                editor = K.create('#editor_id_trainer',{
+                editor_1 = K.create('#editor_id');
+                editor_2 = K.create('#editor_id_trainer',{
 					width : "99%",
 					height : "300px"
 				});
@@ -216,6 +216,9 @@ function submit_form(){
 <script type="text/javascript">
 $(function(){
 	$("#classname").autoTip({
+		url:"autoTip"
+	})
+	$('#trainername').autoTip({
 		url:"autoTip"
 	})
 })

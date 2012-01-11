@@ -77,7 +77,7 @@
 											width:'99%'
 										}).appendHtml(val.content);
 										*/
-										KE.html('textarea[name="classcontent"]',val.content);
+										editor_1.html(val.content);
 
 										$('[name=status]').val(val.status);
 										$('[name=classtype]').val(val.classtype);
