@@ -58,10 +58,9 @@ body{
     margin:0 auto;
 }
 .header{
-    background:url(../img/nav_bg.png) repeat-x 0 bottom
+    background:url(../img/nav_bg.png) repeat-x 0 110px
 }
 .hotkey{
-	position:relative;
 	width:964px;
 	padding-left:16px;
 	margin:-4px auto 0;
@@ -143,8 +142,10 @@ body{
 .search{
     position:absolute;
     right:0;
-    bottom:8px;
-	z-index:8
+    top:42px;
+	z-index:8;
+	padding:2px 4px;
+	background:#f3f3f3;
 }
 .search .search_type{
     display:inline-block;
@@ -163,7 +164,7 @@ body{
 .search .typelist{
     position:absolute;
     top:29px;
-    left:0;
+    left:4px;
     background:#fff;
     border-style:none solid solid;
     border-width:1px;
@@ -201,8 +202,8 @@ body{
 .search .btn{
     height:32px;
     border:none;
-    background:url(../img/nav_cur_over.png) no-repeat right 1px;
-    /*background:#000;*/
+	/* background:url(../img/nav_cur_over.png) no-repeat right 1px;*/
+    background:#f3f3f3;
     width:48px;
 }
 

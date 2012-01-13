@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Train extends CI_Controller {
+class Trainer extends CI_Controller {
 	public $item;
 	function __construct(){
 		parent::__construct();
@@ -38,7 +38,7 @@ class Train extends CI_Controller {
 		$this -> load -> model('CateModel');
 		$class['cate'] = $this -> CateModel -> cate('cate');
 		
-		$this->load->view('default/list/trainlist',$class);
+		$this->load->view('default/list/trainerlist',$class);
 		$this->load->view('default/footer');
 	}
 }

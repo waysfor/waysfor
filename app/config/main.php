@@ -3,86 +3,26 @@ $config['index_nav'] = array(
   array(
     'name' => '首页',
     'seq'  => 1,
-    'item' => '',
-    'sub'  => array(
-      array(
-        'name' => '查看课程',
-        'seq'  => 1,
-        'act'  => 'list'
-      ),
-      array(
-        'name' => '添加课程',
-        'seq'  => 2,
-        'act'  => 'add'
-      )
-    )
+    'item' => ''
   ),
   array(
-    'name' => '课程资源',
+    'name' => '公开课',
     'seq'  => 2,
-    'item' => 'course_resource',
-    'sub'  => array(
-      array(
-        'name' => '查看课程资源',
-        'seq'  => 1,
-        'act'  => 'list'
-      ),
-      array(
-        'name' => '添加课程资源',
-        'seq'  => 2,
-        'act'  => 'add'
-      )
-    )
+    'item' => 'open'
   ),
   array(
-    'name' => '讲师资源',
+    'name' => '企业内训',
     'seq'  => 3,
-    'item' => 'trainer_resource',
-    'sub'  => array(
-      array(
-        'name' => '查看讲师资源',
-        'seq'  => 1,
-        'act'  => 'list'
-      ),
-      array(
-        'name' => '添加讲师资源',
-        'seq'  => 2,
-        'act'  => 'add'
-      )
-    )
+    'item' => 'train'
   ),
   array(
-    'name' => '客户资源',
+    'name' => '培训讲师',
     'seq'  => 4,
-    'item' => 'client_resource',
-    'sub'  => array(
-      array(
-        'name' => '查看客户资源',
-        'seq'  => 1,
-        'act'  => 'list'
-      ),
-      array(
-        'name' => '添加客户资源',
-        'seq'  => 2,
-        'act'  => 'add'
-      )
-    )
+    'item' => 'trainer'
   ),
   array(
-    'name' => '用户管理',
+    'name' => '高级搜索',
     'seq'  => 5,
-    'item' => 'user',
-    'sub'  => array(
-      array(
-        'name' => '查看用户',
-        'seq'  => 1,
-        'act'  => 'list'
-      ),
-      array(
-        'name' => '添加用户',
-        'seq'  => 2,
-        'act'  => 'add'
-      )
-    )
-  ),
+    'item' => 'search'
+  )
 );

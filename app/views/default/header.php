@@ -20,15 +20,6 @@
                 <h1 class="logo">
                     <a href="#">上海聚宇企业管理咨询</a>
                 </h1>
-                <div class="nav clear">
-                    <a href="/" class="current"><span>首页</span></a>
-                    <a href="/open"><span>公开课</span></a>
-                    <a href="/train"><span>企业内训</span></a>
-                    <a href="/traner"><span>培训讲师</span></a>
-                    <a href="/news"><span>培训资讯</span></a>
-                    <a href="/demand"><span>培训需求</span></a>
-                    <a href="/search"><span>课程搜索</span></a>
-                </div>
                 <form action="">
                     <div class="search">
                         <span class="search_type" id="search_type"><em id="option">全部资源</em><i class="arrow">arrow</i></span><input type="text" class="txt" /><input type="submit" class="btn" value="搜索" />
@@ -42,11 +33,19 @@
                         </ul>
                     </div>
                 </form>
-            </div>
-        </div>
-        <div class="hotkey">
-        	<div class="bg">
-        	热点词：
-        	<a href="#">关键字</a>
+                <div class="nav clear">
+                	<?php echo $nav;?>
+                    <div class="" style="float:right">
+                    	<a href="#"><span>培训资讯</span></a>
+                    	<a href="#"><span>成功案例</span></a>
+                    	<a href="#"><span>关于我们</span></a>
+                    </div>
+                </div>
+                <div class="hotkey">
+                    <div class="bg">
+                    热点词：
+                    <a href="#">关键字</a>
+                    </div>
+                </div>
             </div>
         </div>
