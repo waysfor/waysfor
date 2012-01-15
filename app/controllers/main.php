@@ -4,6 +4,7 @@ class Main extends CI_Controller {
 	public $item;
 	function __construct(){
 		parent::__construct();
+		$this -> load -> model('base_model');
 		$this->config->load('main');
 		$navarray = $this->config->item('index_nav');
 		$navitem = array();
@@ -32,29 +33,25 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-		$this -> load -> model('NewsModel');
-		$class['news'] = $this -> NewsModel -> news_index('news');
+		$this -> load -> model('base_model');
+		$class['news'] = $this -> base_model -> get('news','1','entertime desc','0','10');
 		/*分类资讯 start*/
-		$class['news_type1'] = $this -> NewsModel -> news_tpye('news','1');
-		$class['news_type2'] = $this -> NewsModel -> news_tpye('news','2');
-		$class['news_type3'] = $this -> NewsModel -> news_tpye('news','3');
-		$class['news_type4'] = $this -> NewsModel -> news_tpye('news','4');
-		$class['news_type5'] = $this -> NewsModel -> news_tpye('news','5');
-		$class['news_type6'] = $this -> NewsModel -> news_tpye('news','6');
+		$class['news_type1'] = $this -> base_model -> get('news','newstype = 1','entertime desc','0','10');
+		$class['news_type2'] = $this -> base_model -> get('news','newstype = 2','entertime desc','0','10');
+		$class['news_type3'] = $this -> base_model -> get('news','newstype = 3','entertime desc','0','10');
+		$class['news_type4'] = $this -> base_model -> get('news','newstype = 4','entertime desc','0','10');
+		$class['news_type5'] = $this -> base_model -> get('news','newstype = 5','entertime desc','0','10');
+		$class['news_type6'] = $this -> base_model -> get('news','newstype = 6','entertime desc','0','10');
 		/*分类资讯 end*/
 		
-		$this -> load -> model('OpenModel');
-		$class['now'] = $this -> OpenModel -> new_open('history','1');
-		$class['recommend'] = $this -> OpenModel -> recommend_open('history','1');
+		$class['now'] = $this -> base_model -> get('history','opentime > "'.date("Y-m-d").'"','opentime desc','0','10');
+		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
 		
-		$this -> load -> model('TrainModel');
-		$class['train'] = $this -> TrainModel -> train_index('history','2');
+		$class['train'] = $this -> base_model -> get('history','status = 2 AND recommend = 1','','0','10');
 		
-		$this -> load -> model('TrainerModel');
-		$class['trainer'] = $this -> TrainerModel -> trainer_index('trainer');
+		$class['trainer'] = $this -> base_model -> get('trainer','recommend = 1','','0','10');
 		
-		$this -> load -> model('CateModel');
-		$class['cate'] = $this -> CateModel -> cate('cate');
+		$class['cate'] = $this -> base_model -> get('cate');
 		
 		$this->load->view('default/index',$class);
 		$this->load->view('default/footer');
