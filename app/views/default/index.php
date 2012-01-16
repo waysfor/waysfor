@@ -14,11 +14,14 @@
                                     <h3>
                                         <span>培训新闻</span>
                                     </h3>
+                                    <span class="pr">
+                                    	<a href="news/list">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($news as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="news/show/<?=$items['id']?>"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -43,13 +46,13 @@
                                         <span>近期开课</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                    	<a href="open/list">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($now as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                        <li><a href="open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -62,13 +65,13 @@
                                         <span>推荐课程</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                    	<a href="open/list">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($recommend as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li><a href="open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -170,7 +173,7 @@
                 <div class="row col3">
                     <div class="rt">
                         <h2>
-                            <span><a href="/train">培训分类资讯</a></span>
+                            <span><a href="news">培训分类资讯</a></span>
                         </h2>
                     </div>
                     <div class="rc clearfix">
