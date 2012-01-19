@@ -157,10 +157,10 @@ class Manage extends CI_Controller {
 		$my_page['url'] = '/manage/history/list/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
-		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
 		$my_page['min_pages'] = '0';
-		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 
         $out = array();
 		$classlist = $this->history_model->get('','',$offset,$my_page['sub_num']);
@@ -317,10 +317,10 @@ class Manage extends CI_Controller {
 		$my_page['url'] = '/manage/course_resource/list/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
-		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
 		$my_page['min_pages'] = '0';
-		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 
         $out = array();
 		$classlist = $this->class_course_model->get('','',$offset,$my_page['sub_num']);
@@ -422,10 +422,10 @@ class Manage extends CI_Controller {
 		$my_page['url'] = '/manage/trainer_resource/list/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
-		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
 		$my_page['min_pages'] = '0';
-		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 
         $out = array();
 		$trainerlist = $this->trainer_course_model->get('','',$offset,$my_page['sub_num']);
@@ -547,10 +547,10 @@ class Manage extends CI_Controller {
 		$my_page['url'] = '/manage/client_resource/list/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
-		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
 		$my_page['min_pages'] = '0';
-		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
         $out = array();
 		if($uer['role'] != '3'){
 			$trainerlist = $this->client_course_model->get('owner = '.$owner,'',$offset,$my_page['sub_num']);
@@ -647,10 +647,10 @@ class Manage extends CI_Controller {
 		$my_page['url'] = '/manage/user/list/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*10;
-		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*10;
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
 		$my_page['min_pages'] = '0';
-		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*10;
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 
         $out = array();
         $userlist = $this->user_course_model->get('','',$offset,$my_page['sub_num']);

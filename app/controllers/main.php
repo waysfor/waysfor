@@ -33,7 +33,6 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-		$this -> load -> model('base_model');
 		$class['news'] = $this -> base_model -> get('news','1','entertime desc','0','10');
 		/*分类资讯 start*/
 		$class['news_type1'] = $this -> base_model -> get('news','newstype = 1','entertime desc','0','10');

@@ -417,3 +417,10 @@ ul.traintype li a:hover{
 	padding-right:12%;
 }
 /* new modified end*/
+
+.step_content{
+	display:none;
+}
+.mypage{
+	text-align:right;
+}

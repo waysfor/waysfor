@@ -18,4 +18,15 @@ class Base_model extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
+	function get_count($table_name = 'null', $where = '1', $field = '*'){
+		$sql = "SELECT COUNT(`".$field."`) AS count FROM " .$table_name;
+		if($where != '') {
+			$sql .= " WHERE " . $where;
+		}
+		$query = $this->db->query($sql);
+		$ret = $query->result();
+		if(isset($ret[0]->count)){
+		   return  $ret[0]->count;
+		}
+	}
 }

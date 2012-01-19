@@ -1,13 +1,11 @@
 if (window.attachEvent){
 	window.attachEvent("onload",searchSelect);
-	window.attachEvent("onload",slide);
 }
 else{
 	window.addEventListener("load",searchSelect,false);
-	window.addEventListener("load",slide,false);
 }
 
-function $(str){
+function $$(str){
 	if (str.indexOf("#") != -1){
 		return document.getElementById(str.substring(1));
 	}
@@ -27,12 +25,12 @@ function $(str){
 }
 
 function searchSelect(){
-	var typebtn = $("#search_type");
-	var typelist = $("#typelist");
-	var checked = $("#checked");
-	var option = $("#option");
+	var typebtn = $$("#search_type");
+	var typelist = $$("#typelist");
+	var checked = $$("#checked");
+	var option = $$("#option");
 	var typeitem = typelist.getElementsByTagName("li");
-	var oBody = $("body")[0];
+	var oBody = $$("body")[0];
 	typebtn.onclick = function(ev){
 		oEvent = ev || window.event;
 		typelist.style.display = "block";
@@ -47,10 +45,4 @@ function searchSelect(){
 			checked.value = this.innerHTML;
 		}
 	}
-}
-function slide(){
-	var oImgBox = $("#slide_img");
-	var aImg = $("#slide_img").getElementsByTagName("img");
-	var oTxt = $("#slide_txt");
-	var aBtn = $("#slide_btn").getElementsByTagName("i");
 }
