@@ -3,7 +3,7 @@
             	<div class="row col2">
                     <div class="rt">
                         <h2>
-                            <span>公开课</span>
+                            <span><a href="/open">公开课</a></span>
                         </h2>
                     </div>
                     <div class="rc clearfix">
@@ -45,7 +45,11 @@
                             </div>
                         </div>
                         <div class="cr">
-							<?include_once('inc/side.php')?>
+							<?include_once('inc/keyword.php')?>
+							<?include_once('inc/type.php')?>
+							<?include_once('inc/now.php')?>
+							<?include_once('inc/hot.php')?>
+							<?include_once('inc/old.php')?>
                         </div>
                     </div>
                 </div>

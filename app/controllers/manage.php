@@ -189,7 +189,6 @@ class Manage extends CI_Controller {
 		$data['status'] = $_POST['status'];
 		$data['classname'] = $_POST['classname'];
 		$data['price'] = $_POST['price'];
-		$data['opentime'] = $_POST['opentime'];
 		$data['classtype'] = $_POST['classtype'];
 		$data['object'] = $_POST['object'];
 		$data['classcontent'] = $_POST['classcontent'];
@@ -197,7 +196,10 @@ class Manage extends CI_Controller {
 		$data['trainercontent'] = $_POST['trainercontent'];
 		$data['recommend'] = $_POST['recommend'];
 		$data['posttime'] = date("Y-m-d h:i:s");
-		$result = $this -> history_model -> add($data);
+
+		$datainfo['address'] = $_POST['address'];
+		$datainfo['opentime'] = $_POST['opentime'];
+		$result = $this -> history_model -> add($data,$datainfo);
 		break;
 	  case 'del':
 	    $id = $val;

@@ -3,7 +3,7 @@
             	<div class="row col2">
                     <div class="rt">
                         <h2>
-                            <span>公开课</span>
+                            <span><a href="open">公开课</a></span>
                         </h2>
                     </div>
                     <div class="rc clearfix">

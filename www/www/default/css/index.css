@@ -422,5 +422,12 @@ ul.traintype li a:hover{
 	display:none;
 }
 .mypage{
+	line-height:30px;
 	text-align:right;
+}
+.mypage a{
+	color:#333;
+}
+.mypage a:hover{
+	text-decoration:underline;
 }

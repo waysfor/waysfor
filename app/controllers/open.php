@@ -124,6 +124,7 @@ class Open extends CI_Controller {
 				$class['shownow'] = $class['nowarray'];
 
 			}
+			$class['myurl'] = $this->uri->segment(2,0);
 			$this->load->view('default/open/show/shownow',$class);
 			$this->load->view('default/footer');
 		}else{

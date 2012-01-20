@@ -1,6 +1,7 @@
 <?php
 class History_model extends CI_Model{
     private $table_name = 'history';
+	private $table_info = 'classinfo';
 	function __construct(){
 		parent::__construct();
 	}
@@ -24,9 +25,20 @@ class History_model extends CI_Model{
 		return $this -> db -> count_all_results($this->table_name);
 	}
 	
-	function add($data){
+	function add($data,$datainfo){
 		if ($this->db->insert($this->table_name, $data)) {
-        	header("Location: /manage/history/list");
+			$oid = $this->db->insert_id();
+			$oid = array(
+				'cid' => $oid
+			);
+			if($this->db->insert($this->table_info, $datainfo)) {
+				$id = $this->db->insert_id();
+				$this->db->where('id',$id);
+				$this->db->update($this->table_info, $oid);
+				header("Location: /manage/history/list");
+			} else {
+				echo 'error';//temp
+			}
 		} else {
 		    echo 'error';//temp
 		}
@@ -35,7 +47,13 @@ class History_model extends CI_Model{
 	    $con = 'id = ' . $id;
 	    $sql = "DELETE FROM " .$this->table_name. " WHERE " . $con;
         if ($this->db->query($sql)) {
-        	header("Location: /manage/history/list");
+			$con = 'cid = ' . $id;
+			$sql = "DELETE FROM " .$this->table_info. " WHERE " . $con;
+			if ($this->db->query($sql)){
+        		header("Location: /manage/history/list");
+			} else {
+				echo 'error';//temp
+			}
 		} else {
 		    echo 'error';//temp
 		}
