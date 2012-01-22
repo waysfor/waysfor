@@ -127,14 +127,19 @@
                                         <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
                                             <tr>
                                                 <th valign="top">开课时间：</th>
-                                                <td><input type="text" class="inp-form" name="opentime" /> (例如：2012-01-01)</td>
+                                                <td><input type="text" class="inp-form" name="data[opentime][]" /> (例如：2012-01-01)</td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <th valign="top">开课地址：</th>
-                                                <td><input type="text" class="inp-form" name="address" /> (直接填写城市名，如：上海)</td>
+                                                <td><input type="text" class="inp-form" name="data[address][]" /> (直接填写城市名，如：上海)</td>
                                                 <td></td>
                                             </tr>
+											<tr id="add_btn">
+												<th><a href="javascript:add_info();">添加开课信息</div></th>
+												<td></td>
+												<td></td>
+											</tr>
                                             <tr>
                                                 <th valign="top">课程价格：</th>
                                                 <td><input type="text" class="inp-form" name="price" /></td>
@@ -210,6 +215,14 @@ function show_step(step){
 		.hide()
 		.eq(step)
 		.show();
+}
+
+function del_info(){
+	alert('暂时无法删除');
+}
+function add_info(){
+	_add = "<tr><th>开课时间：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[opentime][]\" /> (例如：2012-01-01)</td><td></td></tr><tr><th>开课地址：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[address][]\" /> (直接填写城市名，如：上海) <a href=\"javascript:del_info();\">删除该信息</a></td><td></td></tr>";
+	$('#add_btn').before(_add);
 }
 
 /*

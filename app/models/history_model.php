@@ -20,6 +20,7 @@ class History_model extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
+
 	function getAllrows(){
 		$this -> db ->count_all_results($this->table_name);
 		return $this -> db -> count_all_results($this->table_name);
@@ -28,21 +29,64 @@ class History_model extends CI_Model{
 	function add($data,$datainfo){
 		if ($this->db->insert($this->table_name, $data)) {
 			$oid = $this->db->insert_id();
-			$oid = array(
-				'cid' => $oid
-			);
-			if($this->db->insert($this->table_info, $datainfo)) {
-				$id = $this->db->insert_id();
-				$this->db->where('id',$id);
-				$this->db->update($this->table_info, $oid);
-				header("Location: /manage/history/list");
-			} else {
-				echo 'error';//temp
+			$total = count($datainfo['opentime']);
+			var_dump($total);
+			exit;
+			for($i=0;$i<$total;$i++){
+				if(isset($datainfo['address'][$i]) && !empty($datainfo['address'][$i])){
+					$CourseInfo = array(
+						'cid' => $oid,
+						'opentime' => $datainfo['opentime'][$i],
+						'address' => $datainfo['address'][$i],
+						);
+					if($this->db->insert($this->table_info, $CourseInfo)) {
+						$id = $this->db->insert_id();
+						header("Location: /manage/history/list");
+					} else {
+						echo 'error';//temp
+					}
+				} else {
+					die("地址没有填写");
+				}
 			}
 		} else {
-		    echo 'error';//temp
+			echo 'error';//temp
 		}
 	}
+
+	function edit_save($data,$datainfo,$con,$con_info,$id){
+		if ($this->db->update($this->table_name, $data, $con)) {
+			$total = count($datainfo['opentime']);
+			for($i=0;$i<$total;$i++){
+				if(isset($datainfo['address'][$i]) && !empty($datainfo['address'][$i])){
+					$CourseInfo = array(
+						'nid' => $datainfo['nid'][$i],
+						'cid' => $id,
+						'opentime' => $datainfo['opentime'][$i],
+						'address' => $datainfo['address'][$i],
+						);
+					if(!empty($datainfo['nid'][$i])){
+						$cons = $con_info . " AND nid = ".$datainfo['nid'][$i];
+						$this->db->update($this->table_info, $CourseInfo, $cons);
+					} else {
+						$this->db->insert($this->table_info, $CourseInfo);
+					}
+				} else {
+					if(!empty($datainfo['nid'][$i])){
+						$con = 'nid = '.$datainfo['nid'][$i];
+						$sql = "DELETE FROM " .$this->table_info. " WHERE " .$con;
+						$this->db->query($sql);
+					} else {
+						//空信息，直接放走
+					}
+				}
+			}
+			header("Location:/manage/history/list");
+		} else {
+		    echo 'error';
+		}
+	}
+
 	function del($id){
 	    $con = 'id = ' . $id;
 	    $sql = "DELETE FROM " .$this->table_name. " WHERE " . $con;
@@ -58,17 +102,18 @@ class History_model extends CI_Model{
 		    echo 'error';//temp
 		}
 	}
+
 	function edit($id){
-	    $con = 'id = ' . $id;
+		$con = 'id = ' . $id;
 	    $sql = "SELECT * FROM " . $this->table_name. " WHERE ".$con;
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
-	function edit_save($data,$con){
-		if ($this->db->update($this->table_name, $data, $con)) {
-        	header("Location: /manage/history/list");
-		} else {
-		    echo 'error';
-		}
+	
+	function edit_info($id){
+		$con = 'cid = ' . $id;
+	    $sql = "SELECT * FROM " . $this->table_info. " WHERE ".$con;
+		$query = $this->db->query($sql);
+		return $query->result_array();
 	}
 }

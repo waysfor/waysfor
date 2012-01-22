@@ -197,8 +197,7 @@ class Manage extends CI_Controller {
 		$data['recommend'] = $_POST['recommend'];
 		$data['posttime'] = date("Y-m-d h:i:s");
 
-		$datainfo['address'] = $_POST['address'];
-		$datainfo['opentime'] = $_POST['opentime'];
+		$datainfo = $_POST['data'];
 		$result = $this -> history_model -> add($data,$datainfo);
 		break;
 	  case 'del':
@@ -212,9 +211,15 @@ class Manage extends CI_Controller {
 		  $id = $val;
 		  $result = $this -> history_model -> edit($id);
           $statusarray = $this->config->item('status');
-		  $out['class_course'] = $result;
-          $this->load->view('manage/history/edit.html', $out);
-          $this->load->view('manage/footer.html');
+		  $result_info = $this -> history_model -> edit_info($id);
+		  $out['class_info'] = $result_info;
+		  if(isset($result[0])){
+			  $result = $result[0];
+			  $class['class_course'] = $result;
+			  $out['class_course'] = $result;
+			  $this->load->view('manage/history/edit.html', $out);
+			  $this->load->view('manage/footer.html');
+		  }
         }
         break;
       case 'edit_save':
@@ -222,7 +227,6 @@ class Manage extends CI_Controller {
 		$data['status'] = $_POST['status'];
 		$data['classname'] = $_POST['classname'];
 		$data['price'] = $_POST['price'];
-		$data['opentime'] = $_POST['opentime'];
 		$data['classtype'] = $_POST['classtype'];
 		$data['object'] = $_POST['object'];
 		$data['classcontent'] = $_POST['classcontent'];
@@ -230,10 +234,17 @@ class Manage extends CI_Controller {
 		$data['trainercontent'] = $_POST['trainercontent'];
 		$data['recommend'] = $_POST['recommend'];
 		$data['posttime'] = date("Y-m-d h:i:s");
+
+		$datainfo = $_POST['data'];
 		
+		//var_dump($_POST['data']);
+		//exit;
+
+	    $id = $data['id'];
         $con = "id = " . $data['id']; 
+        $con_info = "cid = " . $data['id']; 
         unset($data['id']);
-		$result = $this -> history_model -> edit_save($data,$con);
+		$result = $this -> history_model -> edit_save($data,$datainfo,$con,$con_info,$id);
         break;
       case 'info':
         $history = $this->history_model->get("`id` = '$val'");
