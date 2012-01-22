@@ -14,10 +14,9 @@ class Open extends CI_Controller {
 		}
 		$this->_header();
 		
-		//$class['all'] = $this -> base_model ->get('history','`status`=1');
 		$class['now'] = $this -> base_model -> get('history','`status`=1 AND opentime > "'.date("Y-m-d").'"','opentime desc','0','10');
 		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
-		$class['old'] = $this -> base_model -> get('history','opentime < "'.date("Y-m-d").'"','opentime desc','0','10');
+		$class['old'] = $this -> base_model -> get('history','`status` = 1 AND opentime < "'.date("Y-m-d").'"','opentime desc','0','10');
 		
 		$this -> load -> model('CateModel');
 		$class['cate'] = $this -> CateModel -> cate('cate');
@@ -90,7 +89,7 @@ class Open extends CI_Controller {
 			$offset = $this -> uri -> segment(4,0);
 			$my_page= array();
 			$my_page['sub_num'] = '25';
-			$my_page['all_num'] = $this -> base_model ->get_count('history','`classtype` = "'.$type_num.'"','id');
+			$my_page['all_num'] = $this -> base_model ->get_count('history','`status` = 1 AND `classtype` = "'.$type_num.'"','id');
 			$my_page['url'] = '/open/classtype/'.$type_num.'/';
 			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
@@ -103,7 +102,7 @@ class Open extends CI_Controller {
 			$this->config->load('manage');
 			$typearray = $this->config->item('type');
 			$class['type'] = $typearray[$type_num];
-			$class['opentype'] = $this -> base_model ->get('history','`classtype` = "'.$type_num.'"','',$offset,$my_page['sub_num']);
+			$class['opentype'] = $this -> base_model ->get('history','`status` = 1 AND `classtype` = "'.$type_num.'"','',$offset,$my_page['sub_num']);
 			$this->load->view('default/open/list/opentype',$class);
 			$this->load->view('default/footer');
 		}else{
