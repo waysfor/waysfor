@@ -3,7 +3,10 @@
 <script>
         var editor;
         KindEditor.ready(function(K) {
-                editor = K.create('#editor_id');
+                editor = K.create('#editor_id',{
+					width : "99%",
+					height : "300px"
+				});
         });
 </script>
 
