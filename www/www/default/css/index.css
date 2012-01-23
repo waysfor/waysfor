@@ -431,3 +431,30 @@ ul.traintype li a:hover{
 .mypage a:hover{
 	text-decoration:underline;
 }
+.ciarea{
+	padding:12px 0;
+	line-height:32px;
+}
+.classinfo{
+	width:100%;
+	margin:0 auto;
+	border:1px solid #f30;
+}
+.classinfo thead th{
+	line-height:32px;
+}
+.classinfo tbody td{
+	width:24%;
+	text-align:center
+}
+.classinfo thead th,.classinfo tbody td{
+	border-bottom:1px solid #f30;
+}
+.classinfo tfoot td{
+	padding:4px 8px;
+	line-height:20px;
+	vertical-align:top;
+}
+.classinfo span{
+	color:#f00
+}

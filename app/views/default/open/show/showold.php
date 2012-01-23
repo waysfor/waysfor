@@ -11,35 +11,20 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span><?=$showold['classname']?></span>
+                                        <span><?=$showinfo['classname']?></span>
                                     </h3>
                                 </div>
                                 <div class="bc">
-                                	<div class="">
-										<ul>
-											<li>
-												<span>开课时间：</span>
-												<?=$showold['opentime']?>
-											</li>
-											<li>
-												<span>课程费用：</span>
-												<?=$showold['price']?>/人
-											</li>
-											<li>
-												<span>授课对象：</span>
-												<?=$showold['object']?>
-											</li>
-										</ul>
-									</div>
+									<?include_once('inc/classinfo.php')?>
 									<div class="">
 										<a href="javascript:show_step(0)">课程大纲</a>
 										<a href="javascript:show_step(1)">讲师介绍</a>
 									</div>
 									<div class="step_content" style="display:block">
-										<?=$showold['classcontent']?>
+										<?=$showinfo['classcontent']?>
 									</div>
 									<div class="step_content">
-										暂无讲师<?=$showold['trainercontent']?>
+										暂无讲师<?=$showinfo['trainercontent']?>
 									</div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($now as $items):?>
+                        				<?php foreach($now as $key=>$items):?>
                                         <li><a href="/open/now/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>

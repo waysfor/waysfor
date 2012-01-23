@@ -43,7 +43,7 @@ class Main extends CI_Controller {
 		$class['news_type6'] = $this -> base_model -> get('news','newstype = 6','entertime desc','0','10');
 		/*分类资讯 end*/
 		
-		$class['now'] = $this -> base_model -> get('history','opentime > "'.date("Y-m-d").'"','opentime desc','0','10');
+		$class['now'] = $this -> base_model -> get_time('classinfo','>','nid,opentime,cid', '0', '10');
 		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
 		
 		$class['train'] = $this -> base_model -> get('history','status = 2 AND recommend = 1','','0','10');

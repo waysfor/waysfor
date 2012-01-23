@@ -5,7 +5,9 @@
         KindEditor.ready(function(K) {
                 editor = K.create('#editor_id',{
 					width : "99%",
-					height : "300px"
+					height : "300px",
+					imageUploadJson : '/www/editor/php/upload_json.php', 
+	                fileManagerJson : '/www/editor/php/file_manager_json.php'
 				});
         });
 </script>
