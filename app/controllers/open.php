@@ -92,10 +92,12 @@ class Open extends CI_Controller {
 
 			}
 			$cityarray = $this->config->item('city');
-			$class['city'] = $cityarray;
+			$weekarray = $this->config->item('week');
 			$openout = array();
 			foreach($openinfo as $key=>$v){
 				$v['address'] = $cityarray[$v['address']];
+				$v['weekf'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['opentime'])))];
+				$v['weeka'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['endtime'])))];
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;
@@ -150,10 +152,12 @@ class Open extends CI_Controller {
 
 			}
 			$cityarray = $this->config->item('city');
-			$class['city'] = $cityarray;
+			$weekarray = $this->config->item('week');
 			$openout = array();
 			foreach($openinfo as $key=>$v){
 				$v['address'] = $cityarray[$v['address']];
+				$v['weekf'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['opentime'])))];
+				$v['weeka'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['endtime'])))];
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;
@@ -194,10 +198,12 @@ class Open extends CI_Controller {
 
 			}
 			$cityarray = $this->config->item('city');
-			$class['city'] = $cityarray;
+			$weekarray = $this->config->item('week');
 			$openout = array();
 			foreach($openinfo as $key=>$v){
 				$v['address'] = $cityarray[$v['address']];
+				$v['weekf'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['opentime'])))];
+				$v['weeka'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['endtime'])))];
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;
@@ -237,10 +243,12 @@ class Open extends CI_Controller {
 
 			}
 			$cityarray = $this->config->item('city');
-			$class['city'] = $cityarray;
+			$weekarray = $this->config->item('week');
 			$openout = array();
 			foreach($openinfo as $key=>$v){
 				$v['address'] = $cityarray[$v['address']];
+				$v['weekf'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['opentime'])))];
+				$v['weeka'] = $weekarray[date('w',strtotime(str_replace('_','-',$v['endtime'])))];
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;

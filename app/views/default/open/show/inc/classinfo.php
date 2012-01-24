@@ -3,8 +3,8 @@
 											<thead>
 												<tr>
 													<th>开课地址</th>
-													<th>开课时间</th>
-													<th>结束时间</th>
+													<th>课程时间</th>
+													<th>星期</th>
 													<th>培训费用</th>
 												</tr>
 											</thead>
@@ -13,8 +13,8 @@
 												<?foreach($openinfo as $key=>$v):?>
 												<tr>
 													<td><?=$v['address']?></td>
-													<td><?=$v['opentime']?></td>
-													<td><?=$v['endtime']?></td>
+													<td><?=$v['opentime']?> － <?=$v['endtime']?></td>
+													<td><?=$v['weekf']?> － <?=$v['weeka']?></td>
 													<td><?=$showinfo['price']?>/人</td>
 												</tr>
 												<?endforeach;?>
