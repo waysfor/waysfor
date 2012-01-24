@@ -137,7 +137,13 @@
                                             </tr>
                                             <tr>
                                                 <th valign="top">开课地址：</th>
-                                                <td><input type="text" class="inp-form" name="data[address][]" /> (直接填写城市名，如：上海)</td>
+                                                <td>
+                                                    <select name="data[address][]">
+														<? foreach($city as $key=>$v): ?>
+														<option value='<?=$key?>'><?=$v?></option>
+														<? endforeach; ?>
+                                                    </select>
+												</td>
                                                 <td></td>
                                             </tr>
 											<tr id="add_btn">
@@ -226,7 +232,7 @@ function del_info(){
 	alert('暂时无法删除,不填写该内容即可');
 }
 function add_info(){
-	_add = "<tr><th>开课时间：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[opentime][]\" /> (例如：2012-01-01)</td><td></td></tr><tr><th>结束时间：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[endtime][]\" /> (例如：2012-01-01)</td><td></td></tr><tr><th>开课地址：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[address][]\" /> (直接填写城市名，如：上海) <a href=\"javascript:del_info();\">删除该信息</a></td><td></td></tr>";
+	_add = "<tr><th>开课时间：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[opentime][]\" /> (例如：2012-01-01)</td><td></td></tr><tr><th>结束时间：</th><td><input type=\"text\" class=\"inp-form\" name=\"data[endtime][]\" /> (例如：2012-01-01)</td><td></td></tr><tr><th>开课地址：</th><td><select name=\"data[address][]\"><? foreach($city as $key=>$v): ?><option value='<?=$key?>'><?=$v?></option><? endforeach; ?></select><a href=\"javascript:del_info();\">删除该信息</a></td><td></td></tr>";
 	$('#add_btn').before(_add);
 }
 

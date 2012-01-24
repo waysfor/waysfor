@@ -31,7 +31,7 @@ class History_model extends CI_Model{
 			$oid = $this->db->insert_id();
 			$total = count($datainfo['opentime']);
 			for($i=0;$i<$total;$i++){
-				if(isset($datainfo['address'][$i]) && !empty($datainfo['address'][$i])){
+				if(isset($datainfo['address'][$i]) && $datainfo['address'][$i]!='0'){
 					$CourseInfo = array(
 						'cid' => $oid,
 						'opentime' => $datainfo['opentime'][$i],
@@ -57,7 +57,7 @@ class History_model extends CI_Model{
 		if ($this->db->update($this->table_name, $data, $con)) {
 			$total = count($datainfo['opentime']);
 			for($i=0;$i<$total;$i++){
-				if(isset($datainfo['address'][$i]) && !empty($datainfo['address'][$i])){
+				if(isset($datainfo['address'][$i]) && $datainfo['address'][$i]!='0'){
 					$CourseInfo = array(
 						'nid' => $datainfo['nid'][$i],
 						'cid' => $id,

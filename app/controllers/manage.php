@@ -25,6 +25,7 @@ class Manage extends CI_Controller {
 		$this->act = $this->uri->segment(3);
 		//载入manage config
 		$this->config->load('manage');
+		$this->config->load('city');
 		$navarray = $this->config->item('nav');
 		$navitem = array();
 		foreach($navarray as $k=>$v) {
@@ -181,7 +182,9 @@ class Manage extends CI_Controller {
         if($this->input->is_post()) { //post
           
         } else {
-          $this->load->view('manage/history/add.html');
+		  $cityarray = $this->config->item('city');
+		  $out['city'] = $cityarray;
+          $this->load->view('manage/history/add.html',$out);
           $this->load->view('manage/footer.html');
         }
         break;
@@ -209,6 +212,8 @@ class Manage extends CI_Controller {
           
         } else {
 		  $id = $val;
+		  $cityarray = $this->config->item('city');
+		  $out['city'] = $cityarray;
 		  $result = $this -> history_model -> edit($id);
           $statusarray = $this->config->item('status');
 		  $result_info = $this -> history_model -> edit_info($id);

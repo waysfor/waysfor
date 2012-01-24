@@ -20,7 +20,7 @@
 												<?endforeach;?>
 											<?} else {?>
 												<tr>
-													<td colspan="4"><span>请拨打我们的客服热线</span>：021-20903136-802 ，真诚为您服务！</td>
+													<td colspan="4"><span>请拨打我们的客服热线</span>：021-20903136，真诚为您服务！</td>
 												</tr>
 											<?}?>
 											</tbody>
@@ -34,7 +34,7 @@
 												<?if(!empty($openinfo)){?>
 												<tr>
 													<td colspan="4">
-														<span><strong>报名电话</strong></span>：021-20903136-801
+														<span><strong>报名电话</strong></span>：021-20903136
 													</td>
 												</tr>
 												<?}?>

@@ -8,6 +8,7 @@ class Open extends CI_Controller {
 		$this -> load -> helper('url');
 		$this->config->load('main');
 		$navarray = $this->config->item('index_nav');
+		$this->config->load('city');
 		$navitem = array();
 		foreach($navarray as $k=>$v) {
 			$navitem[$k] = $v['item'];
@@ -84,12 +85,20 @@ class Open extends CI_Controller {
 			$id = $act;
 			$class = $this->class;
 			$class['allarray'] = $this->base_model->get('history',"`id` = '$id'");
-			$class['openinfo'] = $this->base_model->get('classinfo',"`cid` = '$id'");
+			$openinfo = $this->base_model->get('classinfo',"`cid` = '$id'");
 			if(isset($class['allarray'][0])) {
 				$class['allarray'] = $class['allarray'][0];
 				$class['showinfo'] = $class['allarray'];
 
 			}
+			$cityarray = $this->config->item('city');
+			$class['city'] = $cityarray;
+			$openout = array();
+			foreach($openinfo as $key=>$v){
+				$v['address'] = $cityarray[$v['address']];
+				$openout[] = $v;
+			}
+			$class['openinfo']=$openout;
 			$this->load->view('default/open/show/show',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -134,12 +143,20 @@ class Open extends CI_Controller {
 			$id = $act;
 			$class = $this->class;
 			$class['nowarray'] = $this->base_model->get('history',"`id` = '$id'");
-			$class['openinfo'] = $this->base_model->get('classinfo',"`cid` = '$id'");
+			$openinfo = $this->base_model->get('classinfo',"`cid` = '$id'");
 			if(isset($class['nowarray'][0])) {
 				$class['nowarray'] = $class['nowarray'][0];
 				$class['showinfo'] = $class['nowarray'];
 
 			}
+			$cityarray = $this->config->item('city');
+			$class['city'] = $cityarray;
+			$openout = array();
+			foreach($openinfo as $key=>$v){
+				$v['address'] = $cityarray[$v['address']];
+				$openout[] = $v;
+			}
+			$class['openinfo']=$openout;
 			$class['myurl'] = $this->uri->segment(2,0);
 			$this->load->view('default/open/show/shownow',$class);
 			$this->load->view('default/footer');
@@ -170,12 +187,20 @@ class Open extends CI_Controller {
 			$id = $act;
 			$class = $this->class;
 			$class['hotarray'] = $this->base_model->get('history',"`id` = '$id'");
-			$class['openinfo'] = $this->base_model->get('classinfo',"`cid` = '$id'");
+			$openinfo = $this->base_model->get('classinfo',"`cid` = '$id'");
 			if(isset($class['hotarray'][0])) {
 				$class['hotarray'] = $class['hotarray'][0];
 				$class['showinfo'] = $class['hotarray'];
 
 			}
+			$cityarray = $this->config->item('city');
+			$class['city'] = $cityarray;
+			$openout = array();
+			foreach($openinfo as $key=>$v){
+				$v['address'] = $cityarray[$v['address']];
+				$openout[] = $v;
+			}
+			$class['openinfo']=$openout;
 			$this->load->view('default/open/show/showhot',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -205,12 +230,20 @@ class Open extends CI_Controller {
 			$id = $act;
 			$class = $this->class;
 			$class['oldarray'] = $this->base_model->get('history',"`id` = '$id'");
-			$class['openinfo'] = $this->base_model->get('classinfo',"`cid` = '$id'");
+			$openinfo = $this->base_model->get('classinfo',"`cid` = '$id'");
 			if(isset($class['oldarray'][0])) {
 				$class['oldarray'] = $class['oldarray'][0];
 				$class['showinfo'] = $class['oldarray'];
 
 			}
+			$cityarray = $this->config->item('city');
+			$class['city'] = $cityarray;
+			$openout = array();
+			foreach($openinfo as $key=>$v){
+				$v['address'] = $cityarray[$v['address']];
+				$openout[] = $v;
+			}
+			$class['openinfo']=$openout;
 			$this->load->view('default/open/show/showold',$class);
 			$this->load->view('default/footer');
 		}else{
