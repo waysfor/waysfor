@@ -5,7 +5,23 @@
                     <div class="rc clearfix">
                         <div class="cl">
                             <div class="box">
-                                <img src="/www/default/img/nav_bg.png" width="652px" height="195" alt="" />
+								<div class="slide">
+									<ul id="slide_img">
+										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图1" title="焦点图1" /></a></li>
+										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图2" title="焦点图2" /></a></li>
+										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图3" title="焦点图3" /></a></li>
+										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图4" title="焦点图4" /></a></li>
+									</ul>
+									<div class="slide_txt">
+										<p id="slide_txt"></p>
+									</div>
+									<span id="slide_btn">
+										<i class="current" rel="1">&nbsp;</i>
+										<i rel="2">&nbsp;</i>
+										<i rel="3">&nbsp;</i>
+										<i rel="4">&nbsp;</i>
+									</span>	
+								</div>
                             </div>
                         </div>
                         <div class="cr">
@@ -46,13 +62,13 @@
                                         <span>近期开课</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="open/list">更多</a>
+                                    	<a href="/open/list">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($now as $items):?>
-                                        <li><a href="open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                        <li><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -65,13 +81,13 @@
                                         <span>推荐课程</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="open/list">更多</a>
+                                    	<a href="/open/list">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($recommend as $items):?>
-                                        <li><a href="open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -87,7 +103,7 @@
                                 <div class="bc">
                                     <ul class="traintype clearfix">
                         				<?php foreach($cate as $items):?>
-                                        <li><a href="#"><?=$items['name']?></a></li> 
+                                        <li><a href="/open/classtype/<?=$items['id']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -140,7 +156,7 @@
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($train as $items):?>
-                                        <li><a href="#"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -156,7 +172,7 @@
                                 <div class="bc">
                                     <ul class="traintype clearfix">
                         				<?php foreach($cate as $items):?>
-                                        <li><a href="#"><?=$items['name']?></a></li> 
+                                        <li><a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -310,3 +326,31 @@
                 </p>
             </div>
         </div>
+<script language="javascript">
+	var t = n = 0, count;
+	$(document).ready(function(){    
+		count=$("#slide_img li").length;
+		$("#slide_img li:not(:first-child)").hide();
+		$("#slide_txt").html($("#slide_img li:first-child").find("img").attr('alt'));
+		$("#banner_txt").click(function(){window.open($("#slide_img li:first-child a").attr('href'), "_blank")});
+		$("#slide_btn i").click(function() {
+			var i = $(this).attr('rel') - 1;//获取Li元素内的值，即1，2，3，4
+			n = i;
+			if (i >= count) return;
+			$("#slide_txt").html($("#slide_img li a").eq(i).find("img").attr('alt'));
+			$("#slide_txt").unbind().click(function(){window.open($("#slide_img li a").eq(i).attr('href'), "_blank")})
+			$("#slide_img li").filter(":visible").fadeOut(500).parent().children().eq(i).fadeIn(1000);
+			document.getElementsByClassName("slide")[0].style.background="";
+			$(this).toggleClass("current");
+			$(this).siblings().removeAttr("class");
+		});
+		t = setInterval("showAuto()", 4000);
+		$(".slide").eq(0).hover(function(){clearInterval(t)}, function(){t = setInterval("showAuto()", 4000);});
+	})
+
+	function showAuto()
+	{
+		n = n >=(count - 1) ? 0 : ++n;
+		$("#slide_btn i").eq(n).trigger('click');
+	}
+</script>
