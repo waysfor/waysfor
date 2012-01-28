@@ -1,7 +1,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>近期开课</span>
+                                        <span><a href="/open/now">近期开课</a></span>
                                     </h3>
                                     <span class="pr">
                                     	<a href="/open/now">更多</a>

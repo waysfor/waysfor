@@ -35,7 +35,6 @@
 									<th class="table-header-repeat line-left minwidth-1"><a href="">课程性质</a></th>
 									<th class="table-header-repeat line-left"><a href="">课程类型</a></th>
 									<th class="table-header-repeat line-left minwidth-1"><a href="">讲师简介</a></th>
-									<th class="table-header-repeat line-left"><a href="">开课时间</a></th>
 									<th class="table-header-options line-left"><a href="">操作</a></th>
 								</thead>
 								<?php foreach($class_course as $u): ?>
@@ -46,7 +45,6 @@
 									<td><?=$u['status']?></td>
 									<td><?=$u['type']?></td>
 									<td><?php if (!empty($u['trainercontent'])){echo '有内容';}else{echo '没有内容';}?></td>
-									<td><?=$u['opentime']?></td>
 									<td class="options-width">
 										<a href="/manage/history/edit/<?=$u['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
 										<a href="javascript:if(confirm('确实要删除吗?'))location='/manage/history/del/<?=$u['id']?>';" title="删除" class="icon-2 info-tooltip"></a>

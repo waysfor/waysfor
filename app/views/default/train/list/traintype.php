@@ -10,7 +10,7 @@
                         <div class="cr">
 							<?include_once('inc/type.php')?>
 							<?include_once('inc/recommend.php')?>
-							<?include_once('inc/demo.php')?>
+							<!--<?include_once('inc/demo.php')?>-->
                         </div>
 						<?if($type != '课程分类'){?>
                         <div class="cl">
@@ -44,8 +44,8 @@
 								</div>
                                 <div class="bc">
                                     <ul class="list"> 
-                        				<?php foreach($opentype as $items):?>
-                                        <li><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['posttime']?></span></li> 
+                        				<?php foreach($opentype as $key=>$items):?>
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['posttime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -82,9 +82,11 @@
                                     </h3>
 								</div>
 								<div class="bc">
-									<?php foreach($cate as $items):?>
-									<a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a> 
-									<?php endforeach;?>
+									<ul class="typelist">
+										<?php foreach($cate as $items):?>
+										<li><a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a></li>
+										<?php endforeach;?>
+									</ul>
 								</div>
 							</div>
 						</div>

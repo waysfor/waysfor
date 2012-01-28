@@ -11,7 +11,6 @@ class Main extends CI_Controller {
 		foreach($navarray as $k=>$v) {
 			$navitem[$k] = $v['item'];
 		}
-		$this->_header();
 	}
 	private function _nav() {
 		$nav = $this->config->item('index_nav');
@@ -25,10 +24,6 @@ class Main extends CI_Controller {
 		$out['item'] = $this->item;
 		//$out['act']  = $this->act;
 		return $this->load->view('default/nav', $out, true);
-	}
-	private function _header() {
-			$header['nav'] = $this->_nav();
-			$this->load->view('default/header', $header);
 	}
 	
 	public function index()
@@ -51,7 +46,10 @@ class Main extends CI_Controller {
 		$class['trainer'] = $this -> base_model -> get('trainer','recommend = 1','','0','10');
 		
 		$class['cate'] = $this -> base_model -> get('cate');
-		
+
+		$header['webtitle']='上海聚宇企业管理培训网 -- beta 2.0';
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
 		$this->load->view('default/index',$class);
 		$this->load->view('default/footer');
 	}

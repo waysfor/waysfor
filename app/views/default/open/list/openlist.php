@@ -19,11 +19,11 @@
                                         <span>公开课程</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">上海</a>
-                                    	<a href="#">北京</a>
-                                    	<a href="#">广州</a>
-                                    	<a href="#">其他</a> &nbsp;|&nbsp;
-                                    	<a href="#">更多</a>
+										<? foreach($cityarray as $key=>$v):?>
+										<?if($key != '0'):?>
+                                    	<a href="/open/address/<?=$key?>"><?=$v?></a>
+										<?endif?>
+										<?endforeach?>
                                     </span>
                                 </div>
 								<div class="mypage">
@@ -49,9 +49,9 @@
 									</select>
 								</div>
                                 <div class="bc">
-                                    <ul class="list"> 
-                        				<?php foreach($all as $items):?>
-                                        <li><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                    <ul class="list openlist"> 
+                        				<?php foreach($all as $key=>$items):?>
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

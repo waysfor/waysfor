@@ -16,15 +16,8 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>热门课程列表</span>
+                                        <span>热门课程</span>
                                     </h3>
-                                    <span class="pr">
-                                    	<a href="#">上海</a>
-                                    	<a href="#">北京</a>
-                                    	<a href="#">广州</a>
-                                    	<a href="#">其他</a> &nbsp;|&nbsp;
-                                    	<a href="#">更多</a>
-                                    </span>
                                 </div>
 								<div class="mypage">
 									<a href="<?=$my_page['url'].$my_page['min_pages']?>" class="page-far-left" title="第一页">第一页</a>
@@ -49,9 +42,9 @@
 									</select>
 								</div>
                                 <div class="bc">
-                                    <ul class="list"> 
-                        				<?php foreach($hotlist as $items):?>
-                                        <li><a href="/open/hot/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                    <ul class="list openlist"> 
+                        				<?php foreach($hotlist as $key=>$items):?>
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/hot/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

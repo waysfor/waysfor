@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title><?=$webtitle?></title>
         <link rel="stylesheet" type="text/css" href="/www/default/css/index.css" />
         <script type="text/javascript" src="/www/default/js/jquery.js"></script>
         <script type="text/javascript" src="/www/default/js/base.js"></script>

@@ -15,17 +15,10 @@
                                     </h3>
                                 </div>
                                 <div class="bc">
-                                	<div class="">
-										<ul>
-											<li>
-												<span>授课对象：</span>
-												<?=$showall['object']?>
-											</li>
-										</ul>
-									</div>
-									<div class="">
-										<a href="javascript:show_step(0)">课程大纲</a>
-										<a href="javascript:show_step(1)">讲师选择</a>
+									<?include_once('inc/classinfo.php')?>
+									<div class="tags">
+										<a href="javascript:show_step(0)" class="cerrent">课程大纲</a>
+										<!--<a href="javascript:show_step(1)">讲师选择</a>-->
 									</div>
 									<div class="step_content" style="display:block">
 										<?=$showall['classcontent']?>
@@ -37,8 +30,8 @@
                             </div>
                         </div>
                         <div class="cr">
-							<?include_once('inc/about_client.php')?>
-							<?include_once('inc/keyword.php')?>
+							<!--<?include_once('inc/about_client.php')?>-->
+							<!--<?include_once('inc/keyword.php')?>-->
 							<?include_once('inc/type.php')?>
 							<?include_once('inc/recommend.php')?>
                         </div>

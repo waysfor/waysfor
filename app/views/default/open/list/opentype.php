@@ -19,13 +19,6 @@
                                     <h3>
                                         <span><?=$type?></span>
                                     </h3>
-                                    <span class="pr">
-                                    	<a href="#">上海</a>
-                                    	<a href="#">北京</a>
-                                    	<a href="#">广州</a>
-                                    	<a href="#">其他</a> &nbsp;|&nbsp;
-                                    	<a href="#">更多</a>
-                                    </span>
                                 </div>
 								<div class="mypage">
 									<a href="<?=$my_page['url'].$my_page['min_pages']?>" class="page-far-left" title="第一页">第一页</a>
@@ -50,9 +43,9 @@
 									</select>
 								</div>
                                 <div class="bc">
-                                    <ul class="list"> 
-                        				<?php foreach($opentype as $items):?>
-                                        <li><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                    <ul class="list openlist"> 
+                        				<?php foreach($opentype as $key=>$items):?>
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -89,9 +82,11 @@
                                     </h3>
 								</div>
 								<div class="bc">
-									<?php foreach($cate as $items):?>
-									<a href="/open/classtype/<?=$items['id']?>"><?=$items['name']?></a> 
-									<?php endforeach;?>
+									<ul class="typelist">
+										<?php foreach($cate as $items):?>
+										<li><a href="/open/classtype/<?=$items['id']?>"><?=$items['name']?></a></li>
+										<?php endforeach;?>
+									</ul>
 								</div>
 							</div>
 						</div>

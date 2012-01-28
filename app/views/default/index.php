@@ -62,13 +62,13 @@
                                         <span>近期开课</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="/open/list">更多</a>
+                                    	<a href="/open/now">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($now as $items):?>
-                                        <li><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                        <li><a href="/open/now/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -81,13 +81,13 @@
                                         <span>推荐课程</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="/open/list">更多</a>
+                                    	<a href="/open/hot">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($recommend as $items):?>
-                                        <li><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li><a href="/open/hot/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -131,7 +131,7 @@
                                         <span>讲师介绍</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                    	<a href="/trainer">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">

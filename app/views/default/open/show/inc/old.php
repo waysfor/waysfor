@@ -1,7 +1,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>已开课程</span>
+                                        <span><a href="/open/old">已开课程</a></span>
                                     </h3>
                                     <span class="pr">
                                     	<a href="/open/old">更多</a>

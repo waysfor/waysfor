@@ -16,22 +16,24 @@
                                 </div>
                                 <div class="bc">
 									<?include_once('inc/classinfo.php')?>
-									<div class="">
-										<a href="javascript:show_step(0)">课程大纲</a>
+									<div class="tags">
+										<a href="javascript:show_step(0)" class="cerrent">课程大纲</a>
 										<a href="javascript:show_step(1)">讲师介绍</a>
 									</div>
 									<div class="step_content" style="display:block">
 										<?=$showinfo['classcontent']?>
 									</div>
 									<div class="step_content">
-										<?=$showinfo['trainername']?>
+										<div>
+											<span style="color:#e53333;"><b>培训讲师：</b></span><?=$showinfo['trainername']?> 老师
+										</div>
 										<?=$showinfo['trainercontent']?>
 									</div>
                                 </div>
                             </div>
                         </div>
                         <div class="cr">
-							<?include_once('inc/keyword.php')?>
+							<!--<?include_once('inc/keyword.php')?>-->
 							<?include_once('inc/type.php')?>
 							<?include_once('inc/now.php')?>
 							<?include_once('inc/hot.php')?>
@@ -62,6 +64,11 @@
         </div>
 <script type="text/javascript">
 function show_step(step){
+	$(".tags a")
+		.attr("class","");
+	$(".tags a")
+		.eq(step)
+		.attr("class","cerrent");
 	$(".step_content",document.getElementById("demo"))
 			.hide()
 			.eq(step)

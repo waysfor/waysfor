@@ -13,7 +13,6 @@ class Open extends CI_Controller {
 		foreach($navarray as $k=>$v) {
 			$navitem[$k] = $v['item'];
 		}
-		$this->_header();
 		
 		$class['now'] = $this -> base_model -> get_time('classinfo','>','nid,opentime,cid', '0', '10');
 		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
@@ -36,15 +35,13 @@ class Open extends CI_Controller {
 		//$out['act']  = $this->act;
 		return $this->load->view('default/nav', $out, true);
 	}
-	private function _header() {
-			$header['nav'] = $this->_nav();
-			$this->load->view('default/header', $header);
-	}
 	
 	function index()
 	{
 		$class = $this->class;
 		$offset = $this -> uri -> segment(3,0);
+		$cityarray = $this->config->item('city');
+		$class['cityarray'] = $cityarray;
 		$my_page= array();
 		$my_page['sub_num'] = '25';
 		$my_page['all_num'] = $this -> base_model ->get_count('history','`status` = 1','id');
@@ -57,6 +54,10 @@ class Open extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 		$class['my_page'] = $my_page;
 		$class['all'] = $this -> base_model ->get('history','`status`=1','',$offset,$my_page['sub_num']);
+
+		$header['webtitle'] = "公开课列表信息 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
 		$this->load->view('default/open/list/openlist',$class);
 		$this->load->view('default/footer');
 	}
@@ -64,6 +65,8 @@ class Open extends CI_Controller {
 	{
 		$class = $this->class;
 		$offset = $this -> uri -> segment(3,0);
+		$cityarray = $this->config->item('city');
+		$class['cityarray'] = $cityarray;
 		$my_page= array();
 		$my_page['sub_num'] = '25';
 		$my_page['all_num'] = $this -> base_model ->get_count('history','`status` = 1','id');
@@ -76,6 +79,10 @@ class Open extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 		$class['my_page'] = $my_page;
 		$class['all'] = $this -> base_model ->get('history','`status`=1','',$offset,$my_page['sub_num']);
+
+		$header['webtitle'] = "公开课列表信息 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
 		$this->load->view('default/open/list/openlist',$class);
 		$this->load->view('default/footer');
 	}
@@ -101,10 +108,49 @@ class Open extends CI_Controller {
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;
+
+			$header['webtitle'] = $class['allarray']['classname']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/show/show',$class);
 			$this->load->view('default/footer');
 		}else{
 			var_dump('空');
+		}
+	}
+	function address($act = '', $val=0)
+	{
+		if(!empty($act)){
+			$type_num = $act;
+			$class = $this->class;
+			
+			$offset = $this -> uri -> segment(4,0);
+			$my_page= array();
+			$my_page['sub_num'] = '25';
+			$my_page['all_num'] = $this -> base_model ->get_address_count('history','count(id)',$type_num);
+			$my_page['url'] = '/open/address/'.$type_num.'/';
+			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+			$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+			$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
+			$my_page['min_pages'] = '0';
+			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
+			$class['my_page'] = $my_page;
+
+			$cityarray = $this->config->item('city');
+			$class['cityarray'] = $cityarray;
+			$class['city'] = $cityarray[$type_num];
+			$class['openaddress'] = $this -> base_model ->get_address('history','`id`, `classname`,`trainername`',$type_num,$offset,$my_page['sub_num']);
+
+			$class['cityid'] = $type_num;
+
+			$header['webtitle'] = "开课地点：".$class['city']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
+			$this->load->view('default/open/list/openaddress',$class);
+			$this->load->view('default/footer');
+		}else{
+			echo 'erro';
 		}
 	}
 	function classtype($act = '', $val = 0)
@@ -130,11 +176,19 @@ class Open extends CI_Controller {
 			$typearray = $this->config->item('type');
 			$class['type'] = $typearray[$type_num];
 			$class['opentype'] = $this -> base_model ->get('history','`status` = 1 AND `classtype` = "'.$type_num.'"','',$offset,$my_page['sub_num']);
+
+			$header['webtitle'] = "公开课分类：".$class['type']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/list/opentype',$class);
 			$this->load->view('default/footer');
 		}else{
 			$class = $this->class;
 			$class['type'] = '课程分类';
+
+			$header['webtitle'] = "公开课分类 -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/list/opentype',$class);
 			$this->load->view('default/footer');
 		}
@@ -162,6 +216,10 @@ class Open extends CI_Controller {
 			}
 			$class['openinfo']=$openout;
 			$class['myurl'] = $this->uri->segment(2,0);
+
+			$header['webtitle'] = $class['nowarray']['classname']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/show/shownow',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -181,6 +239,10 @@ class Open extends CI_Controller {
 			$class['my_page'] = $my_page;
 
 			$class['nowlist'] = $this -> base_model -> get_time('classinfo','>','nid,opentime,cid', $offset,$my_page['sub_num']);
+
+			$header['webtitle'] = "公开课近期开课 -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/list/opennow',$class);
 			$this->load->view('default/footer');
 		}
@@ -195,7 +257,6 @@ class Open extends CI_Controller {
 			if(isset($class['hotarray'][0])) {
 				$class['hotarray'] = $class['hotarray'][0];
 				$class['showinfo'] = $class['hotarray'];
-
 			}
 			$cityarray = $this->config->item('city');
 			$weekarray = $this->config->item('week');
@@ -207,6 +268,10 @@ class Open extends CI_Controller {
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;
+
+			$header['webtitle'] = $class['hotarray']['classname'];
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/show/showhot',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -226,6 +291,10 @@ class Open extends CI_Controller {
 			$class['my_page'] = $my_page;
 
 			$class['hotlist'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','',$offset,$my_page['sub_num']);
+
+			$header['webtitle'] = "公开课推荐课程 -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/list/openhot',$class);
 			$this->load->view('default/footer');
 		}
@@ -252,6 +321,10 @@ class Open extends CI_Controller {
 				$openout[] = $v;
 			}
 			$class['openinfo']=$openout;
+
+			$header['webtitle'] = $class['oldarray']['classname']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/show/showold',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -271,6 +344,10 @@ class Open extends CI_Controller {
 			$class['my_page'] = $my_page;
 
 			$class['oldlist'] = $this -> base_model -> get_time('classinfo','<','nid,opentime,cid', $offset,$my_page['sub_num']);
+
+			$header['webtitle'] = "公开课近期已开 -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/open/list/openold',$class);
 			$this->load->view('default/footer');
 		}

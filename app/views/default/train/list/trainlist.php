@@ -10,7 +10,7 @@
                         <div class="cr">
 							<?include_once('inc/type.php')?>
 							<?include_once('inc/recommend.php')?>
-							<?include_once('inc/demo.php')?>
+							<!--<?include_once('inc/demo.php')?>-->
                         </div>
                         <div class="cl">
                             <div class="box">
@@ -42,9 +42,9 @@
 									</select>
 								</div>
                                 <div class="bc">
-                                    <ul class="list">
-                        				<?php foreach($all as $items):?>
-                                        <li><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['posttime']?></span></li> 
+                                    <ul class="list openlist">
+                        				<?php foreach($all as $key=>$items):?>
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['classtype']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

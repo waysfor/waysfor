@@ -1,7 +1,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>课程类型</span>
+                                        <span><a href="/train/classtype">课程类型</a></span>
                                     </h3>
                                     <span class="pr">
                                     	<a href="/train/classtype">更多</a>

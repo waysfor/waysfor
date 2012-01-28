@@ -298,6 +298,9 @@ body{
     padding-left:5px;
     font-family:"微软雅黑","黑体","宋体"
 }
+.box .bt h3 a{
+	color:#444;
+}
 ul.list li{
     height:23px;
     line-height:23px;
@@ -419,6 +422,7 @@ ul.traintype li a:hover{
 
 .step_content{
 	display:none;
+	padding-top:20px;
 }
 .mypage{
 	line-height:30px;
@@ -456,4 +460,53 @@ ul.traintype li a:hover{
 }
 .classinfo span{
 	color:#f00
+}
+.tags{
+	padding-left:18px;
+	border-bottom: 1px solid #3c3c3c;
+}
+.tags a{
+	position:relative;
+	margin-bottom:-1px;
+	border:1px solid #3c3c3c;
+	border-bottom:1px solid #3c3c3c;
+	display:inline-block;
+	padding:2px 6px 0;
+	color:#000;
+}
+.tags a:hover,.tags a.cerrent{
+	color:#f30;
+	border-bottom:1px solid #fff;
+}
+ul.openlist{
+	list-style:none;
+}
+ul.openlist li{
+	height:30px;
+	line-height:30px;
+	background-image:none;
+}
+ul.openlist li.bg{
+	background:#efefef;
+
+}
+ul.typelist{
+	padding:12px 0;
+}
+ul.typelist li{
+	width:33%;
+	line-height:48px;
+	float:left;
+	text-align:center;
+}
+ul.typelist li a{
+	color:#333;
+	display:inline-block;
+	width:120px;
+	margin:0 auto;
+	line-height:32px;
+	border:1px solid #ccc;
+}
+ul.typelist li a:hover{
+	background:#efefef;
 }

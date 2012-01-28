@@ -7,12 +7,12 @@ class Train extends CI_Controller {
 		$this -> load -> model('base_model');
 		$this -> load -> helper('url');
 		$this->config->load('main');
+		$this->config->load('manage');
 		$navarray = $this->config->item('index_nav');
 		$navitem = array();
 		foreach($navarray as $k=>$v) {
 			$navitem[$k] = $v['item'];
 		}
-		$this->_header();
 		
 		$class['recommend'] = $this -> base_model -> get('history','`status` = 2 AND recommend = 1','','0','10');
 		
@@ -33,13 +33,34 @@ class Train extends CI_Controller {
 		//$out['act']  = $this->act;
 		return $this->load->view('default/nav', $out, true);
 	}
-	private function _header() {
-			$header['nav'] = $this->_nav();
-			$this->load->view('default/header', $header);
-	}
 	
 	function index(){
-		header("Location: /train/trainlist/0");
+		$class = $this->class;
+		$offset = $this -> uri -> segment(3,0);
+		$my_page= array();
+		$my_page['sub_num'] = '25';
+		$my_page['all_num'] = $this -> base_model ->get_count('history','`status` = 2','id');
+		$my_page['url'] = '/train/trainlist/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(3,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
+		$class['my_page'] = $my_page;
+		$class['all'] = $this -> base_model ->get('history','`status`=2','',$offset,$my_page['sub_num']);
+        $typearray = $this->config->item('type');
+		foreach($class['all'] as $v){
+			$v['classtype'] = $typearray[$v['classtype']];
+			$classtypeout[] = $v;
+		}
+		$class['all'] = $classtypeout;
+
+		$header['webtitle'] = "企业内训列表信息 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
+		$this->load->view('default/train/list/trainlist',$class);
+		$this->load->view('default/footer');
 	}
 	
 	function trainlist(){
@@ -57,6 +78,16 @@ class Train extends CI_Controller {
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 		$class['my_page'] = $my_page;
 		$class['all'] = $this -> base_model ->get('history','`status`=2','',$offset,$my_page['sub_num']);
+        $typearray = $this->config->item('type');
+		foreach($class['all'] as $v){
+			$v['classtype'] = $typearray[$v['classtype']];
+			$classtypeout[] = $v;
+		}
+		$class['all'] = $classtypeout;
+
+		$header['webtitle'] = "企业内训列表信息 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
 		$this->load->view('default/train/list/trainlist',$class);
 		$this->load->view('default/footer');
 	}
@@ -72,6 +103,10 @@ class Train extends CI_Controller {
 				$class['showall'] = $class['allarray'];
 
 			}
+
+			$header['webtitle'] = $class['allarray']['classname']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/train/show/show',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -101,11 +136,19 @@ class Train extends CI_Controller {
 			$typearray = $this->config->item('type');
 			$class['type'] = $typearray[$type_num];
 			$class['opentype'] = $this -> base_model ->get('history','`status` = 2 AND `classtype` = "'.$type_num.'"','',$offset,$my_page['sub_num']);
+
+			$header['webtitle'] = "内训分类：".$class['type']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/train/list/traintype',$class);
 			$this->load->view('default/footer');
 		}else{
 			$class = $this->class;
 			$class['type'] = '课程分类';
+
+			$header['webtitle'] = "企业内训分类 -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/train/list/traintype',$class);
 			$this->load->view('default/footer');
 		}
@@ -118,9 +161,13 @@ class Train extends CI_Controller {
 			$class['hotarray'] = $this->base_model->get('history',"`id` = '$id'");
 			if(isset($class['hotarray'][0])) {
 				$class['hotarray'] = $class['hotarray'][0];
-				$class['showhot'] = $class['hotarray'];
+				$class['showall'] = $class['hotarray'];
 
 			}
+
+			$header['webtitle'] = $class['hotarray']['classname']." -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$this->load->view('default/train/show/showrecommend',$class);
 			$this->load->view('default/footer');
 		}else{
@@ -139,6 +186,10 @@ class Train extends CI_Controller {
 			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 			$class['my_page'] = $my_page;
 
+
+			$header['webtitle'] = "热点内训 -- 上海聚宇企业管理培训网";
+			$header['nav'] = $this->_nav();
+			$this->load->view('default/header', $header);
 			$class['hotlist'] = $this -> base_model -> get('history','`status` = 2 AND `recommend` = 1','',$offset,$my_page['sub_num']);
 			$this->load->view('default/train/list/trainrecommend',$class);
 			$this->load->view('default/footer');

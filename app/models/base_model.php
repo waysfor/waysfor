@@ -73,4 +73,31 @@ class Base_model extends CI_Model{
 			return $list;
 		}
 	}
+	function get_address($table_info = 'null', $field, $type_num = 1, $start = 0, $limit = 0){
+		$where = " id in(SELECT cid FROM `classinfo` WHERE address=" .$type_num.")";
+		$sql = "SELECT ".$field." FROM " . $table_info;
+		if($where != ''){
+			$sql .= " WHERE " . $where;
+		}
+		if($limit > 0) {
+			$sql .= " LIMIT $start, $limit";
+		}
+		$query = $this->db->query($sql);
+		return $query->result_array();
+	}
+	function get_address_count($table_info = 'null', $field, $type_num = 1, $start = 0, $limit = 0){
+		$where = " id in(SELECT cid FROM `classinfo` WHERE address=" .$type_num.")";
+		$sql = "SELECT ".$field." AS count FROM " . $table_info;
+		if($where != ''){
+			$sql .= " WHERE " . $where;
+		}
+		if($limit > 0) {
+			$sql .= " LIMIT $start, $limit";
+		}
+		$query = $this->db->query($sql);
+		$ret = $query->result();
+		if(isset($ret[0]->count)){
+		   return  $ret[0]->count;
+		}
+	}
 }

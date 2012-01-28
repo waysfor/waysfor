@@ -1,7 +1,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>热点内训</span>
+                                        <span><a href="/train/recommend">热点内训</a></span>
                                     </h3>
                                     <span class="pr">
                                     	<a href="/train/recommend">更多</a>

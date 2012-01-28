@@ -9,7 +9,7 @@
                     <div class="rc clearfix">
                         <div class="cr">
 							<?include_once('inc/type.php')?>
-							<?include_once('inc/demo.php')?>
+							<!--<?include_once('inc/demo.php')?>-->
 							<?include_once('inc/recommend.php')?>
                         </div>
                         <div class="cl">
@@ -43,8 +43,8 @@
 								</div>
                                 <div class="bc">
                                     <ul class="list"> 
-                        				<?php foreach($hotlist as $items):?>
-                                        <li><a href="/train/recommend/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                        				<?php foreach($hotlist as $key=>$items):?>
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/train/recommend/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
