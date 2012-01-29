@@ -3,7 +3,7 @@
             	<div class="row col2">
                     <div class="rt">
                         <h2>
-                            <span><a href="/open">公开课</a></span>
+                            <span><a href="/open">公开课</a></span> - <?=$showinfo['classname']?>
                         </h2>
                     </div>
                     <div class="rc clearfix">

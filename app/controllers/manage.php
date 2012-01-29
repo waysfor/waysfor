@@ -470,7 +470,7 @@ class Manage extends CI_Controller {
         }
         break;
 	  case 'add_save':
-		//姓氏处理 $data['fname'] = substr($_POST['trainername'],1);
+		$data['fname'] = $_POST['trainername'];
 		$data['name'] = $_POST['trainername'];
 		$data['gender'] = $_POST['gender'];
 		$data['age'] = $_POST['age'];
@@ -484,6 +484,7 @@ class Manage extends CI_Controller {
 		$data['back'] = $_POST['back'];
 		$data['listtime'] = date("Y-m-d h:i:s");
 		$data['entertime'] = date("Y-m-d h:i:s");
+		$data['recommend'] = $_POST['recommend'];
 		
 		$result = $this -> trainer_course_model -> add($data);
 		break;
@@ -505,6 +506,7 @@ class Manage extends CI_Controller {
         break;
       case 'edit_save':
         $data['id'] = $_POST['id'];
+		$data['fname'] = $_POST['trainername'];
 		$data['name'] = $_POST['trainername'];
 		$data['gender'] = $_POST['gender'];
 		$data['age'] = $_POST['age'];
@@ -517,6 +519,7 @@ class Manage extends CI_Controller {
 		$data['price'] = $_POST['price'];
 		$data['back'] = $_POST['back'];
 		$data['listtime'] = date("Y-m-d h:i:s");
+		$data['recommend'] = $_POST['recommend'];
 		
         $con = "id = " . $data['id']; 
         unset($data['id']);

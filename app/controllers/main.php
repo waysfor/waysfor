@@ -6,6 +6,8 @@ class Main extends CI_Controller {
 		parent::__construct();
 		$this -> load -> model('base_model');
 		$this->config->load('main');
+		$this->config->load('manage');
+		$this->config->load('city');
 		$navarray = $this->config->item('index_nav');
 		$navitem = array();
 		foreach($navarray as $k=>$v) {
@@ -38,12 +40,27 @@ class Main extends CI_Controller {
 		$class['news_type6'] = $this -> base_model -> get('news','newstype = 6','entertime desc','0','10');
 		/*分类资讯 end*/
 		
-		$class['now'] = $this -> base_model -> get_time('classinfo','>','nid,opentime,cid', '0', '10');
+		$class['now'] = $this -> base_model -> get_classinfo('0','10');
+		$cityarray = $this->config->item('city');
+		$nowout = array();
+		foreach($class['now'] as $v){
+			$v['address'] = $cityarray[$v['address']];
+			$nowout[] = $v;
+		}
+		$class['now'] = $nowout;
+
 		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
 		
 		$class['train'] = $this -> base_model -> get('history','status = 2 AND recommend = 1','','0','10');
 		
-		$class['trainer'] = $this -> base_model -> get('trainer','recommend = 1','','0','10');
+		$class['trainer'] = $this -> base_model -> get('trainer_resource','recommend = 1','','0','10');
+		$typearray = $this->config->item('type');
+		$trainerout = array();
+		foreach($class['trainer'] as $v){
+			$v['trainertype'] = $typearray[$v['trainertype']];
+			$trainerout[] = $v;
+		}
+		$class['trainer'] = $trainerout;
 		
 		$class['cate'] = $this -> base_model -> get('cate');
 

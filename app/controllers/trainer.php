@@ -13,7 +13,7 @@ class Trainer extends CI_Controller {
 			$navitem[$k] = $v['item'];
 		}
 		
-		$class['recommend'] = $this -> base_model -> get('trainer','recommend = 1','','0','10');
+		$class['recommend'] = $this -> base_model -> get('trainer_resource','recommend = 1','','0','10');
         $typearray = $this->config->item('type');
 		foreach($class['recommend'] as $v){
 			$v['trainertype'] = $typearray[$v['trainertype']];
@@ -46,7 +46,7 @@ class Trainer extends CI_Controller {
 		$offset = $this -> uri -> segment(3,0);
 		$my_page= array();
 		$my_page['sub_num'] = '25';
-		$my_page['all_num'] = $this -> base_model ->get_count('trainer','1','id');
+		$my_page['all_num'] = $this -> base_model ->get_count('trainer_resource','1','id');
 		$my_page['url'] = '/trainer/trainerlist/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(3,0)/$my_page['sub_num'] + '1';
@@ -55,7 +55,7 @@ class Trainer extends CI_Controller {
 		$my_page['min_pages'] = '0';
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 		$class['my_page'] = $my_page;
-		$class['all'] = $this -> base_model ->get('trainer','','',$offset,$my_page['sub_num']);
+		$class['all'] = $this -> base_model ->get('trainer_resource','','',$offset,$my_page['sub_num']);
         $typearray = $this->config->item('type');
 		foreach($class['all'] as $v){
 			$v['trainertype'] = $typearray[$v['trainertype']];
@@ -78,7 +78,7 @@ class Trainer extends CI_Controller {
 		$offset = $this -> uri -> segment(3,0);
 		$my_page= array();
 		$my_page['sub_num'] = '25';
-		$my_page['all_num'] = $this -> base_model ->get_count('trainer','1','id');
+		$my_page['all_num'] = $this -> base_model ->get_count('trainer_resource','1','id');
 		$my_page['url'] = '/trainer/trainerlist/';
 		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 		$my_page['current_pages'] = $this -> uri -> segment(3,0)/$my_page['sub_num'] + '1';
@@ -87,7 +87,7 @@ class Trainer extends CI_Controller {
 		$my_page['min_pages'] = '0';
 		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 		$class['my_page'] = $my_page;
-		$class['all'] = $this -> base_model ->get('trainer','','',$offset,$my_page['sub_num']);
+		$class['all'] = $this -> base_model ->get('trainer_resource','','',$offset,$my_page['sub_num']);
         $typearray = $this->config->item('type');
 		foreach($class['all'] as $v){
 			$v['trainertype'] = $typearray[$v['trainertype']];
@@ -113,7 +113,7 @@ class Trainer extends CI_Controller {
 			$offset = $this -> uri -> segment(4,0);
 			$my_page= array();
 			$my_page['sub_num'] = '25';
-			$my_page['all_num'] = $this -> base_model ->get_count('trainer','`trainertype` = "'.$type_num.'"','id');
+			$my_page['all_num'] = $this -> base_model ->get_count('trainer_resource','`trainertype` = "'.$type_num.'"','id');
 			$my_page['url'] = '/trainer/trainertype/'.$type_num.'/';
 			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
@@ -126,7 +126,14 @@ class Trainer extends CI_Controller {
 			$this->config->load('manage');
 			$typearray = $this->config->item('type');
 			$class['type'] = $typearray[$type_num];
-			$class['opentype'] = $this -> base_model ->get('trainer','`trainertype` = "'.$type_num.'"','',$offset,$my_page['sub_num']);
+			$class['trainertype'] = $this -> base_model ->get('trainer_resource','`trainertype` = "'.$type_num.'"','',$offset,$my_page['sub_num']);
+			$typearray = $this->config->item('type');
+			$trainerout = array();
+			foreach($class['trainertype'] as $v){
+				$v['trainertype'] = $typearray[$v['trainertype']];
+				$trainerout[] = $v;
+			}
+			$class['trainertype'] = $trainerout;
 
 			$header['webtitle'] = "培训讲师分类：".$class['type']." -- 上海聚宇企业管理培训网";
 			$header['nav'] = $this->_nav();
@@ -148,7 +155,7 @@ class Trainer extends CI_Controller {
 		if(!empty($act)){
 			$id = $act;
 			$class = $this->class;
-			$class['allarray'] = $this->base_model->get('trainer',"`id` = '$id'");
+			$class['allarray'] = $this->base_model->get('trainer_resource',"`id` = '$id'");
 			$typearray = $this->config->item('type');
 			if(isset($class['allarray'])){
 				$class['allarray'] = $class['allarray'][0];
@@ -166,7 +173,7 @@ class Trainer extends CI_Controller {
 			$offset = $this -> uri -> segment(4,0);
 			$my_page= array();
 			$my_page['sub_num'] = '25';
-			$my_page['all_num'] = $this -> base_model ->get_count('trainer','recommend = 1','id');
+			$my_page['all_num'] = $this -> base_model ->get_count('trainer_resource','recommend = 1','id');
 			$my_page['url'] = '/trainer/recommend/';
 			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
 			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
@@ -176,7 +183,14 @@ class Trainer extends CI_Controller {
 			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 			$class['my_page'] = $my_page;
 
-			$class['recommendlist'] = $this -> base_model -> get('trainer','recommend = 1','',$offset,$my_page['sub_num']);
+			$class['recommendlist'] = $this -> base_model -> get('trainer_resource','recommend = 1','',$offset,$my_page['sub_num']);
+			$typearray = $this->config->item('type');
+			$trainerout = array();
+			foreach($class['recommendlist'] as $v){
+				$v['trainertype'] = $typearray[$v['trainertype']];
+				$trainerout[] = $v;
+			}
+			$class['recommendlist'] = $trainerout;
 
 			$header['webtitle'] = "培训讲师推荐列表 -- 上海聚宇企业管理培训网";
 			$header['nav'] = $this->_nav();
@@ -190,7 +204,7 @@ class Trainer extends CI_Controller {
 		if(!empty($act)){
 			$id = $act;
 			$class = $this->class;
-			$class['allarray'] = $this->base_model->get('trainer',"`id` = '$id'");
+			$class['allarray'] = $this->base_model->get('trainer_resource',"`id` = '$id'");
 			$typearray = $this->config->item('type');
 			if(isset($class['allarray'])){
 				$class['allarray'] = $class['allarray'][0];

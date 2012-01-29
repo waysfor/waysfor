@@ -59,16 +59,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>近期开课</span>
+                                        <span><a href="/open/nowlist">近期开课</a></span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="/open/now">更多</a>
+                                    	<a href="/open/nowlist">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($now as $items):?>
-                                        <li><a href="/open/now/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['opentime']?></span></li> 
+                                        <li><a href="/open/now/<?=$items['id']?>" title="开课:<?=$items['address']?> | <?=$items['classname']?>" target="_blank"><?=mb_substr($items['classname'],0,16)?></a><span class="time"><?=$items['opentime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -78,16 +78,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>推荐课程</span>
+                                        <span><a href="/open/hotlist">推荐课程</a></span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="/open/hot">更多</a>
+                                    	<a href="/open/hotlist">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($recommend as $items):?>
-                                        <li><a href="/open/hot/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li><a href="/open/hot/<?=$items['id']?>" title="<?=$items['classname']?>" target="_blank"><?=mb_substr($items['classname'],0,22)?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -97,7 +97,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>公开课分类</span>
+                                        <span><a href="/open/classtype">公开课分类</a></span>
                                     </h3>
                                 </div>
                                 <div class="bc">
@@ -128,16 +128,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>讲师介绍</span>
+                                        <span><a href="/trainer">讲师介绍</a></span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="/trainer">更多</a>
+                                    	<a href="/trainer" target="_blank">更多</a></a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($trainer as $items):?>
-                                        <li><a href="#"><?=$items['fname']?>老师</a><span class="time"><?=$items['listtime']?></span></li> 
+                                        <li><a href="/trainer/show/<?=$items['id']?>" title="<?=$items['fname']?>老师" target="_blank"><?=$items['fname']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -147,16 +147,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>内训课程</span>
+                                        <span><a href="/train">内训课程</a></span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                    	<a href="/train" target="_blank">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($train as $items):?>
-                                        <li><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li><a href="/train/show/<?=$items['id']?>" title="<?=$items['classname']?>" target="_blank"><?=mb_substr($items['classname'],0,22)?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -166,7 +166,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>内训分类</span>
+                                        <span><a href="/train/classtype">内训分类</a></span>
                                     </h3>
                                 </div>
                                 <div class="bc">

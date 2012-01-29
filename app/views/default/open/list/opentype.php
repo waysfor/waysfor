@@ -45,7 +45,7 @@
                                 <div class="bc">
                                     <ul class="list openlist"> 
                         				<?php foreach($opentype as $key=>$items):?>
-                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/show/<?=$items['id']?>" title="<?=$items['classname']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -84,7 +84,7 @@
 								<div class="bc">
 									<ul class="typelist">
 										<?php foreach($cate as $items):?>
-										<li><a href="/open/classtype/<?=$items['id']?>"><?=$items['name']?></a></li>
+										<li><a href="/open/classtype/<?=$items['id']?>" title="<?=$items['name']?>"><?=$items['name']?></a></li>
 										<?php endforeach;?>
 									</ul>
 								</div>

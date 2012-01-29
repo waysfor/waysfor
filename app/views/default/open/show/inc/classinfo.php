@@ -14,8 +14,8 @@
 												<tr>
 													<td><?=$v['address']?></td>
 													<td><?=$v['opentime']?> － <?=$v['endtime']?></td>
-													<td><?=$v['weekf']?> － <?=$v['weeka']?></td>
-													<td><?=$showinfo['price']?>/人</td>
+													<td>星期 <?=$v['weekf']?> - <?=$v['weeka']?></td>
+													<td><?=$showinfo['price']?>元/人</td>
 												</tr>
 												<?endforeach;?>
 											<?} else {?>

@@ -100,4 +100,37 @@ class Base_model extends CI_Model{
 		   return  $ret[0]->count;
 		}
 	}
+	function get_classinfo($start = 0,$limit = 0){
+		$sql = "SELECT * FROM classinfo WHERE `opentime` > '".date("Y-m-d")."' group by `cid` order by `opentime` ASC";
+		if($limit > 0) {
+			$sql .= " LIMIT $start, $limit";
+		}
+		$query = $this ->db ->query($sql);
+		$result = $query->result_array();
+		if(isset($result)){
+			$list = array();
+			foreach($result as $key => $v){
+				$key_id = $v['cid'];
+				$key_nid = $v['nid'];
+				$sql = "SELECT * FROM history,classinfo WHERE history.id = '".$key_id."'AND classinfo.nid ='".$key_nid."' group by id";
+				$query = $this->db->query($sql)->result_array();
+					$list[$key]['id'] = $query[0]['id'];
+					$list[$key]['classname'] = $query[0]['classname'];
+					$list[$key]['address'] = $query[0]['address'];
+					$list[$key]['opentime'] = $query[0]['opentime'];
+			}
+			return $list;
+		}
+	}
+	function get_classinfo_count($start = 0,$limit = 0){
+		$sql = "SELECT * FROM classinfo WHERE `opentime` > '".date("Y-m-d")."' group by `cid` order by `opentime` ASC";
+		if($limit > 0) {
+			$sql .= " LIMIT $start, $limit";
+		}
+		$query = $this ->db ->query($sql);
+		$result = $query->result_array();
+		if(isset($result)){
+			return count($result);
+		}
+	}
 }

@@ -202,6 +202,21 @@
                                             <td><input type="text" class="inp-form" name="price" value="<?=$t['price']?>" /></td>
                                             <td></td>
                                         </tr>
+										<tr>
+											<th valign="top">是否推荐：</th>
+											<td>
+												<select name="recommend" onchange="showCustormers(this.value)" class="styledselect_form_1">
+                                                        <?php if($t['recommend']=='0'){?>
+                                                        <option value="0">否</option>
+                                                        <option value="1">是</option>
+                                                        <?php }elseif($t['recommend']=='1'){?>
+                                                        <option value="1">是</option>
+                                                        <option value="0">否</option>
+                                                        <?php }?>
+												</select>
+											</td>
+											<td></td>
+										</tr>
                                         <tr>
                                             <th valign="top">备注:</th>
                                             <td><textarea class="form-textarea" name="back"><?=$t['back']?></textarea>(*备注信息，换行无效)</td>

@@ -43,7 +43,7 @@
 								</div>
                                 <div class="bc">
                                     <ul class="list openlist"> 
-                        				<?php foreach($opentype as $key=>$items):?>
+                        				<?php foreach($trainertype as $key=>$items):?>
                                         <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/trainer/show/<?=$items['id']?>"><?=$items['fname']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>

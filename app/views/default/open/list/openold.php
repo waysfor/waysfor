@@ -44,7 +44,7 @@
                                 <div class="bc">
                                     <ul class="list openlist"> 
                         				<?php foreach($oldlist as $key=>$items):?>
-                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/old/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/old/<?=$items['id']?>" title="<?=$items['classname']?>" target="_blank"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

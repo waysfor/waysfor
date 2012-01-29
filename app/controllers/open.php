@@ -14,7 +14,14 @@ class Open extends CI_Controller {
 			$navitem[$k] = $v['item'];
 		}
 		
-		$class['now'] = $this -> base_model -> get_time('classinfo','>','nid,opentime,cid', '0', '10');
+		$class['now'] = $this -> base_model -> get_classinfo('0', '10');
+		$cityarray = $this->config->item('city');
+		$nowout = array();
+		foreach($class['now'] as $v){
+			$v['address'] = $cityarray[$v['address']];
+			$nowout[] = $v;
+		}
+		$class['now'] = $nowout;
 		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
 		$class['old'] = $this -> base_model -> get_time('classinfo','<','nid,opentime,cid', '0', '10');
 		
@@ -150,7 +157,7 @@ class Open extends CI_Controller {
 			$this->load->view('default/open/list/openaddress',$class);
 			$this->load->view('default/footer');
 		}else{
-			echo 'erro';
+			var_dump('空');
 		}
 	}
 	function classtype($act = '', $val = 0)
@@ -193,6 +200,38 @@ class Open extends CI_Controller {
 			$this->load->view('default/footer');
 		}
 	}
+	function nowlist()
+	{
+		$class = $this->class;
+		
+		$offset = $this -> uri -> segment(3,0);
+		$my_page= array();
+		$my_page['sub_num'] = '25';
+		$my_page['all_num'] = $this -> base_model ->get_classinfo_count();
+		$my_page['url'] = '/open/nowlist/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(3,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
+		$class['my_page'] = $my_page;
+
+		$class['nowlist'] = $this -> base_model -> get_classinfo($offset,$my_page['sub_num']);
+		$cityarray = $this->config->item('city');
+		$nowlistout = array();
+		foreach($class['nowlist'] as $v){
+			$v['address'] = $cityarray[$v['address']];
+			$nowlistout[] = $v;
+		}
+		$class['nowlist'] = $nowlistout;
+
+		$header['webtitle'] = "公开课近期开课 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
+		$this->load->view('default/open/list/opennow',$class);
+		$this->load->view('default/footer');
+	}
 	function now($act = '', $val = 0)
 	{
 		if(!empty($act)){
@@ -223,29 +262,33 @@ class Open extends CI_Controller {
 			$this->load->view('default/open/show/shownow',$class);
 			$this->load->view('default/footer');
 		}else{
-			$class = $this->class;
-			
-			$offset = $this -> uri -> segment(4,0);
-			$my_page= array();
-			$my_page['sub_num'] = '25';
-			$my_page['all_num'] = $this -> base_model ->get_time_count('classinfo','>','nid');
-			$my_page['url'] = '/open/now/';
-			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
-			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-			$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
-			$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
-			$my_page['min_pages'] = '0';
-			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
-			$class['my_page'] = $my_page;
-
-			$class['nowlist'] = $this -> base_model -> get_time('classinfo','>','nid,opentime,cid', $offset,$my_page['sub_num']);
-
-			$header['webtitle'] = "公开课近期开课 -- 上海聚宇企业管理培训网";
-			$header['nav'] = $this->_nav();
-			$this->load->view('default/header', $header);
-			$this->load->view('default/open/list/opennow',$class);
-			$this->load->view('default/footer');
+			var_dump('空');
 		}
+	}
+	function hotlist()
+	{
+		$class = $this->class;
+		
+		$offset = $this -> uri -> segment(3,0);
+		$my_page= array();
+		$my_page['sub_num'] = '25';
+		$my_page['all_num'] = $this -> base_model ->get_count('history','`status`=1 AND recommend = 1','id');
+		$my_page['url'] = '/open/hotlist/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(3,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
+		$class['my_page'] = $my_page;
+
+		$class['hotlist'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','',$offset,$my_page['sub_num']);
+
+		$header['webtitle'] = "公开课推荐课程 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
+		$this->load->view('default/open/list/openhot',$class);
+		$this->load->view('default/footer');
 	}
 	function hot($act = '', $val = 0)
 	{
@@ -275,29 +318,33 @@ class Open extends CI_Controller {
 			$this->load->view('default/open/show/showhot',$class);
 			$this->load->view('default/footer');
 		}else{
-			$class = $this->class;
-			
-			$offset = $this -> uri -> segment(4,0);
-			$my_page= array();
-			$my_page['sub_num'] = '25';
-			$my_page['all_num'] = $this -> base_model ->get_count('history','`status`=1 AND recommend = 1','id');
-			$my_page['url'] = '/open/hot/';
-			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
-			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-			$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
-			$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
-			$my_page['min_pages'] = '0';
-			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
-			$class['my_page'] = $my_page;
-
-			$class['hotlist'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','',$offset,$my_page['sub_num']);
-
-			$header['webtitle'] = "公开课推荐课程 -- 上海聚宇企业管理培训网";
-			$header['nav'] = $this->_nav();
-			$this->load->view('default/header', $header);
-			$this->load->view('default/open/list/openhot',$class);
-			$this->load->view('default/footer');
+			var_dump('空');
 		}
+	}
+	function oldlist()
+	{
+		$class = $this->class;
+		
+		$offset = $this -> uri -> segment(3,0);
+		$my_page= array();
+		$my_page['sub_num'] = '25';
+		$my_page['all_num'] = $this -> base_model ->get_time_count('classinfo','<','nid');
+		$my_page['url'] = '/open/oldlist/';
+		$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+		$my_page['current_pages'] = $this -> uri -> segment(3,0)/$my_page['sub_num'] + '1';
+		$my_page['previous_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+		$my_page['next_pages'] = (floor($this -> uri -> segment(3,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
+		$my_page['min_pages'] = '0';
+		$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
+		$class['my_page'] = $my_page;
+
+		$class['oldlist'] = $this -> base_model -> get_time('classinfo','<','nid,opentime,cid', $offset,$my_page['sub_num']);
+
+		$header['webtitle'] = "公开课近期已开 -- 上海聚宇企业管理培训网";
+		$header['nav'] = $this->_nav();
+		$this->load->view('default/header', $header);
+		$this->load->view('default/open/list/openold',$class);
+		$this->load->view('default/footer');
 	}
 	function old($act = '', $val = 0)
 	{
@@ -328,28 +375,7 @@ class Open extends CI_Controller {
 			$this->load->view('default/open/show/showold',$class);
 			$this->load->view('default/footer');
 		}else{
-			$class = $this->class;
-			
-			$offset = $this -> uri -> segment(4,0);
-			$my_page= array();
-			$my_page['sub_num'] = '25';
-			$my_page['all_num'] = $this -> base_model ->get_time_count('classinfo','<','nid');
-			$my_page['url'] = '/open/old/';
-			$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
-			$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
-			$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
-			$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
-			$my_page['min_pages'] = '0';
-			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
-			$class['my_page'] = $my_page;
-
-			$class['oldlist'] = $this -> base_model -> get_time('classinfo','<','nid,opentime,cid', $offset,$my_page['sub_num']);
-
-			$header['webtitle'] = "公开课近期已开 -- 上海聚宇企业管理培训网";
-			$header['nav'] = $this->_nav();
-			$this->load->view('default/header', $header);
-			$this->load->view('default/open/list/openold',$class);
-			$this->load->view('default/footer');
+			var_dump('空');
 		}
 	}
 }

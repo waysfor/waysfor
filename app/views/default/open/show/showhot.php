@@ -3,7 +3,7 @@
             	<div class="row col2">
                     <div class="rt">
                         <h2>
-                            <span><a href="open">公开课</a></span>
+                            <span><a href="/open">公开课</a></span>
                         </h2>
                     </div>
                     <div class="rc clearfix">
@@ -17,8 +17,8 @@
                                 <div class="bc">
 									<?include_once('inc/classinfo.php')?>
 									<div class="tags">
-										<a href="javascript:show_step(0)" class="cerrent">课程大纲</a>
-										<a href="javascript:show_step(1)">讲师介绍</a>
+										<a href="javascript:show_step(0);" class="cerrent">课程大纲</a>
+										<a href="javascript:show_step(1);">讲师介绍</a>
 									</div>
 									<div class="step_content" style="display:block">
 										<?=$showinfo['classcontent']?>
