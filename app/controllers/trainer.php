@@ -15,11 +15,11 @@ class Trainer extends CI_Controller {
 		
 		$class['recommend'] = $this -> base_model -> get('trainer_resource','recommend = 1','','0','10');
         $typearray = $this->config->item('type');
+		$trainertypeout = array();
 		foreach($class['recommend'] as $v){
 			$v['trainertype'] = $typearray[$v['trainertype']];
 			$trainertypeout[] = $v;
 		}
-
 		$class['recommend'] = $trainertypeout;
 		
 		$this -> load -> model('CateModel');

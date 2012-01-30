@@ -82,7 +82,7 @@
                                     </h3>
 								</div>
 								<div class="bc">
-									<ul class="typelist">
+									<ul class="type_list">
 										<?php foreach($cate as $items):?>
 										<li><a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a></li>
 										<?php endforeach;?>

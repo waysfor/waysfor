@@ -81,7 +81,7 @@
                                     </h3>
 								</div>
 								<div class="bc">
-									<ul class="typelist">
+									<ul class="type_list">
 										<?php foreach($cate as $items):?>
 										<li><a href="/trainer/trainertype/<?=$items['id']?>"><?=$items['name']?></a></li>
 										<?php endforeach;?>

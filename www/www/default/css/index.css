@@ -95,7 +95,7 @@ body{
 }
 .logo{
     float:left;
-    width:168px;
+    width:200px;
     height:56px;
     margin:0;
     padding:12px 0;
@@ -106,6 +106,7 @@ body{
     text-indent:-999em;
     overflow:hidden;
     background:#eee;
+	background:url(../img/index_logo.png) no-repeat 0 0;
 }
 .nav{
     height:44px;
@@ -424,6 +425,9 @@ ul.traintype li a:hover{
 	display:none;
 	padding-top:20px;
 }
+.step_part{
+	display:none;
+}
 .mypage{
 	line-height:30px;
 	text-align:right;
@@ -490,16 +494,16 @@ ul.openlist li.bg{
 	background:#efefef;
 
 }
-ul.typelist{
+ul.type_list{
 	padding:12px 0;
 }
-ul.typelist li{
+ul.type_list li{
 	width:33%;
 	line-height:48px;
 	float:left;
 	text-align:center;
 }
-ul.typelist li a{
+ul.type_list li a{
 	color:#333;
 	display:inline-block;
 	width:120px;
@@ -507,6 +511,38 @@ ul.typelist li a{
 	line-height:32px;
 	border:1px solid #ccc;
 }
-ul.typelist li a:hover{
+ul.type_list li a:hover{
 	background:#efefef;
+}
+dl.list{
+	padding-left:12px;
+}
+dl.list dt{
+	line-height:32px;
+	font-weight:bold;
+}
+dl.list dd{
+	padding-left:12px;
+}
+dl.list dt a,dl.list dd a{
+	color:#666;
+}
+dl.list dt a:hover,dl.list dd a:hover{
+	color:#ccc;
+}
+dl.list dt a.cerrent{
+	color:#000;
+}
+div.art{
+	padding:20px 0;
+}
+div.art p{
+	text-indent:24px;
+	line-height:20px;
+	padding:3px 0;
+}
+div.art img{
+	padding:8px 0;
+	margin:0 auto;
+	text-align:center;
 }

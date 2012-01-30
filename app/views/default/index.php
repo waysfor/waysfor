@@ -7,10 +7,10 @@
                             <div class="box">
 								<div class="slide">
 									<ul id="slide_img">
-										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图1" title="焦点图1" /></a></li>
-										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图2" title="焦点图2" /></a></li>
-										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图3" title="焦点图3" /></a></li>
-										<li><a href="#"><img src="/www/default/img/nav_bg.png" width="652px" height="253" alt="焦点图4" title="焦点图4" /></a></li>
+										<li><a href="#"><img src="/www/default/img/image/02.jpg" width="652px" height="253" alt="热烈祝贺上海聚宇企业管理咨询网二期改版上线" title="热烈祝贺上海聚宇企业管理咨询网二期改版上线" /></a></li>
+										<li><a href="#"><img src="/www/default/img/image/01.jpg" width="652px" height="253" alt="卓有成效的解决方案，帮助企业提升绩效" title="卓有成效的解决方案，帮助企业提升绩效" /></a></li>
+										<li><a href="#"><img src="/www/default/img/image/03.jpg" width="652px" height="253" alt="企业管理 -- 专业" title="企业管理 -- 专业" /></a></li>
+										<li><a href="#"><img src="/www/default/img/image/04.jpg" width="652px" height="253" alt="企业管理 -- 责任" title="企业管理 -- 责任" /></a></li>
 									</ul>
 									<div class="slide_txt">
 										<p id="slide_txt"></p>
@@ -113,7 +113,7 @@
                 </div>
                 
                 <div class="emptytips">
-                    <a href="#" target="_blank"><img src="/www/default/img/nav_bg.png" width="980" height="80" alt="" /></a>
+                    <img src="/www/default/img/image/baner001.jpg" width="980" alt="" />
                 </div>
 
                 <!--col3 表示有3列-->
