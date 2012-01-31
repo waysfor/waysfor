@@ -8,7 +8,7 @@
                                     </span>
                                 </div>
                                 <div class="bc">
-                                    <ul class="list">
+                                    <ul class="list fmenu">
                         				<?php foreach($cate as $items):?>
                                         <li><a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>

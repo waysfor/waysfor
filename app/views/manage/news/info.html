@@ -1,0 +1,54 @@
+<!-- start content-outer ... START -->
+<div id="content-outer">
+  <!-- start content -->
+  <div id="content">
+    <!--  start page-heading -->
+    <div id="page-heading">
+      <h1>用户 <?=$news['title'];?> 信息</h1>
+    </div>
+    <!-- end page-heading -->
+    <table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+      <tr>
+        <th rowspan="3" class="sized"></th>
+        <th class="topleft"></th>
+        <td id="tbl-border-top">&nbsp;</td>
+        <th class="topright"></th>
+        <th rowspan="3" class="sized"></th>
+      </tr>
+      <tr>
+        <td id="tbl-border-left"></td>
+        <td>
+          <!--  start content-table-inner ... START -->
+          <div id="content-table-inner">
+            <!--  start table-content  -->
+            <div id="table-content">
+              <h3>资讯标题：　　　　<span class="spanh3"><?=$news['title'];?></span></h3>
+              <h3>资讯类型：　　　<span class="spanh3"><?=$news['newstype'];?></span></h3>
+              <h3>资讯来源：　　　<span class="spanh3"><?=$news['source'];?></span></h3>
+              <h3>来源地址：　　　<span class="spanh3"><?=$news['url'];?></span></h3>
+              <h3>资讯内容：　<span class="spanh3"><?=$news['content'];?></span></h3>
+              <h3>发布者：　<span class="spanh3"><?=$news['author'];?></span></h3>
+              <h3>录入时间：　　　<span class="spanh3"><?=$news['entertime'];?></span></h3>
+              <span class="spanh3"><a href="javascript:history.go(-1);">返回上一页</a></span> 
+              <span class="spanh3" style="margin-left: 35px;"><a href="/manage/news/edit/<?=$news['id']?>">去编辑该内容</a></span>
+            </div>
+            <!--  end table-content  -->
+            <div class="clear"></div>
+          </div>
+          <!--  end content-table-inner ... END  -->
+        </td>
+        <td id="tbl-border-right"></td>
+      </tr>
+      <tr>
+        <th class="sized bottomleft"></th>
+        <td id="tbl-border-bottom">&nbsp;</td>
+        <th class="sized bottomright"></th>
+      </tr>
+    </table>
+    <div class="clear">&nbsp;</div>
+  </div>
+  <!--  end content -->
+  <div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer ... END -->
+<div class="clear">&nbsp;</div>

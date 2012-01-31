@@ -746,4 +746,104 @@ class Manage extends CI_Controller {
         break;
     }
   }
+	function news($act = '',$val = ''){
+		$this->load->model('news_model');
+		switch($act) {
+			case 'list':
+				$this -> load -> helper('url');
+				$offset = $this -> uri -> segment(4,0);
+				$my_page= array();
+				$my_page['sub_num'] = '10';
+				$my_page['all_num'] = $this -> news_model -> getAllrows();
+				$my_page['url'] = '/manage/history/list/';
+				$my_page['pages'] = ceil($my_page['all_num']/$my_page['sub_num']);
+				$my_page['current_pages'] = $this -> uri -> segment(4,0)/$my_page['sub_num'] + '1';
+				$my_page['previous_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])-1)*$my_page['sub_num'];
+				$my_page['next_pages'] = (floor($this -> uri -> segment(4,0)/$my_page['sub_num'])+1)*$my_page['sub_num'];
+				$my_page['min_pages'] = '0';
+				$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
+				
+				$out = array();
+				$classlist = $this->news_model->get('','',$offset,$my_page['sub_num']);
+				$courseout = array();
+				$typearray = $this->config->item('type');
+				foreach($classlist as $class_course) {
+					$class_course['newstype'] = $typearray[$class_course['newstype']];
+					$courseout[] = $class_course;
+				}
+				$out['my_page'] = $my_page;
+				$out['class_course'] = $courseout;
+				$this->load->view('manage/news/list.html', $out);
+				$this->load->view('manage/footer.html');
+			break;
+			case 'add':
+			if($this->input->is_post()) { //post
+			
+			} else {
+				$this->load->view('manage/news/add.html');
+				$this->load->view('manage/footer.html');
+			}
+			break;
+			case 'add_save':
+				$data['title'] = $_POST['title'];
+				$data['newstype'] = $_POST['newstype'];
+				$data['source'] = $_POST['source'];
+				$data['url'] = $_POST['url'];
+				$data['content'] = $_POST['content'];
+				$data['author'] = $_POST['author'];
+				$data['posttime'] = $_POST['posttime'];
+				$data['entertime'] = date("Y-m-d h:i:s");
+				
+				$result = $this -> news_model -> add($data);
+			break;
+			case 'edit':
+			if($this->input->is_post()) { //post
+			
+			} else {
+				$id = $val;
+				$result = $this -> news_model -> edit($id);
+				$typearray = $this->config->item('type');
+				if(isset($result)){
+					$result = $result[0];
+				}
+				$out['news'] = $result;
+				
+				$this->load->view('manage/news/edit.html', $out);
+				$this->load->view('manage/footer.html');
+			}
+			break;
+			case 'edit_save':
+				$data['id'] = $_POST['id'];
+				$data['title'] = $_POST['title'];
+				$data['newstype'] = $_POST['newstype'];
+				$data['source'] = $_POST['source'];
+				$data['url'] = $_POST['url'];
+				$data['content'] = $_POST['content'];
+				$data['author'] = $_POST['author'];
+				$data['posttime'] = $_POST['posttime'];
+				$data['entertime'] = date("Y-m-d h:i:s");
+				
+				$id = $data['id'];
+				$con = "id = " . $data['id']; 
+				$con_info = "cid = " . $data['id']; 
+				
+				unset($data['id']);
+				$result = $this -> news_model -> edit_save($data,$con);
+			break;
+			case 'info':
+				$news = $this->news_model->get('`id` = '.$val);
+				if(isset($news[0])){
+					$news = $news[0];
+					$typearray = $this->config->item('type');
+					$news['newstype'] = $typearray[$news['newstype']];
+				}
+				$out['news'] = $news;
+				$this->load->view('manage/news/info.html', $out);
+				$this->load->view('manage/footer.html');
+			break;
+			default:
+				show_404();
+			break;
+		}
+	}
 }

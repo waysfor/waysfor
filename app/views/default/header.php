@@ -13,7 +13,7 @@
         	<div class="titlebar">
             	<div class="header_wrap">
                     <a href="/about">关于我们</a> | 
-                    <a href="#">帮助中心</a> | 
+                    <a href="/help">帮助中心</a> | 
                     <a href="/linkme">联系我们</a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 	<?php echo $nav;?>
                     <div class="" style="float:right">
                     	<a href="news" <?php if($this->uri->segment(1)=="news"){?>class="current"<?}?>><span>培训资讯</span></a>
-                    	<a href="#" <?php if($this->uri->segment(1)=="#"){?>class="current"<?}?>><span>成功案例</span></a>
+                    	<!--<a href="#" <?php if($this->uri->segment(1)=="#"){?>class="current"<?}?>><span>成功案例</span></a>-->
                     	<a href="/about" <?php if($this->uri->segment(1)=="about"){?>class="current"<?}?>><span>关于我们</span></a>
                     </div>
                 </div>

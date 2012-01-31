@@ -277,6 +277,7 @@ body{
 
 .box .bt{
     background:#ddd;
+	margin-bottom:2px;
 	position:relative;
 }
 .box .bt span.pr{
@@ -546,4 +547,33 @@ div.art img{
 	padding:8px 0;
 	margin:0 auto;
 	text-align:center;
+}
+.newinfo{
+	text-align:center;
+}
+.newinfo span{
+	margin:0 8px;
+}
+.newinfo span a{
+	color:#666;
+}
+.newinfo span a:hover{
+	color:#f30;
+}
+ul.fmenu li{
+	padding-left:0;
+	margin-bottom:4px;
+	background:none;
+}
+ul.fmenu li a{
+	padding-left:12px;
+	margin-left:12px;
+	display:block;
+	background:#ddd;
+	border-left:2px solid #888;
+}
+ul.fmenu li a:hover{
+	color:#ddd;
+	margin-left:24px;
+	background:#666;
 }

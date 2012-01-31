@@ -186,11 +186,18 @@ class Train extends CI_Controller {
 			$my_page['max_pages'] = floor($my_page['all_num']/$my_page['sub_num'])*$my_page['sub_num'];
 			$class['my_page'] = $my_page;
 
+			$class['hotlist'] = $this -> base_model -> get('history','`status` = 2 AND `recommend` = 1','',$offset,$my_page['sub_num']);
+			$typearray = $this->config->item('type');
+			$classout = array();
+			foreach($class['hotlist'] as $v){
+				$v['classtype'] = $typearray[$v['classtype']];
+				$classout[] = $v;
+			}
+			$class['hotlist'] = $classout;
 
 			$header['webtitle'] = "热点内训 -- 上海聚宇企业管理培训网";
 			$header['nav'] = $this->_nav();
 			$this->load->view('default/header', $header);
-			$class['hotlist'] = $this -> base_model -> get('history','`status` = 2 AND `recommend` = 1','',$offset,$my_page['sub_num']);
 			$this->load->view('default/train/list/trainrecommend',$class);
 			$this->load->view('default/footer');
 		}

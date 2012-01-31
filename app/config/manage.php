@@ -117,4 +117,21 @@ $config['nav'] = array(
       )
     )
   ),
+  array(
+    'name' => '新闻管理',
+    'seq'  => 6,
+    'item' => 'news',
+    'sub'  => array(
+      array(
+        'name' => '查看新闻',
+        'seq'  => 1,
+        'act'  => 'list'
+      ),
+      array(
+        'name' => '添加新闻',
+        'seq'  => 2,
+        'act'  => 'add'
+      )
+    )
+  ),
 );

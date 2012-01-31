@@ -30,7 +30,7 @@ class Main extends CI_Controller {
 	
 	public function index()
 	{
-		$class['news'] = $this -> base_model -> get('news','1','entertime desc','0','10');
+		$class['news'] = $this -> base_model -> get('news','`source`="" AND `url`="" AND `posttime` < "'.date("Y-m-d").'"','entertime desc','0','10');
 		/*分类资讯 start*/
 		$class['news_type1'] = $this -> base_model -> get('news','newstype = 1','entertime desc','0','10');
 		$class['news_type2'] = $this -> base_model -> get('news','newstype = 2','entertime desc','0','10');

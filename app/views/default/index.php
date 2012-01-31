@@ -31,13 +31,13 @@
                                         <span>培训新闻</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="news/list">更多</a>
+                                    	<a href="/news" target="_blank">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($news as $items):?>
-                                        <li><a href="news/show/<?=$items['id']?>"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="news/show/<?=$items['id']?>" title="$items['title']"><?=mb_substr($items['title'],0,18)?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -45,8 +45,6 @@
                         </div>
                     </div>
                 </div>
-
-                
                 <!--col3 表示有3列-->
                 <div class="row col3">
                     <div class="rt">
@@ -111,11 +109,9 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="emptytips">
                     <img src="/www/default/img/image/baner001.jpg" width="980" alt="" />
                 </div>
-
                 <!--col3 表示有3列-->
                 <div class="row col3">
                     <div class="rt">
@@ -180,16 +176,11 @@
                         </div>
                     </div>
                 </div>
-
-
                 <!--没有内容的时候显示以下提示信息-->
-            </div>
-
-                <!--col3 表示有3列-->
                 <div class="row col3">
                     <div class="rt">
                         <h2>
-                            <span><a href="news">培训分类资讯</a></span>
+                            <span><a href="/news">培训分类资讯</a></span>
                         </h2>
                     </div>
                     <div class="rc clearfix">
@@ -200,14 +191,14 @@
                                         <span>人力资源</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                        <a href="#">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($news_type1 as $items):?>
+                                        <?php foreach($news_type1 as $items):?>
                                         <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
-                        				<?php endforeach;?>
+                                        <?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -219,14 +210,14 @@
                                         <span>综合管理</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                        <a href="#">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($news_type2 as $items):?>
+                                        <?php foreach($news_type2 as $items):?>
                                         <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
-                        				<?php endforeach;?>
+                                        <?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -240,9 +231,9 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($news_type3 as $items):?>
+                                        <?php foreach($news_type3 as $items):?>
                                         <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
-                        				<?php endforeach;?>
+                                        <?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -256,14 +247,14 @@
                                         <span>营销管理</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                        <a href="#">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($news_type4 as $items):?>
+                                        <?php foreach($news_type4 as $items):?>
                                         <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
-                        				<?php endforeach;?>
+                                        <?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -275,14 +266,14 @@
                                         <span>财务管理</span>
                                     </h3>
                                     <span class="pr">
-                                    	<a href="#">更多</a>
+                                        <a href="#">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($news_type5 as $items):?>
+                                        <?php foreach($news_type5 as $items):?>
                                         <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
-                        				<?php endforeach;?>
+                                        <?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
@@ -296,36 +287,43 @@
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
-                        				<?php foreach($news_type6 as $items):?>
+                                        <?php foreach($news_type6 as $items):?>
                                         <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
-                        				<?php endforeach;?>
+                                        <?php endforeach;?>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                <!--没有内容的时候显示以下提示信息-->
-            </div>
+                <div class="row col3">
+                    <div class="rt">
+                        <h2>
+                            <span><a href="/flink">友情链接</a></span>
+                        </h2>
+                    </div>
+                    <div class="rc clearfix">
+                    	<a href=""></a>
+                    </div>
+                </div>
+        	</div>
             <div class="footer">
                 <p>
-                    <a href="#">关于我们</a> |
-                    <a href="#">广告服务</a> |
+                    <a href="/about" target="_blank">关于我们</a> |
+                    <!--<a href="#">广告服务</a> |
                     <a href="#">免责声明</a> |
-                    <a href="#">网站地图</a> |
-                    <a href="#">版权信息</a> |
-                    <a href="#">友情链接</a>
+                    <a href="#">网站地图</a> |-->
+                    <a href="/copyright" target="_blank">版权信息</a> |
+                    <a href="/flink" target="_blank">友情链接</a>
                 </p>
                 <p>
-                    Copyright &copy; 2011-2020 上海聚宇培训网
+                    Copyright &copy; 2010-2015 上海聚宇培训网
                 </p>
-                <p>
+                <!--<p>
                 沪ICP备:1000000号
-                </p>
+                </p>-->
             </div>
-        </div>
+    	</div>
 <script language="javascript">
 	var t = n = 0, count;
 	$(document).ready(function(){    

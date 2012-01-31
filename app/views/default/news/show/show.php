@@ -3,7 +3,7 @@
             	<div class="row col2">
                     <div class="rt">
                         <h2>
-                            <span><a href="/trainer">培训讲师</a></span> - <?=$allarray['fname']?>老师
+                            <span><a href="/news">培训资讯</a></span> - <?=$all['title']?>
                         </h2>
                     </div>
                     <div class="rc clearfix">
@@ -11,20 +11,34 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span><?=$allarray['trainertype']?></span>
+                                        <span><?=$all['title']?></span>
                                     </h3>
+									<?if(empty($all['source'])){?>
+										<span class="pr"><a href="/news/my_news">更多公司资讯</a></span>
+									<?} else {?>
+										<span class="pr"><a href="/news/oth_news">更多行业新闻</a></span>
+									<?}?>
                                 </div>
                                 <div class="bc">
 									<div class="step_content" style="display:block">
-										<?=$allarray['content']?>
+										<div class="newinfo">
+											<?if(empty($all['source'])){?>
+											<span class="author"><strong>发布者：</strong><?=$all['author']?></span>
+											<span><strong>发布时间：</strong><?=$all['entertime']?></span>
+											<?} else {?>
+											<span><strong>新闻来源：</strong><a href="<?=$all['url']?>"><?=$all['source']?></a></span>
+											<span class="author"><strong>发布者：</strong><?=$all['author']?></span>
+											<span><strong>发布时间：</strong><?=$all['entertime']?></span>
+											<?}?>
+										</div>
+										<?=$all['content']?>
 									</div>
                                 </div>
                             </div>
                         </div>
                         <div class="cr">
-							<!--<?include_once('inc/keyword.php')?>-->
 							<?include_once('inc/type.php')?>
-							<?include_once('inc/recommend.php')?>
+							<?include_once('inc/t_news.php')?>
                         </div>
                     </div>
                 </div>

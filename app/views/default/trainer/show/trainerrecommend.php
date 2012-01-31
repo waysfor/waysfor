@@ -34,19 +34,19 @@
             </div>
             <div class="footer">
                 <p>
-                    <a href="#">关于我们</a> |
-                    <a href="#">广告服务</a> |
+                    <a href="/about" target="_blank">关于我们</a> |
+                    <!--<a href="#">广告服务</a> |
                     <a href="#">免责声明</a> |
-                    <a href="#">网站地图</a> |
-                    <a href="#">版权信息</a> |
-                    <a href="#">友情链接</a>
+                    <a href="#">网站地图</a> |-->
+                    <a href="/copyright" target="_blank">版权信息</a> |
+                    <a href="/flink" target="_blank">友情链接</a>
                 </p>
                 <p>
-                    Copyright &copy; 2011-2020 上海聚宇培训网
+                    Copyright &copy; 2010-2015 上海聚宇培训网
                 </p>
-                <p>
+                <!--<p>
                 沪ICP备:1000000号
-                </p>
+                </p>-->
             </div>
         </div>
 <script type="text/javascript">

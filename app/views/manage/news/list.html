@@ -1,0 +1,116 @@
+<!-- start content-outer ... START -->
+<div id="content-outer">
+	<!-- start content -->
+	<div id="content">
+		<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+			<tr>
+				<th rowspan="3" class="sized">
+					<!--
+					<img src="/www/manage/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" />
+					-->
+				</th>
+				<th class="topleft"></th>
+				<td id="tbl-border-top">&nbsp;</td>
+				<th class="topright"></th>
+				<th rowspan="3" class="sized">
+					<!--
+					<img src="/www/manage/images/shared/side_shadowright.jpg" width="20" height="300" alt="" />
+					-->
+				</th>
+			</tr>
+			<tr>
+				<td id="tbl-border-left"></td>
+				<td>
+					<!--  start content-table-inner ... START -->
+					<div id="content-table-inner">
+						<!--  start table-content  -->
+						<div id="table-content">
+							<!--  start product-table ... START -->
+							<form id="mainform" action="">
+							<table border="0" width="100%" cellpadding="0" cellspacing="0" id="product-table">
+								<thead>
+									<th class="table-header-check"><a id="toggle-all" ></a></th>
+									<th class="table-header-repeat line-left minwidth-1"><a href="">资讯标题</a></th>
+									<th class="table-header-repeat line-left minwidth-1"><a href="">资讯类型</a></th>
+									<th class="table-header-repeat line-left"><a href="">资讯所属</a></th>
+									<th class="table-header-repeat line-left"><a href="">录入时间</a></th>
+									<th class="table-header-options line-left"><a href="">操作</a></th>
+								</thead>
+								<?php foreach($class_course as $u): ?>
+								<tr>
+									<td><input type="checkbox"/></td>
+									<td><?=$u['title']?></td>
+									<td><?=$u['newstype']?></td>
+									<td><?=$u['source']?></td>
+									<td><?=$u['entertime']?></td>
+									<td class="options-width">
+										<a href="/manage/news/edit/<?=$u['id']?>" title="编辑" class="icon-1 info-tooltip"></a>
+										<a href="/manage/news/del/<?=$u['id']?>" title="删除" class="icon-2 info-tooltip"></a>
+										<a href="/manage/news/info/<?=$u['id']?>" title="查看" class="icon-5 info-tooltip"></a>
+									</td>
+								</tr>
+								<?php endforeach; ?>
+							</table>
+							</form>
+							<!--  end product-table ... END -->
+						</div>
+						<!--  end content-table  -->
+						<!--  start actions-box -->
+						<div id="actions-box">
+							<a href="" class="action-slider"></a>
+							<div id="actions-box-slider">
+								<!-- <a href="" class="action-edit">Edit</a> -->
+								<!-- <a href="" class="action-delete">Delete</a> -->
+								<a href="" class="action-delete">Delete</a>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<!-- end actions-box -->
+						<!--  start paging -->
+						<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
+							<tr>
+								<td>
+									<a href="<?=$my_page['url'].$my_page['min_pages']?>" class="page-far-left" title="第一页"></a>
+									<?php if($my_page['current_pages']>'1'){?>
+									<a href="<?=$my_page['url'].$my_page['previous_pages']?>" class="page-left" title="上一页"></a>
+									<?php }?>
+									<div id="page-info">Page <strong><?=$my_page['current_pages']?></strong> / <?=$my_page['pages']?></div>
+									<?php if($my_page['current_pages']<$my_page['pages']){?>
+									<a href="<?=$my_page['url'].$my_page['next_pages']?>" class="page-right" title="下一页"></a>
+									<?php }?>
+									<a href="<?=$my_page['url'].$my_page['max_pages']?>" class="page-far-right" title="尾页"></a>
+								</td>
+								<td>
+									跳转到 <select id="my_pages" class="" onchange="javascript:window.location.href='<?=$my_page['url']?>'+(document.getElementById('my_pages').value-1)*<?=$my_page['sub_num']?>">
+										<?php
+											for($i = 1; $i <= $my_page['pages']; $i++){
+												if($i == $my_page['current_pages']){
+													echo "<option value='$i' selected>$i</option>";
+												}else{
+													echo "<option value='$i'>$i</option>";
+												}
+											?>
+										<?php }?>
+									</select>
+								</td>
+							</tr>
+						</table>
+						<!--  end paging -->
+						<div class="clear"></div>
+					</div>
+					<!--  end content-table-inner ... END  -->
+				</td>
+				<td id="tbl-border-right"></td>
+			</tr>
+			<tr>
+				<th class="sized bottomleft"></th>
+				<td id="tbl-border-bottom">&nbsp;</td>
+				<th class="sized bottomright"></th>
+			</tr>
+		</table>
+		<div class="clear">&nbsp;</div>
+	</div>
+	<!--  end content -->
+	<div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer ... END -->

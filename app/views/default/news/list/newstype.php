@@ -3,21 +3,20 @@
             	<div class="row col2">
                     <div class="rt">
                         <h2>
-                            <span><a href="/train">企业内训</a></span> - <?=$type?>
+                            <span><a href="/news">培训资讯</a></span> - <?=$type?>
                         </h2>
                     </div>
                     <div class="rc clearfix">
                         <div class="cr">
 							<?include_once('inc/type.php')?>
-							<?include_once('inc/recommend.php')?>
-							<!--<?include_once('inc/demo.php')?>-->
+							<?include_once('inc/t_news.php')?>
                         </div>
-						<?if($type != '课程分类'){?>
+						<?if($type != '资讯分类'){?>
                         <div class="cl">
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span><?=$type?></span>
+                                        <span>行业资讯</span>
                                     </h3>
                                 </div>
 								<div class="mypage">
@@ -42,13 +41,13 @@
 										<?php }?>
 									</select>
 								</div>
-                                <div class="bc">
-                                    <ul class="list"> 
-                        				<?php foreach($opentype as $key=>$items):?>
-                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/train/show/<?=$items['id']?>"><?=$items['classname']?></a><span class="time"><?=$items['posttime']?></span></li> 
-                        				<?php endforeach;?>
-                                    </ul>
-                                </div>
+								<div class="bc">
+									<ul class="list openlist">
+										<?foreach($all as $key=>$v):?>
+										<li <?if($key%2 == '0'){echo 'class="bg"';}?>>【<?=$v['entertime']?>】 <a href="/news/show/<?=$v['id']?>"><?=$v['title']?></a><span class="time"><?=$v['newstype']?></span></li>
+										<?endforeach?>
+									</ul>
+								</div>
 								<div class="mypage">
 									<a href="<?=$my_page['url'].$my_page['min_pages']?>" class="page-far-left" title="第一页">第一页</a>
 									<?php if($my_page['current_pages']>'1'){?>
@@ -71,8 +70,8 @@
 										<?php }?>
 									</select>
 								</div>
-                            </div>
-                        </div>
+							</div>
+						</div>
 						<?}else{?>
                         <div class="cl">
                             <div class="box">
@@ -84,18 +83,15 @@
 								<div class="bc">
 									<ul class="type_list">
 										<?php foreach($cate as $items):?>
-										<li><a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a></li>
+										<li><a href="/news/newstype/<?=$items['id']?>" title="<?=$items['name']?>"><?=$items['name']?></a></li>
 										<?php endforeach;?>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<?}?>
-                    </div>
-                </div>
-
-
-                <!--没有内容的时候显示以下提示信息-->
+					</div>
+				</div>
             </div>
             <div class="footer">
                 <p>
