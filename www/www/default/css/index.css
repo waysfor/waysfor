@@ -526,13 +526,13 @@ dl.list dt{
 dl.list dd{
 	padding-left:12px;
 }
-dl.list dt a,dl.list dd a{
+dl.list dt a,dl.list dd a,dl.list dt,dl.list dd{
 	color:#666;
 }
 dl.list dt a:hover,dl.list dd a:hover{
 	color:#ccc;
 }
-dl.list dt a.cerrent{
+dl.list dt a.cerrent,dl.list dt.cerrent{
 	color:#000;
 }
 div.art{
