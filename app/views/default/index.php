@@ -137,7 +137,7 @@
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($trainer as $items):?>
-                                        <li><a href="/trainer/show/<?=$items['id']?>" title="<?=$items['fname']?>老师" target="_blank"><?=$items['fname']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
+                                        <li><a href="/trainer/show/<?=$items['id']?>" title="<?=$items['name']?>老师" target="_blank"><?=$items['name']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

@@ -11,7 +11,7 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span><?=$allarray['fname']?><?=$allarray['trainertype']?></span>
+                                        <span><?=$allarray['trainertype']?></span>
                                     </h3>
                                 </div>
                                 <div class="bc">

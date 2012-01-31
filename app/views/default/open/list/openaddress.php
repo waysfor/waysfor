@@ -51,7 +51,7 @@
                                 <div class="bc">
                                     <ul class="list openlist"> 
                         				<?php foreach($openaddress as $key=>$items):?>
-                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/show/<?=$items['id']?>" title="<?=items['classname']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/open/show/<?=$items['id']?>" title="<?=$items['classname']?>"><?=$items['classname']?></a><span class="time"><?=$items['trainername']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

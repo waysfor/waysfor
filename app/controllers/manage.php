@@ -470,7 +470,7 @@ class Manage extends CI_Controller {
         }
         break;
 	  case 'add_save':
-		$data['fname'] = $_POST['trainername'];
+		$data['fname'] = $_POST['fname'];
 		$data['name'] = $_POST['trainername'];
 		$data['gender'] = $_POST['gender'];
 		$data['age'] = $_POST['age'];
@@ -506,7 +506,7 @@ class Manage extends CI_Controller {
         break;
       case 'edit_save':
         $data['id'] = $_POST['id'];
-		$data['fname'] = $_POST['trainername'];
+		$data['fname'] = $_POST['fname'];
 		$data['name'] = $_POST['trainername'];
 		$data['gender'] = $_POST['gender'];
 		$data['age'] = $_POST['age'];

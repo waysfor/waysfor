@@ -178,6 +178,7 @@
                                     </div>
 									<div class="step_content" id="step_content_3">
                                         <table border="0" cellpadding="0" cellspacing="0"  id="id-form" width="100%">
+                                        	<?if(!empty($class_info)){?>
 											<?php foreach($class_info as $info):?>
                                             <tr>
                                                 <th valign="top">开课时间：</th>
@@ -201,6 +202,29 @@
                                                 <td></td>
                                             </tr>
 											<?php endforeach;?>
+                                            <?} else {?>
+                                            <tr>
+                                                <th valign="top">开课时间：</th>
+                                                <td><input type="text" class="inp-form" name="data[opentime][]" /> (例如：2012-01-01)</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">结束时间：</th>
+                                                <td><input type="text" class="inp-form" name="data[endtime][]" /> (例如：2012-01-01)</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th valign="top">开课地址：</th>
+                                                <td>
+                                                    <select name="data[address][]">
+														<? foreach($city as $key=>$v): ?>
+														<option value='<?=$key?>'><?=$v?></option>
+														<? endforeach; ?>
+                                                    </select>
+												</td>
+                                                <td></td>
+                                            </tr>
+                                            <?}?>
 											<tr id="add_btn">
 												<th><a href="javascript:add_info();">添加开课信息</div></th>
 												<td></td>

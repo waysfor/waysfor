@@ -43,7 +43,7 @@
                                 <div class="bc">
                                     <ul class="list openlist"> 
                         				<?php foreach($recommendlist as $key=>$items):?>
-                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/trainer/recommend/<?=$items['id']?>"><?=$items['fname']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
+                                        <li <?if($key%2 == '0'){echo 'class="bg"';}?>><a href="/trainer/recommend/<?=$items['id']?>"><?=$items['name']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

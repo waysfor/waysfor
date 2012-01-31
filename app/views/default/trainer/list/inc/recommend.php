@@ -10,7 +10,7 @@
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($recommend as $items):?>
-                                        <li><a href="/trainer/recommend/<?=$items['id']?>"><?=$items['fname']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
+                                        <li><a href="/trainer/recommend/<?=$items['id']?>"><?=$items['name']?>老师</a><span class="time"><?=$items['trainertype']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

@@ -44,7 +44,11 @@
                 <div class="hotkey">
                     <div class="bg">
                     热点词：
-                    <a href="#">关键字</a>
+                    <a href="/open/hot/281" target="_blank">情商管理</a>
+					<a href="/open/hot/288" target="_blank">全面管理技能提升训练</a>
+					<a href="/open/hot/266" target="_blank">沟通艺术与关系协调</a>
+					<a href="/trainer/show/9" target="_blank">洪剑坪</a>
+					<a href="/train/show/241" target="_blank">中层管理者领导力</a>
                     </div>
                 </div>
             </div>
