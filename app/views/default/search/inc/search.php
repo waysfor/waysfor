@@ -27,11 +27,3 @@
 									</form>
 								</div>
                             </div>
-<script language="javascript">
-function go(){
-	$('#content_1').ajax({
-		type = "POST",
-		url = '/search/result';
-	});
-}
-</script>
