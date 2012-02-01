@@ -37,7 +37,7 @@
                                 <div class="bc">
                                     <ul class="list">
                         				<?php foreach($news as $items):?>
-                                        <li><a href="news/show/<?=$items['id']?>" title="$items['title']"><?=mb_substr($items['title'],0,18)?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="news/show/<?=$items['id']?>" title="<?=$items['title']?>"><?=mb_substr($items['title'],0,18)?></a><span class="time"><?=$items['entertime']?></span></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>
@@ -104,6 +104,9 @@
                                         <li><a href="/open/classtype/<?=$items['id']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>
                                     </ul>
+									<div>
+										<img src='/www/default/img/image/main01.jpg' alt="" />
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -171,6 +174,9 @@
                                         <li><a href="/train/classtype/<?=$items['id']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>
                                     </ul>
+									<div>
+										<img src='/www/default/img/image/main02.jpg' alt="" />
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -188,16 +194,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>人力资源</span>
+                                        <span><a href="/news/newstype/1">人力资源</a></span>
                                     </h3>
                                     <span class="pr">
-                                        <a href="#">更多</a>
+                                        <a href="/news" target="_blank">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                                         <?php foreach($news_type1 as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="/news/show/<?=$items['id']?>" title="<?=$items['title']?>" target="_blank"><?=mb_substr($items['title'],0,16)?></a><span class="time"><?=$items['entertime']?></span></li> 
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
@@ -207,16 +213,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>综合管理</span>
+                                        <span><a href="/news/newstype/2">综合管理</a></span>
                                     </h3>
                                     <span class="pr">
-                                        <a href="#">更多</a>
+                                        <a href="/news/newstype/2" target="_blank">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                                         <?php foreach($news_type2 as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="/news/show/<?=$items['id']?>" title="<?=$items['title']?>" target="_blank"><?=mb_substr($items['title'],0,21)?></a><span class="time"><?=$items['entertime']?></span></li> 
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
@@ -226,13 +232,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>生产管理</span>
+                                        <span><a href="/news/newstype/3">生产管理</a></span>
                                     </h3>
+                                    <span class="pr">
+                                        <a href="/news/newstype/3" target="_blank">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                                         <?php foreach($news_type3 as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="/news/show/<?=$items['id']?>" title="<?=$items['title']?>" target="_blank"><?=mb_substr($items['title'],0,18)?></a><span class="time"><?=$items['entertime']?></span></li> 
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
@@ -244,16 +253,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>营销管理</span>
+                                        <span><a href="/news/newstype/4">营销管理</a></span>
                                     </h3>
                                     <span class="pr">
-                                        <a href="#">更多</a>
+                                        <a href="/news/newstype/4" target="_blank">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                                         <?php foreach($news_type4 as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="/news/show/<?=$items['id']?>" title="<?=$items['title']?>" target="_blank"><?=mb_substr($items['title'],0,16)?></a><span class="time"><?=$items['entertime']?></span></li> 
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
@@ -263,16 +272,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>财务管理</span>
+                                        <span><a href="/news/newstype/5">财务管理</a></span>
                                     </h3>
                                     <span class="pr">
-                                        <a href="#">更多</a>
+                                        <a href="/news/newstype/5" target="_blank">更多</a>
                                     </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                                         <?php foreach($news_type5 as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="/news/show/<?=$items['id']?>" title="<?=$items['title']?>" target="_blank"><?=mb_substr($items['title'],0,21)?></a><span class="time"><?=$items['entertime']?></span></li> 
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
@@ -282,13 +291,16 @@
                             <div class="box">
                                 <div class="bt">
                                     <h3>
-                                        <span>物流采购</span>
+                                        <span><a href="/news/newstype/6">物流采购</a></span>
                                     </h3>
+                                    <span class="pr">
+                                        <a href="/news/newstype/6" target="_blank">更多</a>
+                                    </span>
                                 </div>
                                 <div class="bc">
                                     <ul class="list">
                                         <?php foreach($news_type6 as $items):?>
-                                        <li><a href="#"><?=$items['title']?></a><span class="time"><?=$items['entertime']?></span></li> 
+                                        <li><a href="/news/show/<?=$items['id']?>" title="<?=$items['title']?>" target="_blank"><?=mb_substr($items['title'],0,18)?></a><span class="time"><?=$items['entertime']?></span></li> 
                                         <?php endforeach;?>
                                     </ul>
                                 </div>

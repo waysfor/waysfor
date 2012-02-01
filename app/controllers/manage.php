@@ -792,7 +792,8 @@ class Manage extends CI_Controller {
 				$data['content'] = $_POST['content'];
 				$data['author'] = $_POST['author'];
 				$data['posttime'] = $_POST['posttime'];
-				$data['entertime'] = date("Y-m-d h:i:s");
+				$data['entertime'] = $_POST['posttime'];
+				//$data['entertime'] = date("Y-m-d h:i:s");
 				
 				$result = $this -> news_model -> add($data);
 			break;
@@ -821,7 +822,8 @@ class Manage extends CI_Controller {
 				$data['content'] = $_POST['content'];
 				$data['author'] = $_POST['author'];
 				$data['posttime'] = $_POST['posttime'];
-				$data['entertime'] = date("Y-m-d h:i:s");
+				$data['entertime'] = $_POST['posttime'];
+				//$data['entertime'] = date("Y-m-d h:i:s");
 				
 				$id = $data['id'];
 				$con = "id = " . $data['id']; 

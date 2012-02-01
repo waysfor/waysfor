@@ -21,7 +21,7 @@ $config['index_nav'] = array(
     'item' => 'trainer'
   ),
   array(
-    'name' => '高级搜索',
+    'name' => '课程搜索',
     'seq'  => 5,
     'item' => 'search'
   )

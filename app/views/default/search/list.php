@@ -70,6 +70,7 @@
 						</div>
                         <div class="cr">
 							<?include_once('inc/search.php')?>
+							<?include_once('inc/linkme.php')?>
                         </div>
 					</div>
 				</div>

@@ -17,6 +17,17 @@ class Search extends CI_Controller {
 		foreach($navarray as $k=>$v) {
 			$navitem[$k] = $v['item'];
 		}
+
+		$class['now'] = $this -> base_model -> get_classinfo('0', '10');
+		$cityarray = $this->config->item('city');
+		$nowout = array();
+		foreach($class['now'] as $v){
+			$v['address'] = $cityarray[$v['address']];
+			$nowout[] = $v;
+		}
+		$class['now'] = $nowout;
+		$class['recommend'] = $this -> base_model -> get('history','status = 1 AND recommend = 1','','0','10');
+
 		$this->class = $class;
 	}
 	private function _nav() {

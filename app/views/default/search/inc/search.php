@@ -4,37 +4,28 @@
                                         <span><a href="/search">高级搜索</a></span>
                                     </h3>
                                 </div>
-								<form action="/search/" onsubmit="return false" method="GET">
 								<div class="bc">
-									<form method="post">
+									<form action="/search/" onsubmit="/search" method="GET">
 									<ul class="search_area">
 										<li>
-											<span>课程名称</span>
-											<input type="text" name="classname" value="" alt="" />
+											<span>课程名称：</span>
+											<input type="text" name="txt" value="" class="txt" alt="" />
 										</li>
 										<li>
-											<span>搜索类型</span>
-											<select name="status">
-												<?foreach($statusarray as $key=>$v):?>
-												<option value="<?=$key?>"><?=$v?></option>
-												<?endforeach;?>
+											<span>搜索类型：</span>
+											<select name="channel">
+												<option value="课程资源">课程资源</option>
+												<option value="公开课">公开课</option>
+												<option value="企业内训">企业内训</option>
 											</select>
 										</li>
 										<li>
-											<span>课程类型</span>
-											<select class="classtype">
-												<?foreach($typearray as $key=>$v):?>
-												<option value="<?=$key?>"><?=$v?></option>
-												<?endforeach;?>
-											</select>
-										</li>
-										<li>
-											<input type="submit" value="搜索" />
+											<input type="hidden" value='0' name="per_page" />
+											<input type="submit" class="smt" value="搜索" />
 										</li>
 									</ul>
 									</form>
 								</div>
-								</form>
                             </div>
 <script language="javascript">
 function go(){

@@ -524,7 +524,7 @@ dl.list dt{
 	font-weight:bold;
 }
 dl.list dd{
-	padding-left:12px;
+	padding:3px 0 3px 12px;
 }
 dl.list dt a,dl.list dd a,dl.list dt,dl.list dd{
 	color:#666;
@@ -576,4 +576,32 @@ ul.fmenu li a:hover{
 	color:#ddd;
 	margin-left:24px;
 	background:#666;
+}
+ul.search_area li{
+	padding:3px 0 3px 112px;
+	position:relative;
+}
+ul.search_area li span{
+	position:absolute;
+	margin-left:-98px;
+	display:block;
+	width:88px;
+	text-align:right;
+	height:24px;
+	line-height:24px;
+}
+ul.search_area li input.txt{
+	border:1px solid #ccc
+}
+ul.search_area li input.smt{
+	border:1px solid #ccc;
+	padding:1px 6px 2px;
+	background:transparent;
+}
+dl.linkme dt{
+	text-indent:2em;
+	padding:3px 0 12px
+}
+dl.linkme dd{
+	padding:3px 0 3px 6em;
 }

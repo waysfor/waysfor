@@ -10,7 +10,7 @@
                                 <div class="bc">
                                     <ul class="list fmenu">
                         				<?php foreach($cate as $items):?>
-                                        <li><a href="/trainer/trainertype/<?=$items['id']?>"><?=$items['name']?></a></li> 
+                                        <li><a href="/trainer/trainertype/<?=$items['id']?>" title="<?=$items['name']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

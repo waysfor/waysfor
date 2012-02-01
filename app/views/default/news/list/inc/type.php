@@ -10,7 +10,7 @@
                                 <div class="bc">
                                     <ul class="list fmenu">
                         				<?php foreach($cate as $items):?>
-                                        <li><a href="/news/newstype/<?=$items['id']?>" title="<?=$items['name']?>" target="_blank"><?=$items['name']?></a></li> 
+                                        <li><a href="/news/newstype/<?=$items['id']?>" title="<?=$items['name']?>"><?=$items['name']?></a></li> 
                         				<?php endforeach;?>
                                     </ul>
                                 </div>

@@ -13,7 +13,7 @@
         	<div class="titlebar">
             	<div class="header_wrap">
                     <a href="/about">关于我们</a> | 
-                    <a href="/help">帮助中心</a> | 
+                    <!--<a href="/help">帮助中心</a> | -->
                     <a href="/linkme">联系我们</a>
                 </div>
             </div>
