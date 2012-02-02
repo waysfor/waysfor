@@ -35,7 +35,7 @@
                 </form>
                 <div class="nav clear">
                 	<?php echo $nav;?>
-                    <div class="" style="float:right">
+                    <div class="pr">
                     	<a href="news" <?php if($this->uri->segment(1)=="news"){?>class="current"<?}?>><span>培训资讯</span></a>
                     	<!--<a href="#" <?php if($this->uri->segment(1)=="#"){?>class="current"<?}?>><span>成功案例</span></a>-->
                     	<a href="/about" <?php if($this->uri->segment(1)=="about"){?>class="current"<?}?>><span>关于我们</span></a>

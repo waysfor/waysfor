@@ -103,7 +103,7 @@
                     <a href="/flink" target="_blank">友情链接</a>
                 </p>
                 <p>
-                    Copyright &copy; 2010-2015 上海聚宇培训网 <script src="http://s19.cnzz.com/stat.php?id=2883866&web_id=2883866" language="JavaScript"></script>
+                    Copyright &copy; 2010-2015 上海聚宇培训网 
                 </p>
                 <!--<p>
                 沪ICP备:1000000号
